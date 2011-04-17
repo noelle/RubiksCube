@@ -12,7 +12,7 @@ namespace RubiksCube.Model
         Edge
     }
 
-    public abstract class Cubie
+    public class Cubie
     {
         private CubieType type;
 
