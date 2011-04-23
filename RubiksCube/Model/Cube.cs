@@ -16,12 +16,12 @@ namespace RubiksCube.Model
             Cubie frontCubie1 = new Cubie(CubieType.Corner, 1, -1, 1, CubieColor.Y, CubieColor.B, CubieColor.O);
             Cubie frontCubie2 = new Cubie(CubieType.Edge, 1, 0, 1, CubieColor.R, CubieColor.None, CubieColor.W);
             Cubie frontCubie3 = new Cubie(CubieType.Corner, 1, 1, 1, CubieColor.O, CubieColor.W, CubieColor.B);
-            Cubie frontCubie4 = new Cubie(CubieType.Edge, 1, -1, 0, CubieColor.G, CubieColor.R, CubieColor.None);
-            Cubie frontCubie5 = new Cubie(CubieType.Center, 1, 0, 0, CubieColor.Y, CubieColor.None, CubieColor.None);
-            Cubie frontCubie6 = new Cubie(CubieType.Edge, 1, 1, 0, CubieColor.Y, CubieColor.B, CubieColor.None);
-            Cubie frontCubie7 = new Cubie(CubieType.Corner, 1, -1, -1, CubieColor.G, CubieColor.O, CubieColor.Y);
-            Cubie frontCubie8 = new Cubie(CubieType.Edge, 1, 0, -1, CubieColor.O, CubieColor.None, CubieColor.B);
-            Cubie frontCubie9 = new Cubie(CubieType.Corner, 1, 1, -1, CubieColor.W, CubieColor.G, CubieColor.O);
+            Cubie frontCubie4 = new Cubie(CubieType.Edge, 1, -1, 0, CubieColor.G, CubieColor.Y, CubieColor.None);
+            Cubie frontCubie5 = new Cubie(CubieType.Center, 1, 0, 0, CubieColor.G, CubieColor.None, CubieColor.None);
+            Cubie frontCubie6 = new Cubie(CubieType.Edge, 1, 1, 0, CubieColor.R, CubieColor.B, CubieColor.None);
+            Cubie frontCubie7 = new Cubie(CubieType.Corner, 1, -1, -1, CubieColor.R, CubieColor.Y, CubieColor.B);
+            Cubie frontCubie8 = new Cubie(CubieType.Edge, 1, 0, -1, CubieColor.W, CubieColor.None, CubieColor.G);
+            Cubie frontCubie9 = new Cubie(CubieType.Corner, 1, 1, -1, CubieColor.R, CubieColor.W, CubieColor.B);
 
             Cubie backCubie1 = new Cubie(CubieType.Corner, -1, -1, -1, CubieColor.Y, CubieColor.O, CubieColor.G);
             Cubie backCubie2 = new Cubie(CubieType.Edge, -1, 0, -1, CubieColor.B, CubieColor.None, CubieColor.O);
@@ -98,14 +98,54 @@ namespace RubiksCube.Model
 
         public void drawInConsole()
         {
-            System.Console.WriteLine("Hallo Cube!");
-            List<Cubie> topCubies = this.cubies.Where(q => q.PosZ == 1).OrderBy(q=>q.PosX).ThenBy(q=> q.PosY).ToList();
+            System.Console.WriteLine("Rubik's Cube 2D View");
             System.Console.WriteLine();
-            System.Console.WriteLine("TOP of the Cube");
-            System.Console.WriteLine();
-            System.Console.WriteLine("   {0}{1}{2}   ", topCubies.ElementAt(0), topCubies.ElementAt(1), topCubies.ElementAt(3));
-            System.Console.WriteLine("   {0}{1}{2}   ", topCubies.ElementAt(4), topCubies.ElementAt(5), topCubies.ElementAt(6));
-            System.Console.WriteLine("   {0}{1}{2}   ", topCubies.ElementAt(7), topCubies.ElementAt(8), topCubies.ElementAt(9));
+
+            // Obere Reihe
+            List<CubieColor> topCubies = this.cubies.Where(q => q.PosZ == 1).OrderBy(q => q.PosX).ThenBy(q => q.PosY).Select(q => q.ColZ).ToList();
+            System.Console.WriteLine("    {0}{1}{2}   ", topCubies.ElementAt(0), topCubies.ElementAt(1), topCubies.ElementAt(2));
+            System.Console.WriteLine("    {0}{1}{2}   ", topCubies.ElementAt(3), topCubies.ElementAt(4), topCubies.ElementAt(5));
+            System.Console.WriteLine("    {0}{1}{2}   ", topCubies.ElementAt(6), topCubies.ElementAt(7), topCubies.ElementAt(8));
+            System.Console.WriteLine("    ---   ");
+
+            // Mittlere 1. Reihe
+            List<CubieColor> midCubies1 = this.cubies.Where(q => q.PosY == -1 && q.PosZ == 1).OrderBy(q => q.PosX).Select(q => q.ColY).ToList();
+            midCubies1.AddRange(this.cubies.Where(q => q.PosX == 1 && q.PosZ == 1).OrderBy(q => q.PosY).Select(q => q.ColX).ToList());
+            midCubies1.AddRange(this.cubies.Where(q => q.PosY == 1 && q.PosZ == 1).OrderByDescending(q => q.PosX).Select(q => q.ColY).ToList());
+            System.Console.WriteLine("{0}{1}{2}|{3}{4}{5}|{6}{7}{8}", midCubies1.ElementAt(0), midCubies1.ElementAt(1), midCubies1.ElementAt(2), 
+                midCubies1.ElementAt(3), midCubies1.ElementAt(4), midCubies1.ElementAt(5), 
+                midCubies1.ElementAt(6), midCubies1.ElementAt(7), midCubies1.ElementAt(8));
+
+            // Mittlere 2. Reihe
+            List<CubieColor> midCubies2 = this.cubies.Where(q => q.PosY == -1 && q.PosZ == 0).OrderBy(q => q.PosX).Select(q => q.ColY).ToList();
+            midCubies2.AddRange(this.cubies.Where(q => q.PosX == 1 && q.PosZ == 0).OrderBy(q => q.PosY).Select(q => q.ColX).ToList());
+            midCubies2.AddRange(this.cubies.Where(q => q.PosY == 1 && q.PosZ == 0).OrderByDescending(q => q.PosX).Select(q => q.ColY).ToList());
+            System.Console.WriteLine("{0}{1}{2}|{3}{4}{5}|{6}{7}{8}", midCubies2.ElementAt(0), midCubies2.ElementAt(1), midCubies2.ElementAt(2),
+                midCubies2.ElementAt(3), midCubies2.ElementAt(4), midCubies2.ElementAt(5),
+                midCubies2.ElementAt(6), midCubies2.ElementAt(7), midCubies2.ElementAt(8));
+
+            // Mittlere 3. Reihe
+            List<CubieColor> midCubies3 = this.cubies.Where(q => q.PosY == -1 && q.PosZ == -1).OrderBy(q => q.PosX).Select(q => q.ColY).ToList();
+            midCubies3.AddRange(this.cubies.Where(q => q.PosX == 1 && q.PosZ == -1).OrderBy(q => q.PosY).Select(q => q.ColX).ToList());
+            midCubies3.AddRange(this.cubies.Where(q => q.PosY == 1 && q.PosZ == -1).OrderByDescending(q => q.PosX).Select(q => q.ColY).ToList());
+            System.Console.WriteLine("{0}{1}{2}|{3}{4}{5}|{6}{7}{8}", midCubies3.ElementAt(0), midCubies3.ElementAt(1), midCubies3.ElementAt(2),
+                midCubies3.ElementAt(3), midCubies3.ElementAt(4), midCubies3.ElementAt(5),
+                midCubies3.ElementAt(6), midCubies3.ElementAt(7), midCubies3.ElementAt(8));
+            System.Console.WriteLine("    ---   ");
+
+            // Untere Reihe
+            List<CubieColor> bottomCubies = this.cubies.Where(q => q.PosZ == -1).OrderByDescending(q => q.PosX).ThenBy(q => q.PosY).Select(q => q.ColZ).ToList();
+            System.Console.WriteLine("    {0}{1}{2}   ", bottomCubies.ElementAt(0), bottomCubies.ElementAt(1), bottomCubies.ElementAt(2));
+            System.Console.WriteLine("    {0}{1}{2}   ", bottomCubies.ElementAt(3), bottomCubies.ElementAt(4), bottomCubies.ElementAt(5));
+            System.Console.WriteLine("    {0}{1}{2}   ", bottomCubies.ElementAt(6), bottomCubies.ElementAt(7), bottomCubies.ElementAt(8));
+            System.Console.WriteLine("    ---   ");
+
+            // Hintere Reihe
+            List<CubieColor> backCubies = this.cubies.Where(q => q.PosX == -1).OrderBy(q => q.PosZ).ThenBy(q => q.PosY).Select(q => q.ColX).ToList();
+            System.Console.WriteLine("    {0}{1}{2}   ", backCubies.ElementAt(0), backCubies.ElementAt(1), backCubies.ElementAt(2));
+            System.Console.WriteLine("    {0}{1}{2}   ", backCubies.ElementAt(3), backCubies.ElementAt(4), backCubies.ElementAt(5));
+            System.Console.WriteLine("    {0}{1}{2}   ", backCubies.ElementAt(6), backCubies.ElementAt(7), backCubies.ElementAt(8));
+
         }
         public List<Cubie> getCubies(int coordinate, Axis axis)
         {
