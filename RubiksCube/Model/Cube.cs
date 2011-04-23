@@ -34,6 +34,12 @@ namespace RubiksCube.Model
         {
             //implement, Parameter noch setzen
         }
+
+        public void drawInConsole()
+        {
+            System.Console.WriteLine("Hallo Cube!");
+            //List<Cubie> topCubies = this.c
+        }
     }
 
     public enum Axis
