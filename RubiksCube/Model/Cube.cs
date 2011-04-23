@@ -125,35 +125,99 @@ namespace RubiksCube.Model
             //rotate(-1, Axis.X, direction);
         }
 
+        /// <summary>
+        /// Rotates a cube surface to a wished direction
+        /// </summary>
+        /// <param name="cubeSurface"></param>
+        /// <param name="direction"></param>
         private void rotate(CubeSurface cubeSurface, Direction direction)
         {
             // get the cubies of the wished cube surface
             List<Cubie> cubies = this.getCubeSurface(cubeSurface);
             int tempPos;
+            int multX = 1;
+            int multY = 1;
+            int multZ = 1;
 
-            switch (direction)
+            switch (cubeSurface)
             {
-                case Direction.Left:
+                case CubeSurface.Front:
+                    multY = direction == Direction.Left ? -1 : 1;
+                    multZ = direction == Direction.Right ? -1 : 1;
+
                     foreach (Cubie cubie in cubies)
                     {
                         tempPos = cubie.PosY;
-                        cubie.PosY = cubie.PosZ * -1;
-                        cubie.PosZ = tempPos;
+                        cubie.PosY = cubie.PosZ * multY;
+                        cubie.PosZ = tempPos * multZ;
                     }
                     break;
 
-                case Direction.Right:
+                case CubeSurface.Back:
+                    multY = direction == Direction.Right ? -1 : 1;
+                    multZ = direction == Direction.Left ? -1 : 1;
+
                     foreach (Cubie cubie in cubies)
                     {
                         tempPos = cubie.PosY;
-                        cubie.PosY = cubie.PosZ;
-                        cubie.PosZ = tempPos * -1;
+                        cubie.PosY = cubie.PosZ * multY;
+                        cubie.PosZ = tempPos * multZ;
                     }
                     break;
-                    
+
+                case CubeSurface.Top:
+                    multX = direction == Direction.Left ? -1 : 1;
+                    multY = direction == Direction.Right ? -1 : 1;
+
+                    foreach (Cubie cubie in cubies)
+                    {
+                        tempPos = cubie.PosX;
+                        cubie.PosX = cubie.PosY * multX;
+                        cubie.PosY = tempPos * multY;
+                    }
+                    break;
+
+                case CubeSurface.Bottom:
+                    multX = direction == Direction.Right ? -1 : 1;
+                    multY = direction == Direction.Left ? -1 : 1;
+
+                    foreach (Cubie cubie in cubies)
+                    {
+                        tempPos = cubie.PosX;
+                        cubie.PosX = cubie.PosY * multX;
+                        cubie.PosY = tempPos * multY;
+                    }
+                    break;
+
+                case CubeSurface.Left:
+                    multX = direction == Direction.Left ? -1 : 1;
+                    multZ = direction == Direction.Right ? -1 : 1;
+
+                    foreach (Cubie cubie in cubies)
+                    {
+                        tempPos = cubie.PosX;
+                        cubie.PosX = cubie.PosZ * multX;
+                        cubie.PosZ = tempPos * multZ;
+                    }
+                    break;
+
+                case CubeSurface.Right:
+                    multX = direction == Direction.Right ? -1 : 1;
+                    multZ = direction == Direction.Left ? -1 : 1;
+
+                    foreach (Cubie cubie in cubies)
+                    {
+                        tempPos = cubie.PosX;
+                        cubie.PosX = cubie.PosZ * multX;
+                        cubie.PosZ = tempPos * multZ;
+                    }
+                    break;
+
                 default:
                     break;
+
             }
+
         }
 
 
@@ -178,8 +242,8 @@ namespace RubiksCube.Model
             List<CubieColor> midCubies1 = this.cubies.Where(q => q.PosY == -1 && q.PosZ == 1).OrderBy(q => q.PosX).Select(q => q.ColY).ToList();
             midCubies1.AddRange(this.cubies.Where(q => q.PosX == 1 && q.PosZ == 1).OrderBy(q => q.PosY).Select(q => q.ColX).ToList());
             midCubies1.AddRange(this.cubies.Where(q => q.PosY == 1 && q.PosZ == 1).OrderByDescending(q => q.PosX).Select(q => q.ColY).ToList());
-            System.Console.WriteLine("{0}{1}{2}|{3}{4}{5}|{6}{7}{8}", midCubies1.ElementAt(0), midCubies1.ElementAt(1), midCubies1.ElementAt(2), 
-                midCubies1.ElementAt(3), midCubies1.ElementAt(4), midCubies1.ElementAt(5), 
+            System.Console.WriteLine("{0}{1}{2}|{3}{4}{5}|{6}{7}{8}", midCubies1.ElementAt(0), midCubies1.ElementAt(1), midCubies1.ElementAt(2),
+                midCubies1.ElementAt(3), midCubies1.ElementAt(4), midCubies1.ElementAt(5),
                 midCubies1.ElementAt(6), midCubies1.ElementAt(7), midCubies1.ElementAt(8));
 
             // Mittlere 2. Reihe
@@ -253,7 +317,7 @@ namespace RubiksCube.Model
                     cubies = null;
                     break;
             }
-            
+
             return cubies;
         }
     }
