@@ -12,6 +12,16 @@ namespace RubiksCube.Model
         Edge
     }
 
+    enum CubieColor
+    {
+        O,
+        Y,
+        B,
+        G,
+        R,
+        W
+    }
+
     public class Cubie
     {
         private CubieType type;
@@ -43,39 +53,38 @@ namespace RubiksCube.Model
         /// <summary>
         /// Farben der Cubie Koordinaten-Flächen
         /// </summary>
-        private string colX;
-        public string ColX
+        private CubieColor colX;
+        public CubieColor ColX
         {
             get { return colX; }
             set { colX = value; }
         }
 
-        private string colY;
-        public string ColY
+        private CubieColor colY;
+        public CubieColor ColY
         {
             get { return colY; }
             set { colY = value; }
         }
 
-        private string colZ;
-        public string ColZ
+        private CubieColor colZ;
+        public CubieColor ColZ
         {
             get { return colZ; }
             set { colZ = value; }
         }
-        
 
-        public Cubie(CubieType type, int xPos, int yPos, int zPos, string xCol, string yCol, string zCol)
+        public Cubie(CubieType type, int posX, int posY, int posZ, CubieColor colX, CubieColor colY, CubieColor colZ)
         {
             this.type = type;
 
-            this.posX = xPos;
-            this.posY = yPos;
-            this.posZ = zPos;
+            this.posX = posX;
+            this.posY = posY;
+            this.posZ = posZ;
 
-            this.colX = xCol;
-            this.colY = yCol;
-            this.colZ = zCol;            
+            this.colX = colX;
+            this.colY = colY;
+            this.colZ = colZ;            
         }
     }
 }
