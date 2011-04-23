@@ -27,6 +27,12 @@ namespace RubiksCube.Model
     {
         private CubieType type;
 
+        public CubieType Type
+        {
+            get { return type; }
+            set { type = value; }
+        }
+
         /// <summary>
         /// Koordinate des Cubies in der Koordinaten-Achse des Cubes
         /// </summary>
@@ -75,6 +81,8 @@ namespace RubiksCube.Model
             set { colZ = value; }
         }
 
+        public Cubie() { }
+
         public Cubie(CubieType type, int posX, int posY, int posZ, CubieColor colX, CubieColor colY, CubieColor colZ)
         {
             this.type = type;
@@ -86,6 +94,21 @@ namespace RubiksCube.Model
             this.colX = colX;
             this.colY = colY;
             this.colZ = colZ;            
+        }
+
+        public override bool Equals(object obj)
+        {
+            Cubie cmpCubie = (Cubie)obj;
+
+            if (cmpCubie != null)
+            {
+                if (cmpCubie.posX == this.posX && cmpCubie.posY == this.posY && cmpCubie.posZ == this.posZ)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

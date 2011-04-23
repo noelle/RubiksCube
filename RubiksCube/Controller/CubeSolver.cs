@@ -7,5 +7,56 @@ namespace RubiksCube.Controller
 {
     public class CubeSolver
     {
+        private Model.Cube cube;
+
+        public CubeSolver(Model.Cube cube)
+        {
+            this.cube = cube;
+        }
+
+        /// <summary>
+        /// Solves the cube
+        /// </summary>
+        public void solve()
+        {
+            makeCross();
+        }
+
+        /// <summary>
+        /// First step in solving the cube
+        /// making the cross at the top of the cube
+        /// </summary>
+        private void makeCross()
+        {
+            // Starting with the cross at the Top
+            Model.Cubie topCenter = this.cube.getCubie(0,0,1);
+            
+            // get the front center cubie
+            Model.Cubie frontCenter = this.cube.getCubie(1,0,0);
+            Model.Cubie targetCubie = new Model.Cubie();
+
+            // set the target Cubie
+            targetCubie.PosX = topCenter.PosX + frontCenter.PosX; // 1
+            targetCubie.PosY = topCenter.PosY + frontCenter.PosY; // 0 
+            targetCubie.PosZ = topCenter.PosZ + frontCenter.PosZ; // 1
+            targetCubie.ColX = frontCenter.ColX;
+            targetCubie.ColY = Model.CubieColor.None;
+            targetCubie.ColZ = topCenter.ColZ;
+
+            //Model.Cubie tCubie = new Model.Cubie(Model.CubieType.Edge, 
+            Model.Cubie currentCubie = this.cube.getCubie(frontCenter.ColX, topCenter.ColZ, Model.CubieColor.None);
+
+            while (targetCubie.ColX != currentCubie.ColX)
+            {
+                while (targetCubie.ColY != currentCubie.ColY)
+                {
+                    while (targetCubie.ColZ != currentCubie.ColZ)
+                    {
+                        //if(currentCubie.PosX == 
+                    }
+                }
+            }
+
+        }
     }
 }

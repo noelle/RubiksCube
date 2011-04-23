@@ -26,6 +26,12 @@ namespace RubiksCube.Model
     {
         List<Cubie> cubies;
 
+        public List<Cubie> Cubies
+        {
+            get { return cubies; }
+            set { cubies = value; }
+        }
+
         public Cube()
         {
             this.cubies = new List<Cubie>();
@@ -328,6 +334,22 @@ namespace RubiksCube.Model
             }
 
             return cubies;
+        }
+
+        public Cubie getCubie(CubieColor col1, CubieColor col2, CubieColor col3)
+        {
+            Cubie cube = this.cubies.Where(q =>((q.ColX == col1 && q.ColY == col2 && q.ColZ == col3) ||
+                                                (q.ColX == col1 && q.ColY == col3 && q.ColZ == col2) ||
+                                                (q.ColX == col2 && q.ColY == col1 && q.ColZ == col3) ||
+                                                (q.ColX == col2 && q.ColY == col3 && q.ColZ == col1) ||
+                                                (q.ColX == col3 && q.ColY == col1 && q.ColZ == col2) ||
+                                                (q.ColX == col3 && q.ColY == col2 && q.ColZ == col1))).Select(q=> q).FirstOrDefault();
+            return cube;
+        }
+
+        public Cubie getCubie(int posX, int posY, int posZ)
+        {
+            return this.cubies.Where(q => q.PosX == posX && q.PosY == posY && q.PosZ == posZ).Select(q => q).FirstOrDefault();
         }
     }
 }
