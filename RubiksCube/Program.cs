@@ -11,6 +11,13 @@ namespace RubiksCube
         {
             RubiksCube.Model.Cube meinCube = new Model.Cube();
             meinCube.drawInConsole();
+
+            meinCube.rotateFront(Model.Direction.Left);
+            meinCube.drawInConsole();
+
+            meinCube.rotateFront(Model.Direction.Right);
+            meinCube.drawInConsole();
+
             Console.Read();
         }
     }

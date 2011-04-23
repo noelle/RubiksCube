@@ -18,6 +18,16 @@ namespace RubiksCube.Model
         Right
     }
 
+    public enum CubeSurface
+    {
+        Top,
+        Front,
+        Left,
+        Right,
+        Bottom,
+        Back
+    }
+
     public class Cube
     {
         List<Cubie> cubies;
@@ -101,8 +111,8 @@ namespace RubiksCube.Model
         /// <param name="direction"> direction which is to be rotated in</param>
         public void rotateFront(Direction direction)
         {
-            rotate(1, Axis.X, direction);
-            changeColor();
+            this.rotate(CubeSurface.Front, direction);
+            //changeColor();
         }
 
         /// <summary>
@@ -112,20 +122,38 @@ namespace RubiksCube.Model
         /// <param name="direction">direction which is to be rotaded in</param>
         public void rotateBack(Direction direction)
         {
-            rotate(-1, Axis.X, direction);
+            //rotate(-1, Axis.X, direction);
         }
 
-        /// <summary>
-        /// Rotates a surface around an axis in a defined direction (left or right)
-        /// </summary>
-        /// <param name="coordinate"></param>
-        /// <param name="axis"></param>
-        /// <param name="direction"></param>
-        public void rotate(int coordinate, Axis axis, Direction direction)
+        private void rotate(CubeSurface cubeSurface, Direction direction)
         {
-            //implement
-            getCubies(coordinate, axis);
+            // get the cubies of the wished cube surface
+            List<Cubie> cubies = this.getCubeSurface(cubeSurface);
+            int tempPos;
 
+            switch (direction)
+            {
+                case Direction.Left:
+                    foreach (Cubie cubie in cubies)
+                    {
+                        tempPos = cubie.PosY;
+                        cubie.PosY = cubie.PosZ * -1;
+                        cubie.PosZ = tempPos;
+                    }
+                    break;
+
+                case Direction.Right:
+                    foreach (Cubie cubie in cubies)
+                    {
+                        tempPos = cubie.PosY;
+                        cubie.PosY = cubie.PosZ;
+                        cubie.PosZ = tempPos * -1;
+                    }
+                    break;
+                    
+                default:
+                    break;
+            }
         }
 
 
@@ -146,9 +174,47 @@ namespace RubiksCube.Model
             System.Console.WriteLine("   {0}{1}{2}   ", topCubies.ElementAt(7), topCubies.ElementAt(8), topCubies.ElementAt(9));
         }
 
-        public List<Cubie> getCubies(int coordinate, Axis axis)
+        /// <summary>
+        /// Returns a list of all of the cubies of a cube surface
+        /// </summary>
+        /// <param name="surface">the cube surface</param>
+        /// <returns>List of the cubies of the cube surface</returns>
+        private List<Cubie> getCubeSurface(CubeSurface surface)
         {
-            return null;
+            List<Cubie> cubies;
+
+            switch (surface)
+            {
+                case CubeSurface.Front:
+                    cubies = this.cubies.Where(q => q.PosX == 1).ToList();
+                    break;
+
+                case CubeSurface.Back:
+                    cubies = this.cubies.Where(q => q.PosX == -1).ToList();
+                    break;
+
+                case CubeSurface.Left:
+                    cubies = this.cubies.Where(q => q.PosY == -1).ToList();
+                    break;
+
+                case CubeSurface.Right:
+                    cubies = this.cubies.Where(q => q.PosY == 1).ToList();
+                    break;
+
+                case CubeSurface.Top:
+                    cubies = this.cubies.Where(q => q.PosZ == 1).ToList();
+                    break;
+
+                case CubeSurface.Bottom:
+                    cubies = this.cubies.Where(q => q.PosZ == -1).ToList();
+                    break;
+
+                default:
+                    cubies = null;
+                    break;
+            }
+            
+            return cubies;
         }
     }
 }
