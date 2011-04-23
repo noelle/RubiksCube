@@ -50,7 +50,13 @@ namespace RubiksCube.Model
         public void drawInConsole()
         {
             System.Console.WriteLine("Hallo Cube!");
-            //List<Cubie> topCubies = this.c
+            List<Cubie> topCubies = this.cubies.Where(q => q.PosZ == 1).OrderBy(q=>q.PosX).ThenBy(q=> q.PosY).ToList();
+            System.Console.WriteLine();
+            System.Console.WriteLine("TOP of the Cube");
+            System.Console.WriteLine();
+            System.Console.WriteLine("   {0}{1}{2}   ", topCubies.ElementAt(0), topCubies.ElementAt(1), topCubies.ElementAt(3));
+            System.Console.WriteLine("   {0}{1}{2}   ", topCubies.ElementAt(4), topCubies.ElementAt(5), topCubies.ElementAt(6));
+            System.Console.WriteLine("   {0}{1}{2}   ", topCubies.ElementAt(7), topCubies.ElementAt(8), topCubies.ElementAt(9));
         }
         public List<Cubie> getCubies(int coordinate, Axis axis)
         {
