@@ -9,6 +9,9 @@ namespace RubiksCube
     {
         static void Main(string[] args)
         {
+            RubiksCube.Model.Cube meinCube = new Model.Cube();
+            meinCube.drawInConsole();
+            Console.Read();
         }
     }
 }
