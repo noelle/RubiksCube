@@ -5,21 +5,22 @@ using System.Text;
 
 namespace RubiksCube.Model
 {
-    enum CubieType
+    public enum CubieType
     {
         Corner,
         Center,
         Edge
     }
 
-    enum CubieColor
+    public enum CubieColor
     {
         O,
         Y,
         B,
         G,
         R,
-        W
+        W,
+        None
     }
 
     public class Cubie
