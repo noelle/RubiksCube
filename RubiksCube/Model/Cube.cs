@@ -5,12 +5,6 @@ using System.Text;
 
 namespace RubiksCube.Model
 {
-    public enum Axis
-    {
-        X,
-        Y,
-        Z
-    }
 
     public enum Direction
     {
@@ -105,36 +99,16 @@ namespace RubiksCube.Model
         }
 
         /// <summary>
-        /// Rotates the front of the cube to a definded direction
-        /// (left or right)
-        /// </summary>
-        /// <param name="direction"> direction which is to be rotated in</param>
-        public void rotateFront(Direction direction)
-        {
-            this.rotate(CubeSurface.Front, direction);
-            //changeColor();
-        }
-
-        /// <summary>
-        /// Rotates the back of the cube to a defined direction
-        /// (left or right)
-        /// </summary>
-        /// <param name="direction">direction which is to be rotaded in</param>
-        public void rotateBack(Direction direction)
-        {
-            //rotate(-1, Axis.X, direction);
-        }
-
-        /// <summary>
         /// Rotates a cube surface to a wished direction
         /// </summary>
         /// <param name="cubeSurface"></param>
         /// <param name="direction"></param>
-        private void rotate(CubeSurface cubeSurface, Direction direction)
+        public void rotate(CubeSurface cubeSurface, Direction direction)
         {
             // get the cubies of the wished cube surface
             List<Cubie> cubies = this.getCubeSurface(cubeSurface);
             int tempPos;
+            CubieColor tempCol;
             int multX = 1;
             int multY = 1;
             int multZ = 1;
@@ -147,9 +121,15 @@ namespace RubiksCube.Model
 
                     foreach (Cubie cubie in cubies)
                     {
+                        // change cubie coordinates
                         tempPos = cubie.PosY;
                         cubie.PosY = cubie.PosZ * multY;
                         cubie.PosZ = tempPos * multZ;
+
+                        // change cubie colors
+                        tempCol = cubie.ColY;
+                        cubie.ColY = cubie.ColZ;
+                        cubie.ColZ = tempCol;
                     }
                     break;
 
@@ -159,9 +139,15 @@ namespace RubiksCube.Model
 
                     foreach (Cubie cubie in cubies)
                     {
+                        // change cubie coordinates
                         tempPos = cubie.PosY;
                         cubie.PosY = cubie.PosZ * multY;
                         cubie.PosZ = tempPos * multZ;
+
+                        // change cubie colors
+                        tempCol = cubie.ColY;
+                        cubie.ColY = cubie.ColZ;
+                        cubie.ColZ = tempCol;
                     }
                     break;
 
@@ -171,9 +157,15 @@ namespace RubiksCube.Model
 
                     foreach (Cubie cubie in cubies)
                     {
+                        // change cubie coordinates
                         tempPos = cubie.PosX;
                         cubie.PosX = cubie.PosY * multX;
                         cubie.PosY = tempPos * multY;
+
+                        // change cubie colors
+                        tempCol = cubie.ColY;
+                        cubie.ColY = cubie.ColX;
+                        cubie.ColX = tempCol;
                     }
                     break;
 
@@ -186,6 +178,11 @@ namespace RubiksCube.Model
                         tempPos = cubie.PosX;
                         cubie.PosX = cubie.PosY * multX;
                         cubie.PosY = tempPos * multY;
+
+                        // change cubie colors
+                        tempCol = cubie.ColY;
+                        cubie.ColY = cubie.ColX;
+                        cubie.ColX = tempCol;
                     }
                     break;
 
@@ -195,9 +192,15 @@ namespace RubiksCube.Model
 
                     foreach (Cubie cubie in cubies)
                     {
+                        // change cubie coordinates
                         tempPos = cubie.PosX;
                         cubie.PosX = cubie.PosZ * multX;
                         cubie.PosZ = tempPos * multZ;
+
+                        // change cubie colors
+                        tempCol = cubie.ColZ;
+                        cubie.ColZ = cubie.ColX;
+                        cubie.ColX = tempCol;
                     }
                     break;
 
@@ -207,9 +210,15 @@ namespace RubiksCube.Model
 
                     foreach (Cubie cubie in cubies)
                     {
+                        // change cubie coordinates
                         tempPos = cubie.PosX;
                         cubie.PosX = cubie.PosZ * multX;
                         cubie.PosZ = tempPos * multZ;
+
+                        // change cubie colors
+                        tempCol = cubie.ColZ;
+                        cubie.ColZ = cubie.ColX;
+                        cubie.ColX = tempCol;
                     }
                     break;
 
