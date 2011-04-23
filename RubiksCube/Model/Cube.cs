@@ -5,6 +5,19 @@ using System.Text;
 
 namespace RubiksCube.Model
 {
+    public enum Axis
+    {
+        X,
+        Y,
+        Z
+    }
+
+    public enum Direction
+    {
+        Left,
+        Right
+    }
+
     public class Cube
     {
         List<Cubie> cubies;
@@ -13,6 +26,15 @@ namespace RubiksCube.Model
         {
             this.cubies = new List<Cubie>();
 
+            // build the cube
+            this.createCube();
+        }
+
+        /// <summary>
+        /// Creates a test cube
+        /// </summary>
+        private void createCube()
+        {
             Cubie frontCubie1 = new Cubie(CubieType.Corner, 1, -1, 1, CubieColor.Y, CubieColor.B, CubieColor.O);
             Cubie frontCubie2 = new Cubie(CubieType.Edge, 1, 0, 1, CubieColor.R, CubieColor.None, CubieColor.W);
             Cubie frontCubie3 = new Cubie(CubieType.Corner, 1, 1, 1, CubieColor.O, CubieColor.W, CubieColor.B);
@@ -72,17 +94,33 @@ namespace RubiksCube.Model
             this.cubies.Add(middleCubie8);
         }
 
+        /// <summary>
+        /// Rotates the front of the cube to a definded direction
+        /// (left or right)
+        /// </summary>
+        /// <param name="direction"> direction which is to be rotated in</param>
         public void rotateFront(Direction direction)
         {
             rotate(1, Axis.X, direction);
             changeColor();
         }
 
+        /// <summary>
+        /// Rotates the back of the cube to a defined direction
+        /// (left or right)
+        /// </summary>
+        /// <param name="direction">direction which is to be rotaded in</param>
         public void rotateBack(Direction direction)
         {
             rotate(-1, Axis.X, direction);
         }
 
+        /// <summary>
+        /// Rotates a surface around an axis in a defined direction (left or right)
+        /// </summary>
+        /// <param name="coordinate"></param>
+        /// <param name="axis"></param>
+        /// <param name="direction"></param>
         public void rotate(int coordinate, Axis axis, Direction direction)
         {
             //implement
@@ -107,22 +145,10 @@ namespace RubiksCube.Model
             System.Console.WriteLine("   {0}{1}{2}   ", topCubies.ElementAt(4), topCubies.ElementAt(5), topCubies.ElementAt(6));
             System.Console.WriteLine("   {0}{1}{2}   ", topCubies.ElementAt(7), topCubies.ElementAt(8), topCubies.ElementAt(9));
         }
+
         public List<Cubie> getCubies(int coordinate, Axis axis)
         {
             return null;
         }
-    }
-
-    public enum Axis
-    {
-        X,
-        Y,
-        Z
-    }
-
-    public enum Direction
-    {
-        Left,
-        Right
     }
 }
