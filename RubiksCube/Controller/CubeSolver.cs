@@ -25,14 +25,16 @@ namespace RubiksCube.Controller
         /// </summary>
         public void solve()
         {
-            makeCross();
+            makeTopCross();
+            makeTopEdges();
+
         }
 
         /// <summary>
         /// First step in solving the cube
         /// making the cross at the top of the cube
         /// </summary>
-        private void makeCross()
+        private void makeTopCross()
         {
             // Starting with the cross at the Top
             Model.Cubie topCenter = this.Cube.getCubie(0, 0, 1);
@@ -143,6 +145,11 @@ namespace RubiksCube.Controller
             this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
             this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
             this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
+        }
+
+        private void makeTopEdges()
+        {
+ 
         }
     }
 }
