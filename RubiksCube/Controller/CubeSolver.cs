@@ -28,6 +28,12 @@ namespace RubiksCube.Controller
             makeTopCross();
             makeTopCorners();
 
+            // rotate the cube 180 degree in vertical direction
+            this.cube.rotateVertical90(Model.Direction.Right);
+            this.cube.rotateVertical90(Model.Direction.Right);
+
+            makeMiddleEdges();
+
         }
 
         /// <summary>
@@ -240,6 +246,72 @@ namespace RubiksCube.Controller
             this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Left);
             this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
             this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Right);
+        }
+
+        /// <summary>
+        /// Third step of solving the cube:
+        /// Solves the middle layer of the cube.
+        /// </summary>
+        private void makeMiddleEdges()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                // get front center
+                Model.Cubie frontCenter = this.cube.getCubie(1, 0, 0);
+                // get right center
+                Model.Cubie rightCenter = this.cube.getCubie(0, 1, 0);
+
+                // get current cubie
+                Model.Cubie currentCubie = this.cube.getCubie(frontCenter.ColX, rightCenter.ColY, Model.CubieColor.None);
+
+                while (!(currentCubie.ColX == frontCenter.ColX && 
+                    currentCubie.ColY == rightCenter.ColY && 
+                    currentCubie.ColZ == Model.CubieColor.None))
+                {
+                    placeMiddleEdge(currentCubie.GetHashCode());
+
+                    // get current cubie
+                    currentCubie = this.cube.getCubie(frontCenter.ColX, rightCenter.ColY, Model.CubieColor.None);
+                }
+                
+
+                // next surface
+                this.cube.rotateHorizontal90(Model.Direction.Right);
+            }
+            
+        }
+
+        private void placeMiddleEdge(int hashCode)
+        {
+            switch (hashCode)
+            {
+                case 126:
+                    // 1;1;0 => rausholen: (TR RR TL RL TL FL TR FR)
+                    break;
+                case -126:
+                    // -1;-1;0 => rausholen: H180 (TR RR TL RL TL FL TR FR) H180
+                    break;
+                case 100:
+                    // -1;1:0 => rausholen: HR90 (TR RR TL RL TL FL TR FR) HL90
+                    break;
+                case -100:
+                    // 1;-1:0 => rausholen: HL90 (TR RR TL RL TL FL TR FR) HR90
+                    break;
+                case 315:
+                    // 1;0;1 => (TR RR TL RL TL FL TR FR)
+                    break;
+                case 415:
+                    // 0;1;1 => TR (TR RR TL RL TL FL TR FR)
+                    break;
+                case 289:
+                    // -1;0;1 => T180 (TR RR TL RL TL FL TR FR)
+                    break;
+                case 189:
+                    // 0;-1;1 => TL (TR RR TL RL TL FL TR FR)
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
