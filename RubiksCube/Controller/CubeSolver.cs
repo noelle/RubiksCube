@@ -23,6 +23,17 @@ namespace RubiksCube.Controller
         }
 
         /// <summary>
+        /// 90 degree rotation of the cube in horizontal direction
+        /// </summary>
+        /// <param name="direction"></param>
+        public void rotate90(Model.Direction direction)
+        {
+            cube.rotate(Model.CubeSurface.Top, direction);
+            cube.rotate(Model.CubeSurface.Middle, direction);
+            cube.rotate(Model.CubeSurface.Bottom, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right);
+        }
+
+        /// <summary>
         /// First step in solving the cube
         /// making the cross at the top of the cube
         /// </summary>
