@@ -26,13 +26,13 @@ namespace RubiksCube.Controller
         public void solve()
         {
             makeTopCross();
-            makeTopEdges();
+            makeTopCorners();
 
         }
 
         /// <summary>
-        /// First step in solving the cube
-        /// making the cross at the top of the cube
+        /// First step in solving the cube:
+        /// Makes the cross at the top of the cube.
         /// </summary>
         private void makeTopCross()
         {
@@ -61,7 +61,7 @@ namespace RubiksCube.Controller
         }
 
         /// <summary>
-        /// Places the found edge to the desired place in the cross
+        /// Places the found edge to the desired place in the cross.
         /// </summary>
         /// <param name="hashCode"></param>
         private void placeCrossEdge(int hashCode)
@@ -135,21 +135,45 @@ namespace RubiksCube.Controller
         }
 
         /// <summary>
-        /// Changes the colors of the edges for the startup cross
+        /// Algorithm to change the colors of the edges for the startup cross, if they are
+        /// inverted.
         /// </summary>
         private void changeCrossEdgeColor()
         {
+            // FR RL BoL RR F180
             this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
             this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
             this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Left);
             this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
-            this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
-            this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
+            this.cube.rotateSurface180(Model.CubeSurface.Front);
         }
 
-        private void makeTopEdges()
+        /// <summary>
+        /// Second step of solving the cube:
+        /// Places the top corners to the right place.
+        /// </summary>
+        private void makeTopCorners()
         {
- 
+            // get front center
+            Model.Cubie frontCenter = this.cube.getCubie(1, 0 ,0);
+
+            // get top center
+
+            // get right center
+
+        }
+
+        /// <summary>
+        /// Algorithm to change the color of the top corners, if they are
+        /// inverted.
+        /// </summary>
+        private void changeTopCornerColor()
+        {
+            // RL BoL RR BoR
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Right);
         }
     }
 }
