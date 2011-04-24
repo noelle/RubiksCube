@@ -57,7 +57,7 @@ namespace RubiksCube.Controller
                     this.changeCrossEdgeColor();
                 }
 
-                this.cube.rotate90(Model.Direction.Right);
+                this.cube.rotateHorizontal90(Model.Direction.Right);
             }
         }
 

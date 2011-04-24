@@ -20,7 +20,8 @@ namespace RubiksCube.Model
         Right,
         Bottom,
         Back,
-        Middle
+        MiddleHorizontal,
+        MiddleVertical
     }
 
     public class Cube
@@ -109,11 +110,22 @@ namespace RubiksCube.Model
         /// 90 degree rotation of the cube in horizontal direction
         /// </summary>
         /// <param name="direction"></param>
-        public void rotate90(Model.Direction direction)
+        public void rotateHorizontal90(Model.Direction direction)
         {
             rotateSurface(Model.CubeSurface.Top, direction);
-            rotateSurface(Model.CubeSurface.Middle, direction);
+            rotateSurface(Model.CubeSurface.MiddleHorizontal, direction);
             rotateSurface(Model.CubeSurface.Bottom, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right);
+        }
+
+        /// <summary>
+        /// 90 degree rotation of the cube in horizontal direction
+        /// </summary>
+        /// <param name="direction"></param>
+        public void rotateVertical90(Model.Direction direction)
+        {
+            rotateSurface(Model.CubeSurface.Right, direction);
+            rotateSurface(Model.CubeSurface.MiddleVertical, direction);
+            rotateSurface(Model.CubeSurface.Left, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right);
         }
 
 
@@ -250,7 +262,7 @@ namespace RubiksCube.Model
                         cubie.ColX = tempCol;
                     }
                     break;
-                case CubeSurface.Middle:
+                case CubeSurface.MiddleHorizontal:
                     multX = direction == Direction.Left ? -1 : 1;
                     multY = direction == Direction.Right ? -1 : 1;
 
@@ -264,6 +276,23 @@ namespace RubiksCube.Model
                         // change cubie colors
                         tempCol = cubie.ColY;
                         cubie.ColY = cubie.ColX;
+                        cubie.ColX = tempCol;
+                    }
+                    break;
+                case CubeSurface.MiddleVertical:
+                    multX = direction == Direction.Right ? -1 : 1;
+                    multZ = direction == Direction.Left ? -1 : 1;
+
+                    foreach (Cubie cubie in cubies)
+                    {
+                        // change cubie coordinates
+                        tempPos = cubie.PosX;
+                        cubie.PosX = cubie.PosZ * multX;
+                        cubie.PosZ = tempPos * multZ;
+
+                        // change cubie colors
+                        tempCol = cubie.ColZ;
+                        cubie.ColZ = cubie.ColX;
                         cubie.ColX = tempCol;
                     }
                     break;
@@ -368,8 +397,11 @@ namespace RubiksCube.Model
                     cubies = this.cubies.Where(q => q.PosZ == -1).ToList();
                     break;
 
-                case CubeSurface.Middle:
+                case CubeSurface.MiddleHorizontal:
                     cubies = this.cubies.Where(q => q.PosZ == 0).ToList();
+                    break;
+                case CubeSurface.MiddleVertical:
+                    cubies = this.cubies.Where(q => q.PosY == 0).ToList();
                     break;
 
                 default:

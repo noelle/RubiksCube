@@ -12,6 +12,9 @@ namespace RubiksCube
             RubiksCube.Model.Cube meinCube = new Model.Cube();
             meinCube.drawInConsole();
 
+            meinCube.rotateVertical90(Model.Direction.Right);
+            meinCube.drawInConsole();
+
             Controller.CubeSolver solver = new Controller.CubeSolver(meinCube);
             solver.solve();
             solver.Cube.drawInConsole();
