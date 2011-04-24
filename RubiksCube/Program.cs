@@ -10,10 +10,11 @@ namespace RubiksCube
         static void Main(string[] args)
         {
             RubiksCube.Model.Cube meinCube = new Model.Cube();
+            meinCube.drawInConsole();
 
             Controller.CubeSolver solver = new Controller.CubeSolver(meinCube);
-            solver.Cube.rotate90(Model.Direction.Right);
-            meinCube.drawInConsole();
+            solver.solve();
+            solver.Cube.drawInConsole();
 
             Console.Read();
         }
