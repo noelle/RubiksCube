@@ -44,72 +44,7 @@ namespace RubiksCube.Controller
                 Model.Cubie frontCenter = this.cube.getCubie(1, 0, 0);
                 Model.Cubie currentCubie = this.cube.getCubie(frontCenter.ColX, topCenter.ColZ, Model.CubieColor.None);
 
-                switch (currentCubie.GetHashCode())
-                {
-                    // Front
-                    case 415:
-                        // 0;1;1 => RL FL RR
-                        this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
-                        this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Left);
-                        this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
-                        break;
-                    case -415:
-                        // 0:-1;-1 => BoR F180
-                        this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Right);
-                        this.cube.rotateSurface180(Model.CubeSurface.Front);
-                        break;
-                    case 315:
-                        // 1;0;1 => nothing to do
-                        break;
-                    case -315:
-                        // -1;0;-1 => Bo180 F180
-                        this.cube.rotateSurface180(Model.CubeSurface.Bottom);
-                        this.cube.rotateSurface180(Model.CubeSurface.Front);
-                        break;
-                    case 289:
-                        // -1;0;1 => Ba180 Bo180 F180
-                        this.cube.rotateSurface180(Model.CubeSurface.Back);
-                        this.cube.rotateSurface180(Model.CubeSurface.Bottom);
-                        this.cube.rotateSurface180(Model.CubeSurface.Front);
-                        break;
-                    case -289:
-                        // 1;0;-1 => F180
-                        this.cube.rotateSurface180(Model.CubeSurface.Front);
-                        break;
-                    case 189:
-                        // 0;-1;1 => LR FR LL
-                        this.cube.rotateSurface(Model.CubeSurface.Left, Model.Direction.Right);
-                        this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
-                        this.cube.rotateSurface(Model.CubeSurface.Left, Model.Direction.Left);
-                        break;
-                    case -189:
-                        // 0;1;-1 => BoL F180
-                        this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Left);
-                        this.cube.rotateSurface180(Model.CubeSurface.Front);
-                        break;
-                    case 126:
-                        // 1;1;0 => FL
-                        this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Left);
-                        break;
-                    case -126:
-                        // -1;-1;0 => BaR Bo180 BaL F180
-                        this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Right);
-                        this.cube.rotateSurface180(Model.CubeSurface.Bottom);
-                        this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Left);
-                        this.cube.rotateSurface180(Model.CubeSurface.Front);
-                        break;
-                    case 100:
-                        // -1;1;0 => BaL Bo180 BaR F180
-                        this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Left);
-                        this.cube.rotateSurface180(Model.CubeSurface.Bottom);
-                        this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Right);
-                        this.cube.rotateSurface180(Model.CubeSurface.Front);
-                        break;
-                    case -100:
-                        // 1;-1;0 => FR
-                        this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
-                        break;
-                }
+                this.placeCrossEdge(currentCubie.GetHashCode());
 
                 // hier Farbe prüfen!!
                 if (!(currentCubie.ColX == frontCenter.ColX && 
@@ -123,9 +58,78 @@ namespace RubiksCube.Controller
             }
         }
 
-        private void getCrossEdges(int hashCode)
+        /// <summary>
+        /// Places the found edge to the desired place in the cross
+        /// </summary>
+        /// <param name="hashCode"></param>
+        private void placeCrossEdge(int hashCode)
         {
-
+            switch (hashCode)
+            {
+                // Front
+                case 415:
+                    // 0;1;1 => RL FL RR
+                    this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
+                    this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Left);
+                    this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
+                    break;
+                case -415:
+                    // 0:-1;-1 => BoR F180
+                    this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Right);
+                    this.cube.rotateSurface180(Model.CubeSurface.Front);
+                    break;
+                case 315:
+                    // 1;0;1 => nothing to do
+                    break;
+                case -315:
+                    // -1;0;-1 => Bo180 F180
+                    this.cube.rotateSurface180(Model.CubeSurface.Bottom);
+                    this.cube.rotateSurface180(Model.CubeSurface.Front);
+                    break;
+                case 289:
+                    // -1;0;1 => Ba180 Bo180 F180
+                    this.cube.rotateSurface180(Model.CubeSurface.Back);
+                    this.cube.rotateSurface180(Model.CubeSurface.Bottom);
+                    this.cube.rotateSurface180(Model.CubeSurface.Front);
+                    break;
+                case -289:
+                    // 1;0;-1 => F180
+                    this.cube.rotateSurface180(Model.CubeSurface.Front);
+                    break;
+                case 189:
+                    // 0;-1;1 => LR FR LL
+                    this.cube.rotateSurface(Model.CubeSurface.Left, Model.Direction.Right);
+                    this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
+                    this.cube.rotateSurface(Model.CubeSurface.Left, Model.Direction.Left);
+                    break;
+                case -189:
+                    // 0;1;-1 => BoL F180
+                    this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Left);
+                    this.cube.rotateSurface180(Model.CubeSurface.Front);
+                    break;
+                case 126:
+                    // 1;1;0 => FL
+                    this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Left);
+                    break;
+                case -126:
+                    // -1;-1;0 => BaR Bo180 BaL F180
+                    this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Right);
+                    this.cube.rotateSurface180(Model.CubeSurface.Bottom);
+                    this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Left);
+                    this.cube.rotateSurface180(Model.CubeSurface.Front);
+                    break;
+                case 100:
+                    // -1;1;0 => BaL Bo180 BaR F180
+                    this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Left);
+                    this.cube.rotateSurface180(Model.CubeSurface.Bottom);
+                    this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Right);
+                    this.cube.rotateSurface180(Model.CubeSurface.Front);
+                    break;
+                case -100:
+                    // 1;-1;0 => FR
+                    this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
+                    break;
+            }
         }
 
         /// <summary>
