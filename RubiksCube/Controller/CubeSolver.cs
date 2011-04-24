@@ -136,6 +136,42 @@ namespace RubiksCube.Controller
         }
 
         /// <summary>
+        /// Places the found corner to the desired place in the top.
+        /// </summary>
+        /// <param name="hashCode"></param>
+        private void placeTopCorner(int hashCode)
+        {
+            switch (hashCode)
+            {
+                // Front
+                case 428:
+                    // 1;1;1 => nothing to do
+                    break;
+                case -428:
+                    // -1;-1;-1 => Bo180
+                    break;
+                case 402:
+                    // -1;1;1 => BaL BoL BaR
+                    break;
+                case -402:
+                    // 1;-1;-1 => BoR
+                    break;
+                case 202:
+                    // 1;-1;1 => LR BoR LL
+                    break;
+                case -202:
+                    // -1;1;-1 => BoL
+                    break;
+                case 176:
+                    // -1;-1;1 => BaR Bo180 BaL
+                    break;
+                case -176:
+                    // 1;1;-1 => nothing to do
+                    break;
+            }
+        }
+
+        /// <summary>
         /// Algorithm to change the colors of the edges for the startup cross, if they are
         /// inverted.
         /// </summary>
