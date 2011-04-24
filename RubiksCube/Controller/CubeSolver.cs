@@ -149,9 +149,13 @@ namespace RubiksCube.Controller
                     break;
                 case -428:
                     // -1;-1;-1 => Bo180
+                    this.cube.rotateSurface180(Model.CubeSurface.Bottom);
                     break;
                 case 402:
                     // -1;1;1 => BaL BoL BaR
+                    this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Left);
+                    this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Left);
+                    this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Right);
                     break;
                 case -402:
                     // 1;-1;-1 => BoR
