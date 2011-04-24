@@ -73,19 +73,32 @@ namespace RubiksCube.Controller
                         // bis hier
                     case 189:
                         // 0;-1;1 => LR FR LL
+                        this.cube.rotateSurface(Model.CubeSurface.Left, Model.Direction.Right);
+                        this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
+                        this.cube.rotateSurface(Model.CubeSurface.Left, Model.Direction.Left);
                         break;
                     case -189:
                         // 0;1;-1 => BoL F180
+                        this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Left);
+                        this.cube.rotateSurface180(Model.CubeSurface.Front);
                         break;
                     case 126:
                         // 1;1;0 => FL
+                        this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Left);
                         break;
                     case -126:
                         // -1;-1;0 => BaR Bo180 BaL F180
+                        this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Right);
+                        this.cube.rotateSurface180(Model.CubeSurface.Bottom);
+                        this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Left);
+                        this.cube.rotateSurface180(Model.CubeSurface.Front);
                         break;
                     case 100:
                         // -1;1;0 => BaL Bo180 BaR F180
                         this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Left);
+                        this.cube.rotateSurface180(Model.CubeSurface.Bottom);
+                        this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Right);
+                        this.cube.rotateSurface180(Model.CubeSurface.Front);
                         break;
                     case -100:
                         // 1;-1;0 => FR
