@@ -46,9 +46,10 @@ namespace RubiksCube.Controller
                 Model.Cubie frontCenter = this.cube.getCubie(1, 0, 0);
                 Model.Cubie currentCubie = this.cube.getCubie(frontCenter.ColX, topCenter.ColZ, Model.CubieColor.None);
 
+                // place edges to the right place in the cross
                 this.placeCrossEdge(currentCubie.GetHashCode());
 
-                // hier Farbe prüfen!!
+                // check colors
                 if (!(currentCubie.ColX == frontCenter.ColX && 
                     currentCubie.ColY == Model.CubieColor.None && 
                     currentCubie.ColZ == topCenter.ColZ))
@@ -154,12 +155,33 @@ namespace RubiksCube.Controller
         /// </summary>
         private void makeTopCorners()
         {
-            // get front center
-            Model.Cubie frontCenter = this.cube.getCubie(1, 0 ,0);
-
             // get top center
+            Model.Cubie topCenter = this.cube.getCubie(0, 0, 1);
 
-            // get right center
+            for (int i = 0; i < 4; i++)
+            {
+                // get front center
+                Model.Cubie frontCenter = this.cube.getCubie(1, 0, 0);
+                // get right center
+                Model.Cubie rightCenter = this.cube.getCubie(0, 1, 0);
+
+                // get current cubie
+                Model.Cubie currentCubie = this.cube.getCubie(frontCenter.ColX, rightCenter.ColY, topCenter.ColZ);
+
+                // place corners to the right place in top
+                this.placeTopCorner(currentCubie.GetHashCode);
+
+                // check for colors
+                while (!(currentCubie.ColX == frontCenter.ColX &&
+                    currentCubie.ColY == rightCenter.ColY &&
+                    currentCubie.ColZ == topCenter.ColZ))
+                {
+                    this.changeTopCornerColor();
+                }
+            }
+          
+
+            
 
         }
 
