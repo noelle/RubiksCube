@@ -34,6 +34,10 @@ namespace RubiksCube.Controller
 
             makeMiddleEdges();
 
+            // rotate the cube 180 degree in vertical direction
+            this.cube.rotateVertical90(Model.Direction.Right);
+            this.cube.rotateVertical90(Model.Direction.Right);
+
         }
 
         /// <summary>
@@ -269,7 +273,10 @@ namespace RubiksCube.Controller
 
                 while (!(currentCubie.ColX == frontCenter.ColX && 
                     currentCubie.ColY == rightCenter.ColY && 
-                    currentCubie.ColZ == Model.CubieColor.None))
+                    currentCubie.ColZ == Model.CubieColor.None &&
+                    currentCubie.PosX == 1 &&
+                    currentCubie.PosY == 1 &&
+                    currentCubie.PosZ == 0))
                 {
                     placeMiddleEdge(currentCubie.GetHashCode());
 

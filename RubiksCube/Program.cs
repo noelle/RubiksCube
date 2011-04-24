@@ -17,6 +17,7 @@ namespace RubiksCube
 
             Controller.CubeSolver solver = new Controller.CubeSolver(meinCube);
             solver.solve();
+            System.Console.WriteLine("End-Zustand");
             solver.Cube.drawInConsole();
 
             Console.Read();
