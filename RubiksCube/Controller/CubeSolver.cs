@@ -226,6 +226,9 @@ namespace RubiksCube.Controller
                 {
                     this.changeTopCornerColor();
                 }
+
+                // go to next cube side
+                this.cube.rotateHorizontal90(Model.Direction.Right);
             }
         }
 
