@@ -110,5 +110,10 @@ namespace RubiksCube.Model
 
             return false;
         }
+
+        public override int GetHashCode()
+        {
+            return (13 * this.posX + 113 * this.posY + 373 * this.posZ - 71 * this.posZ);
+        }
     }
 }
