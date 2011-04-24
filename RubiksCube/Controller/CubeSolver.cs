@@ -34,9 +34,13 @@ namespace RubiksCube.Controller
 
             makeMiddleEdges();
 
-            // rotate the cube 180 degree in vertical direction
-            this.cube.rotateVertical90(Model.Direction.Right);
-            this.cube.rotateVertical90(Model.Direction.Right);
+            //// rotate the cube 180 degree in vertical direction
+            //this.cube.rotateVertical90(Model.Direction.Right);
+            //this.cube.rotateVertical90(Model.Direction.Right);
+
+            makeBottomCross();
+
+
 
         }
 
@@ -358,6 +362,30 @@ namespace RubiksCube.Controller
             this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Left);
             this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Right);
             this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
+        }
+
+        /// <summary>
+        /// Fourth step of solving the cube:
+        /// Makes the cross in the bottom
+        /// </summary>
+        private void makeBottomCross()
+        {
+            // viewing bottom as top
+            Model.Cubie topCenter = this.cube.getCubie(0, 0, 1);
+            int numberOfEdges = this.cube.Cubies.Where(q => q.Type == Model.CubieType.Edge && q.PosZ == 1 && q.ColZ == topCenter.ColZ).Count();
+
+            while (numberOfEdges != 4)
+            {
+                // Falls 2 oder mehr dann entweder horizontal oder Ecke oder beides
+
+                // case 1.1: hole alle z=1 x=0 farbe = blau edges für horizontale Linie
+                // case 1.2: hole alle z=1 y=0 farbe = blau edges für vertikale Linie
+
+                // => falls keine der Werte 2, weiter, sonst drehen
+
+                // case 2.1 - 2.4: mit den L's in den Ecken muss noch erarbeitet werden
+            }
+            
         }
     }
 }
