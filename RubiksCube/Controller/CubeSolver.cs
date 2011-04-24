@@ -112,35 +112,20 @@ namespace RubiksCube.Controller
                 }
 
                 // hier Farbe prüfen!!
+                if (!(currentCubie.ColX == frontCenter.ColX && 
+                    currentCubie.ColY == Model.CubieColor.None && 
+                    currentCubie.ColZ == topCenter.ColZ))
+                {
+                    this.changeCrossEdgeColor();
+                }
 
                 this.cube.rotate90(Model.Direction.Right);
             }
+        }
 
+        private void getCrossEdges(int hashCode)
+        {
 
-
-            //Model.Cubie targetCubie = new Model.Cubie();
-
-            // set the target Cubie
-            //targetCubie.PosX = topCenter.PosX + frontCenter.PosX; // 1
-            //targetCubie.PosY = topCenter.PosY + frontCenter.PosY; // 0 
-            //targetCubie.PosZ = topCenter.PosZ + frontCenter.PosZ; // 1
-            //targetCubie.ColX = frontCenter.ColX;
-            //targetCubie.ColY = Model.CubieColor.None;
-            //targetCubie.ColZ = topCenter.ColZ;
-
-            //Model.Cubie tCubie = new Model.Cubie(Model.CubieType.Edge, 
-            //Model.Cubie currentCubie = this.Cube.getCubie(frontCenter.ColX, topCenter.ColZ, Model.CubieColor.None);
-
-            //while (targetCubie.ColX != currentCubie.ColX)
-            //{
-            //    while (targetCubie.ColY != currentCubie.ColY)
-            //    {
-            //        while (targetCubie.ColZ != currentCubie.ColZ)
-            //        {
-            //            //if(currentCubie.PosX == 
-            //        }
-            //    }
-            //}
         }
 
         /// <summary>
