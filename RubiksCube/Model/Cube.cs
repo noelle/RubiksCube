@@ -118,7 +118,16 @@ namespace RubiksCube.Model
         }
 
         /// <summary>
-        /// 90 degree rotation of the cube in horizontal direction
+        /// Rotates the cube about 180 degrees in horizontal direction
+        /// </summary>
+        public void rotateHorizontal180()
+        {
+            rotateHorizontal90(Direction.Right);
+            rotateHorizontal90(Direction.Right);
+        }
+
+        /// <summary>
+        /// 90 degree rotation of the cube in vertical direction
         /// </summary>
         /// <param name="direction"></param>
         public void rotateVertical90(Model.Direction direction)
@@ -126,6 +135,15 @@ namespace RubiksCube.Model
             rotateSurface(Model.CubeSurface.Right, direction);
             rotateSurface(Model.CubeSurface.MiddleVertical, direction);
             rotateSurface(Model.CubeSurface.Left, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right);
+        }
+
+        /// <summary>
+        /// Rotates the cube about 180 degrees in vertical direction
+        /// </summary>
+        public void rotateVertical180()
+        {
+            rotateVertical90(Direction.Right);
+            rotateVertical90(Direction.Right);
         }
 
 

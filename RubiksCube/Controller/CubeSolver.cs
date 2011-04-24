@@ -284,37 +284,73 @@ namespace RubiksCube.Controller
             
         }
 
+        /// <summary>
+        /// Places the found edge to the desired place in the middle layer of the cube.
+        /// </summary>
+        /// <param name="hashCode"></param>
         private void placeMiddleEdge(int hashCode)
         {
             switch (hashCode)
             {
                 case 126:
-                    // 1;1;0 => rausholen: (TR RR TL RL TL FL TR FR)
+                    // 1;1;0 => (TR RR TL RL TL FL TR FR)
+                    this.moveTopEdgeToMiddleLayer();
                     break;
                 case -126:
-                    // -1;-1;0 => rausholen: H180 (TR RR TL RL TL FL TR FR) H180
+                    // -1;-1;0 => H180 (TR RR TL RL TL FL TR FR) H180
+                    this.cube.rotateHorizontal180();
+                    this.moveTopEdgeToMiddleLayer();
+                    this.cube.rotateHorizontal180();
                     break;
                 case 100:
-                    // -1;1:0 => rausholen: HR90 (TR RR TL RL TL FL TR FR) HL90
+                    // -1;1:0 => HR90 (TR RR TL RL TL FL TR FR) HL90
+                    this.cube.rotateHorizontal90(Model.Direction.Right);
+                    this.moveTopEdgeToMiddleLayer();
+                    this.cube.rotateHorizontal90(Model.Direction.Left);
                     break;
                 case -100:
-                    // 1;-1:0 => rausholen: HL90 (TR RR TL RL TL FL TR FR) HR90
+                    // 1;-1:0 => HL90 (TR RR TL RL TL FL TR FR) HR90
+                    this.cube.rotateHorizontal90(Model.Direction.Left);
+                    this.moveTopEdgeToMiddleLayer();
+                    this.cube.rotateHorizontal90(Model.Direction.Right);
                     break;
                 case 315:
                     // 1;0;1 => (TR RR TL RL TL FL TR FR)
+                    this.moveTopEdgeToMiddleLayer();
                     break;
                 case 415:
                     // 0;1;1 => TR (TR RR TL RL TL FL TR FR)
+                    this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Right);
+                    this.moveTopEdgeToMiddleLayer();
                     break;
                 case 289:
                     // -1;0;1 => T180 (TR RR TL RL TL FL TR FR)
+                    this.cube.rotateSurface180(Model.CubeSurface.Top);
+                    this.moveTopEdgeToMiddleLayer();
                     break;
                 case 189:
                     // 0;-1;1 => TL (TR RR TL RL TL FL TR FR)
+                    this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
+                    this.moveTopEdgeToMiddleLayer();
                     break;
                 default:
                     break;
             }
+        }
+
+        /// <summary>
+        /// Puts the front top edge to the front right edge.
+        /// </summary>
+        private void moveTopEdgeToMiddleLayer()
+        {
+            this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
         }
     }
 }
