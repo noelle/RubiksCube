@@ -205,7 +205,7 @@ namespace RubiksCube.Controller
                 Model.Cubie currentCubie = this.cube.getCubie(frontCenter.ColX, rightCenter.ColY, topCenter.ColZ);
 
                 // place corners to the right place in top
-                this.placeTopCorner(currentCubie.GetHashCode);
+                this.placeTopCorner(currentCubie.GetHashCode());
 
                 // check for colors
                 while (!(currentCubie.ColX == frontCenter.ColX &&
