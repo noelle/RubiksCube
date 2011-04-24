@@ -116,6 +116,17 @@ namespace RubiksCube.Model
             rotateSurface(Model.CubeSurface.Bottom, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right);
         }
 
+
+        /// <summary>
+        /// Rotates a cube surface around 180 degrees
+        /// </summary>
+        /// <param name="surface"></param>
+        public void rotateSurface180(Model.CubeSurface surface)
+        {
+            rotateSurface(surface, Model.Direction.Right);
+            rotateSurface(surface, Model.Direction.Right);
+        }
+
         /// <summary>
         /// Rotates a cube surface to a wished direction
         /// </summary>
