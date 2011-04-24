@@ -48,30 +48,41 @@ namespace RubiksCube.Controller
                 {
                     // Front
                     case 415:
+                        // 0;1;1 => RL FL RR
                         break;
                     case -415:
+                        // 0:-1;-1 => LR FR LL
                         break;
                     case 315:
-                        // nothing to do
+                        // 1;0;1 => nothing to do
                         break;
                     case -315:
+                        // -1;0;-1 => Bo180 F180 
                         break;
                     case 289:
+                        // -1;0;1 => Ba180 Bo180 F180
                         break;
                     case -289:
+                        // 1;0;-1 => F180
                         break;
                         // bis hier
                     case 189:
+                        // 0;-1;1 => LR FR LL
                         break;
                     case -189:
+                        // 0;1;-1 => BoL F180
                         break;
                     case 126:
+                        // 1;1;0 => FL
                         break;
                     case -126:
+                        // -1;-1;0 => BaR Bo180 BaL F180
                         break;
                     case 100:
+                        // -1;1;0 => BaL Bo180 BaR F180
                         break;
                     case -100:
+                        // 1;-1;0 => FR
                         break;
                 }
 
