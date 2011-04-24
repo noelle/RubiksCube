@@ -41,17 +41,22 @@ namespace RubiksCube.Controller
             for (int i = 0; i < 4; i++)
             {
                 // get the front center cubie
-                Model.Cubie frontCenter = this.Cube.getCubie(1, 0, 0);
-                Model.Cubie currentCubie = this.Cube.getCubie(frontCenter.ColX, topCenter.ColZ, Model.CubieColor.None);
+                Model.Cubie frontCenter = this.cube.getCubie(1, 0, 0);
+                Model.Cubie currentCubie = this.cube.getCubie(frontCenter.ColX, topCenter.ColZ, Model.CubieColor.None);
 
                 switch (currentCubie.GetHashCode())
                 {
                     // Front
                     case 415:
                         // 0;1;1 => RL FL RR
+                        this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
+                        this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Left);
+                        this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
                         break;
                     case -415:
-                        // 0:-1;-1 => LR FR LL
+                        // 0:-1;-1 => BoR F180
+                        this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Right);
+                        this.cube.rotateSurface180(Model.CubeSurface.Front);
                         break;
                     case 315:
                         // 1;0;1 => nothing to do
@@ -129,16 +134,6 @@ namespace RubiksCube.Controller
             this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
             this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
             this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
-        }
-
-        /// <summary>
-        /// Rotates a cube surface around 180 degrees
-        /// </summary>
-        /// <param name="surface"></param>
-        private void rotateSurface180(Model.CubeSurface surface)
-        {
-            this.cube.rotateSurface(surface, Model.Direction.Right);
-            this.cube.rotateSurface(surface, Model.Direction.Right);
         }
     }
 }
