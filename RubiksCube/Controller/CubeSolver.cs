@@ -155,15 +155,23 @@ namespace RubiksCube.Controller
                     break;
                 case -402:
                     // 1;-1;-1 => BoR
+                    this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Right);
                     break;
                 case 202:
                     // 1;-1;1 => LR BoR LL
+                    this.cube.rotateSurface(Model.CubeSurface.Left, Model.Direction.Right);
+                    this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Right);
+                    this.cube.rotateSurface(Model.CubeSurface.Left, Model.Direction.Left);
                     break;
                 case -202:
                     // -1;1;-1 => BoL
+                    this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Left);
                     break;
                 case 176:
                     // -1;-1;1 => BaR Bo180 BaL
+                    this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Right);
+                    this.cube.rotateSurface180(Model.CubeSurface.Bottom);
+                    this.cube.rotateSurface(Model.CubeSurface.Back, Model.Direction.Left);
                     break;
                 case -176:
                     // 1;1;-1 => nothing to do
@@ -215,10 +223,6 @@ namespace RubiksCube.Controller
                     this.changeTopCornerColor();
                 }
             }
-          
-
-            
-
         }
 
         /// <summary>
