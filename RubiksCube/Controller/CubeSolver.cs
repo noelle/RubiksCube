@@ -76,5 +76,15 @@ namespace RubiksCube.Controller
             this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
             this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
         }
+
+        /// <summary>
+        /// Rotates a cube surface around 180 degrees
+        /// </summary>
+        /// <param name="surface"></param>
+        private void rotateSurface180(Model.CubeSurface surface)
+        {
+            this.cube.rotateSurface(surface, Model.Direction.Right);
+            this.cube.rotateSurface(surface, Model.Direction.Right);
+        }
     }
 }
