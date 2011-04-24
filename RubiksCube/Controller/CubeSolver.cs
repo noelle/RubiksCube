@@ -9,6 +9,12 @@ namespace RubiksCube.Controller
     {
         private Model.Cube cube;
 
+        public Model.Cube Cube
+        {
+            get { return cube; }
+            set { cube = value; }
+        }
+
         public CubeSolver(Model.Cube cube)
         {
             this.cube = cube;
@@ -23,27 +29,16 @@ namespace RubiksCube.Controller
         }
 
         /// <summary>
-        /// 90 degree rotation of the cube in horizontal direction
-        /// </summary>
-        /// <param name="direction"></param>
-        public void rotate90(Model.Direction direction)
-        {
-            cube.rotate(Model.CubeSurface.Top, direction);
-            cube.rotate(Model.CubeSurface.Middle, direction);
-            cube.rotate(Model.CubeSurface.Bottom, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right);
-        }
-
-        /// <summary>
         /// First step in solving the cube
         /// making the cross at the top of the cube
         /// </summary>
         private void makeCross()
         {
             // Starting with the cross at the Top
-            Model.Cubie topCenter = this.cube.getCubie(0,0,1);
+            Model.Cubie topCenter = this.Cube.getCubie(0,0,1);
             
             // get the front center cubie
-            Model.Cubie frontCenter = this.cube.getCubie(1,0,0);
+            Model.Cubie frontCenter = this.Cube.getCubie(1,0,0);
             Model.Cubie targetCubie = new Model.Cubie();
 
             // set the target Cubie
@@ -55,7 +50,7 @@ namespace RubiksCube.Controller
             targetCubie.ColZ = topCenter.ColZ;
 
             //Model.Cubie tCubie = new Model.Cubie(Model.CubieType.Edge, 
-            Model.Cubie currentCubie = this.cube.getCubie(frontCenter.ColX, topCenter.ColZ, Model.CubieColor.None);
+            Model.Cubie currentCubie = this.Cube.getCubie(frontCenter.ColX, topCenter.ColZ, Model.CubieColor.None);
 
             while (targetCubie.ColX != currentCubie.ColX)
             {
@@ -67,7 +62,19 @@ namespace RubiksCube.Controller
                     }
                 }
             }
+        }
 
+        /// <summary>
+        /// Changes the colors of the edges for the startup cross
+        /// </summary>
+        private void changeCrossEdgeColor()
+        {
+            this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Bottom, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
         }
     }
 }

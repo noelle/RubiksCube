@@ -106,11 +106,22 @@ namespace RubiksCube.Model
         }
 
         /// <summary>
+        /// 90 degree rotation of the cube in horizontal direction
+        /// </summary>
+        /// <param name="direction"></param>
+        public void rotate90(Model.Direction direction)
+        {
+            rotateSurface(Model.CubeSurface.Top, direction);
+            rotateSurface(Model.CubeSurface.Middle, direction);
+            rotateSurface(Model.CubeSurface.Bottom, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right);
+        }
+
+        /// <summary>
         /// Rotates a cube surface to a wished direction
         /// </summary>
         /// <param name="cubeSurface"></param>
         /// <param name="direction"></param>
-        public void rotate(CubeSurface cubeSurface, Direction direction)
+        public void rotateSurface(CubeSurface cubeSurface, Direction direction)
         {
             // get the cubies of the wished cube surface
             List<Cubie> cubies = this.getCubeSurface(cubeSurface);
