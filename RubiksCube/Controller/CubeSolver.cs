@@ -428,13 +428,13 @@ namespace RubiksCube.Controller
                     this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
                 }
 
-                // Falls der obere Linke Cubie stimmt, dann in die Mitte drehen
-                if (this.cube.getCubie(0, -1, 1).ColY == this.cube.getCubie(0, -1, 0).ColY)
+                // korrekte Seite rechts
+                while (this.cube.getCubie(1, 0, 1).ColX == this.cube.getCubie(1, 0, 0).ColX)
                 {
                     this.cube.rotateHorizontal90(Model.Direction.Left);
                 }
 
-                //changeBottomCrossEdgeColor();
+                changeBottomCrossEdgeColor();
             }
         }
 
