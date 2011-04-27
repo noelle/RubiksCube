@@ -387,5 +387,54 @@ namespace RubiksCube.Controller
             }
             
         }
+
+        /// <summary>
+        /// Makes a bottom cross without care for the right colors on X and Y axis
+        /// of the cubies.
+        /// </summary>
+        private void makeBottomCrossEdge()
+        {
+            // FR RR TR RL TL FL
+            this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Left);
+
+        }
+
+        /// <summary>
+        /// Algorithm to change the colors of the edges for the bottom cross, if they are
+        /// inverted.
+        /// </summary>
+        private void changeBottomCrossEdgeColor()
+        {
+            // RR TR RL TR RR T180 RL TR
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
+            this.cube.rotateSurface180(Model.CubeSurface.Top);
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Right);
+        }
+
+        /// <summary>
+        /// Algorithm to place the bottom corners to the right place.
+        /// </summary>
+        private void placeBottomCrossCorner()
+        {
+            // TR RR TL LL TR RL TL LR
+            this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Left, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Right);
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
+        }
     }
 }
