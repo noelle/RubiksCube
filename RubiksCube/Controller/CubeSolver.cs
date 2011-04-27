@@ -40,8 +40,7 @@ namespace RubiksCube.Controller
 
             makeBottomCross();
 
-
-
+            makeBottomCrossEdgeColors();
         }
 
         /// <summary>
@@ -64,8 +63,8 @@ namespace RubiksCube.Controller
                 this.placeCrossEdge(currentCubie.GetHashCode());
 
                 // check colors
-                if (!(currentCubie.ColX == frontCenter.ColX && 
-                    currentCubie.ColY == Model.CubieColor.None && 
+                if (!(currentCubie.ColX == frontCenter.ColX &&
+                    currentCubie.ColY == Model.CubieColor.None &&
                     currentCubie.ColZ == topCenter.ColZ))
                 {
                     this.changeCrossEdgeColor();
@@ -275,8 +274,8 @@ namespace RubiksCube.Controller
                 // get current cubie
                 Model.Cubie currentCubie = this.cube.getCubie(frontCenter.ColX, rightCenter.ColY, Model.CubieColor.None);
 
-                while (!(currentCubie.ColX == frontCenter.ColX && 
-                    currentCubie.ColY == rightCenter.ColY && 
+                while (!(currentCubie.ColX == frontCenter.ColX &&
+                    currentCubie.ColY == rightCenter.ColY &&
                     currentCubie.ColZ == Model.CubieColor.None &&
                     currentCubie.PosX == 1 &&
                     currentCubie.PosY == 1 &&
@@ -287,12 +286,12 @@ namespace RubiksCube.Controller
                     // get current cubie
                     currentCubie = this.cube.getCubie(frontCenter.ColX, rightCenter.ColY, Model.CubieColor.None);
                 }
-                
+
 
                 // next surface
                 this.cube.rotateHorizontal90(Model.Direction.Right);
             }
-            
+
         }
 
         /// <summary>
@@ -365,7 +364,7 @@ namespace RubiksCube.Controller
         }
 
         /// <summary>
-        /// Last step of solving the cube:
+        /// Fourth step of solving the cube:
         /// Makes the cross in the bottom
         /// </summary>
         private void makeBottomCross()
@@ -395,14 +394,50 @@ namespace RubiksCube.Controller
                         this.Cube.rotateHorizontal90(Model.Direction.Right);
                     }
                 }
-                
+
                 // make the bottom cross
                 makeBottomCrossEdge();
 
                 // get the cubie with the right color
                 numberOfEdges = this.cube.Cubies.Where(q => q.Type == Model.CubieType.Edge && q.PosZ == 1 && q.ColZ == topCenter.ColZ).Count();
             }
-            
+
+        }
+
+        /// <summary>
+        /// Fifth step of solving the cube:
+        /// Makes the right cross colors in the bottom
+        /// </summary>
+        private void makeBottomCrossEdgeColors()
+        {
+            // Solange die Kreuze mit den Farben nicht übereinstimmen
+            while (this.cube.getCubie(1, 0, 0).ColX != this.cube.getCubie(1, 0, 1).ColX &&
+                  this.cube.getCubie(0, 1, 0).ColY != this.cube.getCubie(0, 1, 1).ColY &&
+                  this.cube.getCubie(-1, 0, 0).ColX != this.cube.getCubie(-1, 0, 1).ColX &&
+                  this.cube.getCubie(0, -1, 0).ColY != this.cube.getCubie(0, -1, 1).ColY)
+            {
+
+                Model.Cubie frontCenter = this.cube.getCubie(1, 0, 0);
+                Model.Cubie topFrontEdge = this.cube.getCubie(1, 0, 1);
+
+                // Top drehen, bis er mit einer Seite stimmt
+                while (topFrontEdge.ColX != frontCenter.ColX)
+                {
+                    this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
+                    topFrontEdge = this.cube.getCubie(1, 0, 1);
+                }
+
+                Model.Cubie leftTopEdge = this.cube.getCubie(0, -1, 1);
+                Model.Cubie leftCenter = this.cube.getCubie(0, -1, 0);
+
+                // Falls der obere Linke Cubie stimmt, dann in die Mitte drehen
+                if (leftTopEdge.ColY == leftCenter.ColY)
+                {
+                    this.cube.rotateHorizontal90(Model.Direction.Left);
+                }
+
+                changeBottomCrossEdgeColor();
+            }
         }
 
         /// <summary>
