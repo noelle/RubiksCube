@@ -42,9 +42,9 @@ namespace RubiksCube.Controller
 
             makeBottomCrossEdgeColors();
 
-            makeBottomCorners();
+            //makeBottomCorners();
 
-            finishCube();
+            //finishCube();
         }
 
         /// <summary>
@@ -417,7 +417,7 @@ namespace RubiksCube.Controller
             // Solange die Kreuze mit den Farben nicht übereinstimmen
             while (!(this.cube.getCubie(1, 0, 0).ColX == this.cube.getCubie(1, 0, 1).ColX &&
                   this.cube.getCubie(0, 1, 0).ColY == this.cube.getCubie(0, 1, 1).ColY &&
-                  this.cube.getCubie(-1, 0, 0).ColX == this.cube.getCubie(0, -1, 1).ColX &&
+                  this.cube.getCubie(-1, 0, 0).ColX == this.cube.getCubie(-1, 0, 1).ColX &&
                   this.cube.getCubie(0, -1, 0).ColY == this.cube.getCubie(0, -1, 1).ColY))
             {
 
@@ -434,7 +434,7 @@ namespace RubiksCube.Controller
                     this.cube.rotateHorizontal90(Model.Direction.Left);
                 }
 
-                changeBottomCrossEdgeColor();
+                //changeBottomCrossEdgeColor();
             }
         }
 
