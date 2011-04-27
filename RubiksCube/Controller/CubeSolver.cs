@@ -411,27 +411,21 @@ namespace RubiksCube.Controller
         private void makeBottomCrossEdgeColors()
         {
             // Solange die Kreuze mit den Farben nicht übereinstimmen
-            while (this.cube.getCubie(1, 0, 0).ColX != this.cube.getCubie(1, 0, 1).ColX &&
-                  this.cube.getCubie(0, 1, 0).ColY != this.cube.getCubie(0, 1, 1).ColY &&
-                  this.cube.getCubie(-1, 0, 0).ColX != this.cube.getCubie(-1, 0, 1).ColX &&
-                  this.cube.getCubie(0, -1, 0).ColY != this.cube.getCubie(0, -1, 1).ColY)
+            while (!(this.cube.getCubie(1, 0, 0).ColX == this.cube.getCubie(1, 0, 1).ColX &&
+                  this.cube.getCubie(0, 1, 0).ColY == this.cube.getCubie(0, 1, 1).ColY &&
+                  this.cube.getCubie(-1, 0, 0).ColX == this.cube.getCubie(0, -1, 1).ColX &&
+                  this.cube.getCubie(0, -1, 0).ColY == this.cube.getCubie(0, -1, 1).ColY))
             {
 
-                Model.Cubie frontCenter = this.cube.getCubie(1, 0, 0);
-                Model.Cubie topFrontEdge = this.cube.getCubie(1, 0, 1);
-
                 // Top drehen, bis er mit einer Seite stimmt
-                while (topFrontEdge.ColX != frontCenter.ColX)
+                // Problematisch ?!
+                while (this.cube.getCubie(1, 0, 1).ColX != this.cube.getCubie(1, 0, 0).ColX)
                 {
                     this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
-                    topFrontEdge = this.cube.getCubie(1, 0, 1);
                 }
 
-                Model.Cubie leftTopEdge = this.cube.getCubie(0, -1, 1);
-                Model.Cubie leftCenter = this.cube.getCubie(0, -1, 0);
-
                 // Falls der obere Linke Cubie stimmt, dann in die Mitte drehen
-                if (leftTopEdge.ColY == leftCenter.ColY)
+                if (this.cube.getCubie(0, -1, 1).ColY == this.cube.getCubie(0, -1, 0).ColY)
                 {
                     this.cube.rotateHorizontal90(Model.Direction.Left);
                 }
