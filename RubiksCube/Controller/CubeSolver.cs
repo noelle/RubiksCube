@@ -488,5 +488,60 @@ namespace RubiksCube.Controller
             this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
             this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
         }
+
+        /// <summary>
+        /// Last step to solve de rubik's cube.
+        /// Puts the bottom corner colors to the right place and
+        /// rotates the bottom layer so that the cube is solved.
+        /// </summary>
+        private void finishCube()
+        {
+            // Ecken sind richtig aber farben stimmen nicht
+            // stimmem farben in x y z richtung? wenn nicht
+            // dann changetopcornercolor bis es stimmt
+            // wenn ja TL -> vier mal!
+            // TR bis stimmt
+            Model.Cubie frontCenter;
+            Model.Cubie rightCenter;
+            Model.Cubie currentCubie;
+
+            // get the top center cubie
+            Model.Cubie topCenter = this.cube.getCubie(0, 0, 1);
+
+            for (int i = 0; i < 4; i++)
+            {
+                // get the front center cubie
+                frontCenter = this.cube.getCubie(1, 0, 0);
+                // get the right center cubie
+                rightCenter = this.cube.getCubie(0, 1, 0);
+
+                currentCubie = this.cube.getCubie(frontCenter.ColX, rightCenter.ColY, topCenter.ColZ);
+
+                while (!(currentCubie.ColX == frontCenter.ColX &&
+                    currentCubie.ColY == rightCenter.ColY &&
+                    currentCubie.ColZ == topCenter.ColZ))
+                {
+                    changeTopCornerColor();
+                }
+
+                // go to next side => TL
+                this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
+            }
+
+            // check if corners are on the right place
+            // get the front center cubie
+            frontCenter = this.cube.getCubie(1, 0, 0);
+            // get the right center cubie
+            rightCenter = this.cube.getCubie(0, 1, 0);
+
+            currentCubie = this.cube.getCubie(frontCenter.ColX, rightCenter.ColY, topCenter.ColZ);
+
+            while (!(currentCubie.ColX == frontCenter.ColX &&
+                currentCubie.ColY == rightCenter.ColY))
+            {
+                // TL
+                this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
+            }
+        }
     }
 }
