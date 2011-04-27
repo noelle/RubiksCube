@@ -379,19 +379,10 @@ namespace RubiksCube.Controller
                 // Falls 2 oder mehr dann entweder horizontal oder Ecke oder beides
                 int numberOfVerticalEdges = this.cube.Cubies.Where(q => q.Type == Model.CubieType.Edge && q.PosZ == 1 && q.PosY == 0 && q.ColZ == topCenter.ColZ).Count();
 
-                int numberOfHorizontalEdges = this.cube.Cubies.Where(q => q.Type == Model.CubieType.Edge && q.PosZ == 1 && q.PosX == 0 && q.ColZ == topCenter.ColZ).Count();
-
-                if (numberOfHorizontalEdges == 2)
-                {
-                    // make the bottom cross
-                    makeBottomCross();
-                }
-                else if (numberOfHorizontalEdges == 2)
+                if (numberOfVerticalEdges == 2)
                 {
                     // rotate cube about 90 degrees
                     this.Cube.rotateHorizontal90(Model.Direction.Right);
-                    // now make the bottom cross
-                    makeBottomCross();
                 }
                 else if (numberOfEdges > 1)
                 {
@@ -401,16 +392,10 @@ namespace RubiksCube.Controller
                     {
                         this.Cube.rotateHorizontal90(Model.Direction.Right);
                     }
-
-                    // make the bottom cross
-                    makeBottomCross();
-
                 }
-                else
-                {
-                    // make the bottom cross
-                    makeBottomCross();
-                }
+                
+                // make the bottom cross
+                makeBottomCross();
 
                 // get the cubie with the right color
                 numberOfEdges = this.cube.Cubies.Where(q => q.Type == Model.CubieType.Edge && q.PosZ == 1 && q.ColZ == topCenter.ColZ).Count();
