@@ -96,6 +96,13 @@ namespace RubiksCube.Model
             this.colZ = colZ;            
         }
 
+        public Cubie(CubieColor colX, CubieColor colY, CubieColor colZ)
+        {
+            this.colX = colX;
+            this.colY = colY;
+            this.colZ = colZ;
+        }
+
         public override bool Equals(object obj)
         {
             Cubie cmpCubie = (Cubie)obj;
@@ -114,6 +121,22 @@ namespace RubiksCube.Model
         public override int GetHashCode()
         {
             return (13 * this.posX + 113 * this.posY + 373 * this.posZ - 71 * this.posZ);
+        }
+
+        /// <summary>
+        /// Compares if the cubies contains the same colors
+        /// </summary>
+        /// <param name="cubie">Cubie to compare with</param>
+        /// <returns>true or false</returns>
+        public bool hasSameColors(Model.Cubie cubie)
+        {
+            return(this.colX == cubie.colX && this.colY == cubie.colY && this.colZ == cubie.colZ ||
+                   this.colX == cubie.colX && this.colY == cubie.colZ && this.colZ == cubie.colY ||
+                   this.colX == cubie.colY && this.colY == cubie.colX && this.colZ == cubie.colZ ||
+                   this.colX == cubie.colY && this.colY == cubie.colZ && this.colZ == cubie.colX ||
+                   this.colX == cubie.colZ && this.colY == cubie.colX && this.colZ == cubie.colY ||
+                   this.colX == cubie.colZ && this.colY == cubie.colY && this.colZ == cubie.colX );
+            
         }
     }
 }

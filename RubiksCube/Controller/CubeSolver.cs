@@ -42,9 +42,9 @@ namespace RubiksCube.Controller
 
             makeBottomCrossEdgeColors();
 
-            //makeBottomCorners();
+            makeBottomCorners();
 
-            //finishCube();
+            finishCube();
         }
 
         /// <summary>
@@ -484,7 +484,7 @@ namespace RubiksCube.Controller
             this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Right);
             this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
             this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
-            this.cube.rotateSurface(Model.CubeSurface.Right, Model.Direction.Left);
+            this.cube.rotateSurface(Model.CubeSurface.Left, Model.Direction.Right);
         }
 
         /// <summary>
@@ -492,6 +492,10 @@ namespace RubiksCube.Controller
         /// </summary>
         private void makeBottomCorners()
         {
+            int numberOfCorrectCorners = 0;
+            bool hasFoundCorner = false;
+            int numberOfRotates = 0;
+
             Model.Cubie frontCenter;
             Model.Cubie rightCenter;
             Model.Cubie currentCubie;
@@ -499,24 +503,52 @@ namespace RubiksCube.Controller
             // get the top center cubie
             Model.Cubie topCenter = this.cube.getCubie(0, 0, 1);
 
-            for (int i = 0; i < 4; i++)
+            while (!hasFoundCorner)
             {
-                // get the front center cubie
-                frontCenter = this.cube.getCubie(1, 0, 0);
-                // get the right center cubie
-                rightCenter = this.cube.getCubie(0, 1, 0);
+                // check cube if ... or colors are correct
+                for (int i = 0; i < 4; i++)
+                {
+                    // get the front center cubie
+                    frontCenter = this.cube.getCubie(1, 0, 0);
+                    // get the right center cubie
+                    rightCenter = this.cube.getCubie(0, 1, 0);
 
-                currentCubie = this.cube.getCubie(frontCenter.ColX, rightCenter.ColY, topCenter.ColZ);
+                    currentCubie = this.cube.getCubie(1, 1, 1);
 
-                while (!(currentCubie.PosX == 1 &&
-                    currentCubie.PosY == 1 &&
-                    currentCubie.PosZ == 1))
+                    if (currentCubie.hasSameColors(new Model.Cubie(frontCenter.ColX, rightCenter.ColY, topCenter.ColZ)))
+                    {
+                        numberOfCorrectCorners++;
+                        numberOfRotates = i;
+                        hasFoundCorner = true;
+                    }
+
+                    this.cube.rotateHorizontal90(Model.Direction.Left);
+                }
+
+                if (!hasFoundCorner)
                 {
                     placeBottomCorner();
                 }
+            }
 
-                // rotate cube arround 90 degrees
-                this.cube.rotateHorizontal90(Model.Direction.Right);
+
+            if (numberOfCorrectCorners < 4)
+            {
+                // get start position
+                if (numberOfRotates > 0)
+                {
+                    for (int i = 0; i < numberOfRotates; i++)
+                    {
+                        this.cube.rotateHorizontal90(Model.Direction.Left);
+                    }
+                }
+
+                // start to solve
+                for (int i = 0; i < 4 - numberOfRotates; i++)
+                {
+                    placeBottomCorner();
+                    this.cube.rotateHorizontal90(Model.Direction.Left);
+                }
             }
         }
 
@@ -527,8 +559,10 @@ namespace RubiksCube.Controller
         /// </summary>
         private void finishCube()
         {
+            this.cube.drawInConsole();
             Model.Cubie frontCenter;
-            Model.Cubie rightCenter;
+            Model.Cubie frontEdge;
+            Model.Cubie rightEdge;
             Model.Cubie currentCubie;
 
             // get the top center cubie
@@ -537,17 +571,18 @@ namespace RubiksCube.Controller
             for (int i = 0; i < 4; i++)
             {
                 // get the front center cubie
-                frontCenter = this.cube.getCubie(1, 0, 0);
+                frontEdge = this.cube.getCubie(1, 0, 1);
                 // get the right center cubie
-                rightCenter = this.cube.getCubie(0, 1, 0);
+                rightEdge = this.cube.getCubie(0, 1, 1);
 
-                currentCubie = this.cube.getCubie(frontCenter.ColX, rightCenter.ColY, topCenter.ColZ);
+                currentCubie = this.cube.getCubie(1, 1, 1);
 
-                while (!(currentCubie.ColX == frontCenter.ColX &&
-                    currentCubie.ColY == rightCenter.ColY &&
+                while (!(currentCubie.ColX == frontEdge.ColX &&
+                    currentCubie.ColY == rightEdge.ColY &&
                     currentCubie.ColZ == topCenter.ColZ))
                 {
                     changeTopCornerColor();
+                    currentCubie = this.cube.getCubie(1, 1, 1);
                 }
 
                 // go to next side => TL
@@ -557,16 +592,13 @@ namespace RubiksCube.Controller
             // check if corners are on the right place
             // get the front center cubie
             frontCenter = this.cube.getCubie(1, 0, 0);
-            // get the right center cubie
-            rightCenter = this.cube.getCubie(0, 1, 0);
+            frontEdge = this.cube.getCubie(1, 0, 1);
 
-            currentCubie = this.cube.getCubie(frontCenter.ColX, rightCenter.ColY, topCenter.ColZ);
-
-            while (!(currentCubie.ColX == frontCenter.ColX &&
-                currentCubie.ColY == rightCenter.ColY))
+            while (!(frontCenter.ColX == frontEdge.ColX))
             {
                 // TL
                 this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
+                frontEdge = this.cube.getCubie(0, 1, 0);
             }
         }
     }
