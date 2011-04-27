@@ -377,13 +377,41 @@ namespace RubiksCube.Controller
             while (numberOfEdges != 4)
             {
                 // Falls 2 oder mehr dann entweder horizontal oder Ecke oder beides
+                int numberOfVerticalEdges = this.cube.Cubies.Where(q => q.Type == Model.CubieType.Edge && q.PosZ == 1 && q.PosY == 0 && q.ColZ == topCenter.ColZ).Count();
 
-                // case 1.1: hole alle z=1 x=0 farbe = blau edges für horizontale Linie
-                // case 1.2: hole alle z=1 y=0 farbe = blau edges für vertikale Linie
+                int numberOfHorizontalEdges = this.cube.Cubies.Where(q => q.Type == Model.CubieType.Edge && q.PosZ == 1 && q.PosX == 0 && q.ColZ == topCenter.ColZ).Count();
 
-                // => falls keine der Werte 2, weiter, sonst drehen
+                if (numberOfHorizontalEdges == 2)
+                {
+                    // Algo für Bottom Cross
+                }
+                else if (numberOfHorizontalEdges == 2)
+                {
+                    // Drehen 90 grad, dann Algo für Bottom Cross
+                    this.Cube.rotateHorizontal90(Model.Direction.Right);
 
-                // case 2.1 - 2.4: mit den L's in den Ecken muss noch erarbeitet werden
+                    // Algo für Bottom Cross
+                }
+                else if (numberOfEdges > 1)
+                {
+                    // drehen bis an richtiger Position => Verkehrtes "L" oben links
+
+                    while (!(this.Cube.getCubie(0, -1, 1).ColZ == topCenter.ColZ &&
+                            this.Cube.getCubie(-1, 0, 1).ColZ == topCenter.ColZ))
+                    {
+                        this.Cube.rotateHorizontal90(Model.Direction.Right);
+                    }
+
+                    // Algo für Bottom Cross
+
+                }
+                else
+                {
+                    // Algo für Bottom Cross
+                }
+
+                // Würfel von gleicher Farbe wie Center holen
+                numberOfEdges = this.cube.Cubies.Where(q => q.Type == Model.CubieType.Edge && q.PosZ == 1 && q.ColZ == topCenter.ColZ).Count();
             }
             
         }
