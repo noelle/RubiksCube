@@ -492,7 +492,6 @@ namespace RubiksCube.Controller
         /// </summary>
         private void makeBottomCorners()
         {
-            int numberOfCorrectCorners = 0;
             bool hasFoundCorner = false;
             int numberOfRotates = 0;
 
@@ -517,7 +516,6 @@ namespace RubiksCube.Controller
 
                     if (currentCubie.hasSameColors(new Model.Cubie(frontCenter.ColX, rightCenter.ColY, topCenter.ColZ)))
                     {
-                        numberOfCorrectCorners++;
                         numberOfRotates = i;
                         hasFoundCorner = true;
                     }
@@ -531,25 +529,19 @@ namespace RubiksCube.Controller
                 }
             }
 
-
-            if (numberOfCorrectCorners < 4)
+            // get start position
+            for (int i = 0; i < numberOfRotates; i++)
             {
-                // get start position
-                if (numberOfRotates > 0)
-                {
-                    for (int i = 0; i < numberOfRotates; i++)
-                    {
-                        this.cube.rotateHorizontal90(Model.Direction.Left);
-                    }
-                }
-
-                // start to solve
-                for (int i = 0; i < 4 - numberOfRotates; i++)
-                {
-                    placeBottomCorner();
-                    this.cube.rotateHorizontal90(Model.Direction.Left);
-                }
+                this.cube.rotateHorizontal90(Model.Direction.Left);
             }
+
+            // start to solve
+            for (int i = 0; i < 4 - numberOfRotates; i++)
+            {
+                placeBottomCorner();
+                this.cube.rotateHorizontal90(Model.Direction.Left);
+            }
+
         }
 
         /// <summary>
