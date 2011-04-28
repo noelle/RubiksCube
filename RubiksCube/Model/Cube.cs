@@ -330,7 +330,6 @@ namespace RubiksCube.Model
 
         public void drawInConsole()
         {
-            System.Console.WriteLine("Rubik's Cube 2D View");
             System.Console.WriteLine();
 
             // Obere Reihe

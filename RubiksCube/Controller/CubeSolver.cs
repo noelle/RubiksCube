@@ -25,26 +25,49 @@ namespace RubiksCube.Controller
         /// </summary>
         public void solve()
         {
+            System.Console.WriteLine("Kreuz oben:");
             makeTopCross();
-            makeTopCorners();
+            this.cube.drawInConsole();
+            System.Console.WriteLine();
 
+            System.Console.WriteLine("Ecken oben:");
+            makeTopCorners();
+            this.cube.drawInConsole();
+            System.Console.WriteLine();
+
+            System.Console.WriteLine("Auf den Kopf stellen:");
             // rotate the cube 180 degree in vertical direction
             this.cube.rotateVertical90(Model.Direction.Right);
             this.cube.rotateVertical90(Model.Direction.Right);
 
+            System.Console.WriteLine("Mittlere Schicht:");
             makeMiddleEdges();
+            this.cube.drawInConsole();
+            System.Console.WriteLine();
 
             //// rotate the cube 180 degree in vertical direction
             //this.cube.rotateVertical90(Model.Direction.Right);
             //this.cube.rotateVertical90(Model.Direction.Right);
 
+            System.Console.WriteLine("Kreuz unten:");
             makeBottomCross();
+            this.cube.drawInConsole();
+            System.Console.WriteLine();
 
+            System.Console.WriteLine("Farben Kreuz unten:");
             makeBottomCrossEdgeColors();
+            this.cube.drawInConsole();
+            System.Console.WriteLine();
 
+            System.Console.WriteLine("Ecken unten:");
             makeBottomCorners();
+            this.cube.drawInConsole();
+            System.Console.WriteLine();
 
+            System.Console.WriteLine("Cube Rest lösen:");
             finishCube();
+            this.cube.drawInConsole();
+            System.Console.WriteLine();
         }
 
         /// <summary>
