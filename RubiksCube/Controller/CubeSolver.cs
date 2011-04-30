@@ -412,7 +412,7 @@ namespace RubiksCube.Controller
                     // rotate cube about 90 degrees
                     this.Cube.rotateHorizontal90(Model.Direction.Right);
                 }
-                else if (numberOfEdges > 1 && numberOfHorizontalEdges < 2)
+                else if (numberOfEdges > 1 && numberOfHorizontalEdges < 2 && numberOfVerticalEdges < 2)
                 {
                     // rotate until we got the little inverted "L" on top left
                     while (!(this.Cube.getCubie(0, -1, 1).ColZ == topCenter.ColZ &&
@@ -515,6 +515,10 @@ namespace RubiksCube.Controller
         /// </summary>
         private void makeBottomCorners()
         {
+
+            // TO DO : fix!!
+            #warning: still buggy
+
             bool hasFoundCorner = false;
             int numberOfRotates = 0;
 
