@@ -36,6 +36,7 @@ namespace RubiksCube.Controller
             System.Console.WriteLine();
 
             System.Console.WriteLine("Auf den Kopf stellen:");
+            
             // rotate the cube 180 degree in vertical direction
             this.cube.rotateVertical90(Model.Direction.Right);
             this.cube.rotateVertical90(Model.Direction.Right);
@@ -44,10 +45,6 @@ namespace RubiksCube.Controller
             makeMiddleEdges();
             this.cube.drawInConsole();
             System.Console.WriteLine();
-
-            //// rotate the cube 180 degree in vertical direction
-            //this.cube.rotateVertical90(Model.Direction.Right);
-            //this.cube.rotateVertical90(Model.Direction.Right);
 
             System.Console.WriteLine("Kreuz unten:");
             makeBottomCross();
@@ -515,10 +512,6 @@ namespace RubiksCube.Controller
         /// </summary>
         private void makeBottomCorners()
         {
-
-            // TO DO : fix!!
-            #warning: still buggy
-
             bool hasFoundCorner = false;
             int numberOfRotates = 0;
 
@@ -562,11 +555,37 @@ namespace RubiksCube.Controller
                 this.cube.rotateHorizontal90(Model.Direction.Left);
             }
 
-            // start to solve
-            for (int i = 0; i < 4 - numberOfRotates; i++)
+            // Solange die Eckfarben nicht stimmen, den Algorithmus wiederholen
+            bool solved = false;
+            while (!solved)
             {
-                placeBottomCorner();
-                this.cube.rotateHorizontal90(Model.Direction.Left);
+                int correctCorners = 0;
+
+                for (int i = 0; i < 4; i++)
+                {
+                    // get the front center cubie
+                    frontCenter = this.cube.getCubie(1, 0, 0);
+                    // get the right center cubie
+                    rightCenter = this.cube.getCubie(0, 1, 0);
+
+                    currentCubie = this.cube.getCubie(1, 1, 1);
+
+                    if (currentCubie.hasSameColors(new Model.Cubie(frontCenter.ColX, rightCenter.ColY, topCenter.ColZ)))
+                    {
+                        correctCorners++;
+                    }
+
+                    this.cube.rotateHorizontal90(Model.Direction.Left);
+                }
+
+                if (correctCorners == 4)
+                {
+                    solved = true;
+                }
+                else
+                {
+                    placeBottomCorner();
+                }
             }
 
         }
