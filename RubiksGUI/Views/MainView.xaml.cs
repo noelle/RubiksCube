@@ -23,7 +23,7 @@ namespace RubiksGUI
         private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Windows.Shapes.Rectangle obj = (System.Windows.Shapes.Rectangle)sender;
-            if (obj != null)
+            if (obj != null && activeRectangle != null)
             {
                 obj.Fill = activeRectangle.Fill;
             }
@@ -41,6 +41,17 @@ namespace RubiksGUI
 
             this.activeRectangle = obj;
             
+        }
+
+        private void solveButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Refactoring und schönerer Code nötig :)
+            // Validierung nötig!!
+            MainViewModel cube = this.LayoutRoot.DataContext as MainViewModel;
+            RubiksCube.Controller.CubeSolver solver = new RubiksCube.Controller.CubeSolver(cube);
+            solver.solve();
+            this.LayoutRoot.DataContext = null;
+            this.LayoutRoot.DataContext = solver.Cube as MainViewModel;
         }
 	}
 }

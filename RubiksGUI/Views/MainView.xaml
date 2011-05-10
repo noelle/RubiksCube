@@ -73,7 +73,8 @@
         <Rectangle Name="redColor" Fill="Red" Height="20" HorizontalAlignment="Left" Margin="498,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Color_MouseDown" />
         <Rectangle Name="greenColor" Fill="Green" Height="20" HorizontalAlignment="Left" Margin="523,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Color_MouseDown" />
         <Rectangle Name="blueColor" Fill="Blue" Height="20" HorizontalAlignment="Left" Margin="548,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Color_MouseDown" />
-        <GroupBox Header="choose a Color" Height="60" HorizontalAlignment="Left" Margin="409,24,0,0" Name="groupBox1" VerticalAlignment="Top" Width="172">
+        <GroupBox Header="choose a color" Height="60" HorizontalAlignment="Left" Margin="409,24,0,0" Name="groupBox1" VerticalAlignment="Top" Width="172">
         </GroupBox>
+        <Button Content="solve!" Height="23" HorizontalAlignment="Left" Margin="409,273,0,0" Name="solveButton" VerticalAlignment="Top" Width="75" Click="solveButton_Click" />
     </Grid>
 </UserControl>
