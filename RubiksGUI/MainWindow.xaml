@@ -6,11 +6,7 @@
 	xmlns:local="clr-namespace:RubiksGUI" 
 	Title="MainWindow"
 	Width="640" Height="480">
-
-	<Grid x:Name="LayoutRoot" Background="White">
+	<Grid x:Name="LayoutRoot">
 	<local:MainView />
-        <Grid Background="#FF931C1C">
-            <Label Content="HghAllo" Background="#FF7C3838" />
-        </Grid>
     </Grid>
 </Window>

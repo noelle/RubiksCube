@@ -12,7 +12,68 @@
     <UserControl.Resources>
         <local:MainViewModel x:Key="MainViewModelDataSource" />
     </UserControl.Resources>
-    <Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource MainViewModelDataSource}}" d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}" Background="#FF36B165">
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Sample "/><Run Language="de-ch" Text="{Binding Cubies}"/><Run Text="Text Property Value"/></TextBlock>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Rectangle Name="TopBottomLeftCorner" Fill="#FF411129" HorizontalAlignment="Left" Height="20" Margin="98,24.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopLeftEdge" Fill="#FF411129" HorizontalAlignment="Left" Height="20" Margin="98,49.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"  MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopTopLeftCorner" Fill="#FF411129" HorizontalAlignment="Left" Height="20" Margin="98,74.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"  MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopBottomEdge" Fill="#FF411129" HorizontalAlignment="Left" Height="20" Margin="123,24.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopCenter" Fill="#FF411129" HorizontalAlignment="Left" Height="20" Margin="123,49.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopTopEdge" Fill="#FF411129" HorizontalAlignment="Left" Height="20" Margin="123,74.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopBottomRightCorner" Fill="#FF411129" HorizontalAlignment="Left" Height="20" Margin="148,24.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopRightEdge" Fill="#FF411129" HorizontalAlignment="Left" Height="20" Margin="148,49.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopTopRightCorner" Fill="#FF411129" HorizontalAlignment="Left" Height="20" Margin="148,74.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF204111" HorizontalAlignment="Left" Height="20" Margin="20,105.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF204111" HorizontalAlignment="Left" Height="20" Margin="20,130.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF204111" HorizontalAlignment="Left" Height="20" Margin="20,155.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"   MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF204111" HorizontalAlignment="Left" Height="20" Margin="45,105.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"   MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF204111" HorizontalAlignment="Left" Height="20" Margin="45,130.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"   MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF204111" HorizontalAlignment="Left" Height="20" Margin="45,155.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"   MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF204111" HorizontalAlignment="Left" Height="20" Margin="70,105.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"   MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF204111" HorizontalAlignment="Left" Height="20" Margin="70,130.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"   MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF204111" HorizontalAlignment="Left" Height="20" Margin="70,155.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"   MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF898524" HorizontalAlignment="Left" Height="20" Margin="99.5,105.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF898524" HorizontalAlignment="Left" Height="20" Margin="99.5,130.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF898524" HorizontalAlignment="Left" Height="20" Margin="99.5,155.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF898524" HorizontalAlignment="Left" Height="20" Margin="124.5,105.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF898524" HorizontalAlignment="Left" Height="20" Margin="124.5,130.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF898524" HorizontalAlignment="Left" Height="20" Margin="124.5,155.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF898524" HorizontalAlignment="Left" Height="20" Margin="149.5,105.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF898524" HorizontalAlignment="Left" Height="20" Margin="149.5,130.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Fill="#FF898524" HorizontalAlignment="Left" Height="20" Margin="149.5,155.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
+        <Rectangle Fill="#FF272C83" HorizontalAlignment="Left" Height="20" Margin="99.5,188,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
+        <Rectangle Fill="#FF272C83" HorizontalAlignment="Left" Margin="99.5,213,0,209" Stroke="Black" Width="20"/>
+        <Rectangle Fill="#FF272C83" HorizontalAlignment="Left" Margin="99.5,0,0,184" Stroke="Black" Width="20" Height="20" VerticalAlignment="Bottom"/>
+        <Rectangle Fill="#FF272C83" HorizontalAlignment="Left" Height="20" Margin="124.5,188,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
+        <Rectangle Fill="#FF272C83" HorizontalAlignment="Left" Margin="124.5,213,0,209" Stroke="Black" Width="20"/>
+        <Rectangle Fill="#FF272C83" HorizontalAlignment="Left" Margin="124.5,0,0,184" Stroke="Black" Width="20" Height="20" VerticalAlignment="Bottom"/>
+        <Rectangle Fill="#FF272C83" HorizontalAlignment="Left" Height="20" Margin="149.5,188,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
+        <Rectangle Fill="#FF272C83" HorizontalAlignment="Left" Margin="149.5,213,0,209" Stroke="Black" Width="20"/>
+        <Rectangle Fill="#FF272C83" HorizontalAlignment="Left" Margin="149.5,0,0,184" Stroke="Black" Width="20" Height="20" VerticalAlignment="Bottom"/>
+        <Rectangle Fill="#FFA96F28" HorizontalAlignment="Left" Height="20" Margin="180.5,105.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
+        <Rectangle Fill="#FFA96F28" HorizontalAlignment="Left" Margin="180.5,130.5,0,0" Stroke="Black" Width="20" Height="20" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FFA96F28" HorizontalAlignment="Left" Margin="180.5,155.5,0,0" Stroke="Black" Width="20" Height="20" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FFA96F28" HorizontalAlignment="Left" Height="20" Margin="205.5,105.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
+        <Rectangle Fill="#FFA96F28" HorizontalAlignment="Left" Margin="205.5,130.5,0,0" Stroke="Black" Width="20" Height="20" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FFA96F28" HorizontalAlignment="Left" Margin="205.5,155.5,0,0" Stroke="Black" Width="20" Height="20" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FFA96F28" HorizontalAlignment="Left" Height="20" Margin="230.5,105.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
+        <Rectangle Fill="#FFA96F28" HorizontalAlignment="Left" Margin="230.5,130.5,0,0" Stroke="Black" Width="20" Height="20" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FFA96F28" HorizontalAlignment="Left" Margin="230.5,155.5,0,0" Stroke="Black" Width="20" Height="20" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FF871378" HorizontalAlignment="Left" Height="20" Margin="260,105.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
+        <Rectangle Fill="#FF871378" HorizontalAlignment="Left" Margin="260,130.5,0,0" Stroke="Black" Width="20" Height="20" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FF871378" HorizontalAlignment="Left" Margin="260,155.5,0,0" Stroke="Black" Width="20" Height="20" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FF871378" HorizontalAlignment="Left" Height="20" Margin="285,105.5,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
+        <Rectangle Fill="#FF871378" HorizontalAlignment="Left" Margin="285,130.5,0,0" Stroke="Black" Width="20" Height="20" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FF871378" HorizontalAlignment="Left" Margin="285,155.5,0,0" Stroke="Black" Width="20" Height="20" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FF871378" Height="20" Margin="310,105.5,294,0" Stroke="Black" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FF871378" Margin="310,130.5,294,0" Stroke="Black" Height="20" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FF871378" Margin="310,155.5,294,0" Stroke="Black" Height="20" VerticalAlignment="Top"/>
+        <Rectangle Name="whiteColor" Fill="White" Height="20" HorizontalAlignment="Left" Margin="422,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Color_MouseDown" />
+        <Rectangle Name="yellowColor" Fill="#FFD8C10B" Height="20" HorizontalAlignment="Left" Margin="447,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Color_MouseDown" />
+        <Rectangle Name="orangeColor" Fill="#FFC4620F" Height="20" HorizontalAlignment="Left" Margin="472,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Color_MouseDown" />
+        <Rectangle Name="redColor" Fill="#FFFF0A0A" Height="20" HorizontalAlignment="Left" Margin="498,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Color_MouseDown" />
+        <Rectangle Name="greenColor" Fill="#FF2B9A33" Height="20" HorizontalAlignment="Left" Margin="523,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Color_MouseDown" />
+        <Rectangle Name="blueColor" Fill="#FF0937F2" Height="20" HorizontalAlignment="Left" Margin="548,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="20" MouseDown="Color_MouseDown" />
+        <GroupBox Header="choose a Color" Height="60" HorizontalAlignment="Left" Margin="409,24,0,0" Name="groupBox1" VerticalAlignment="Top" Width="172">
+        </GroupBox>
     </Grid>
 </UserControl>
