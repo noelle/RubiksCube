@@ -12,7 +12,7 @@ namespace RubiksGUI
 {
 	public partial class MainView : UserControl
 	{
-        private System.Windows.Media.Brush activeColor;
+        private System.Windows.Shapes.Rectangle activeRectangle;
 
 		public MainView()
 		{
@@ -23,13 +23,24 @@ namespace RubiksGUI
         private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Windows.Shapes.Rectangle obj = (System.Windows.Shapes.Rectangle)sender;
-            obj.Fill = activeColor;
+            if (obj != null)
+            {
+                obj.Fill = activeRectangle.Fill;
+            }
+            //else melden dass keine Farbe gewählt ist!
         }
 
         private void Color_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (activeRectangle != null)
+            {
+                activeRectangle.StrokeThickness = 1;
+            }
             System.Windows.Shapes.Rectangle obj = (System.Windows.Shapes.Rectangle)sender;
-            this.activeColor = obj.Fill;
+            obj.StrokeThickness = 3;
+
+            this.activeRectangle = obj;
+            
         }
 	}
 }
