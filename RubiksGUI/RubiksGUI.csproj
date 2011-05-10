@@ -69,6 +69,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\Helper.cs" />
     <Compile Include="ViewModels\MainViewModel.cs">
       <SubType>Code</SubType>
     </Compile>
