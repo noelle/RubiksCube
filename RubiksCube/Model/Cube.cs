@@ -197,7 +197,7 @@ namespace RubiksCube.Model
         /// </summary>
         /// <param name="cubeSurface">The surface of the cube to rotate</param>
         /// <param name="direction">The direction (left/right) of the cube</param>
-        public void rotateSurface(CubeSurface cubeSurface, Direction direction, bool toCount = true)
+        public void rotateSurface(CubeSurface cubeSurface, Direction direction, bool countIt = true)
         {
             // get the cubies of the wished cube surface
             List<Cubie> cubies = this.getCubeSurface(cubeSurface);
@@ -355,7 +355,7 @@ namespace RubiksCube.Model
 
             }
 
-            if (toCount)
+            if (countIt)
             {
                 // Step +1
                 this.numberSteps++;
