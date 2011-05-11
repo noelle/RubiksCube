@@ -46,6 +46,7 @@ namespace RubiksCube.Model
         public int NumberSteps
         {
             get { return numberSteps; }
+            set { numberSteps = value; }
         }
 
         /// <summary>

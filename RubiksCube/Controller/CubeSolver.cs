@@ -25,6 +25,7 @@ namespace RubiksCube.Controller
         /// </summary>
         public void solve()
         {
+            this.cube.NumberSteps = 0;
             // 1st step: the cross at the top
             makeTopCross();
 
