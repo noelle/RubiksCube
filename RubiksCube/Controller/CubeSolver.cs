@@ -25,46 +25,30 @@ namespace RubiksCube.Controller
         /// </summary>
         public void solve()
         {
-            //System.Console.WriteLine("Kreuz oben:");
+            // 1st step: the cross at the top
             makeTopCross();
-            //this.cube.drawInConsole();
-            //System.Console.WriteLine();
 
-            //System.Console.WriteLine("Ecken oben:");
+            // 2nd step: the corners at the top
             makeTopCorners();
-            //this.cube.drawInConsole();
-            //System.Console.WriteLine();
 
-            //System.Console.WriteLine("Auf den Kopf stellen:");
-            
             // rotate the cube 180 degree in vertical direction
             this.cube.rotateVertical90(Model.Direction.Right);
             this.cube.rotateVertical90(Model.Direction.Right);
 
-            //System.Console.WriteLine("Mittlere Schicht:");
+            // 3rd step: the middle edges
             makeMiddleEdges();
-            //this.cube.drawInConsole();
-            //System.Console.WriteLine();
 
-            //System.Console.WriteLine("Kreuz unten:");
+            // 4th step: the cross at the bottom
             makeBottomCross();
-            //this.cube.drawInConsole();
-            //System.Console.WriteLine();
 
-            //System.Console.WriteLine("Farben Kreuz unten:");
+            // 5th step: the colors of the cross at the bottom
             makeBottomCrossEdgeColors();
-            //this.cube.drawInConsole();
-            //System.Console.WriteLine();
 
-            //System.Console.WriteLine("Ecken unten:");
+            // 6th step: the corners at the bottom
             makeBottomCorners();
-            //this.cube.drawInConsole();
-            //System.Console.WriteLine();
 
-            //System.Console.WriteLine("Cube Rest lösen:");
+            // 7th and last step: the colors of the corners at the bottom
             finishCube();
-            //this.cube.drawInConsole();
-            //System.Console.WriteLine();
         }
 
         /// <summary>
@@ -101,7 +85,7 @@ namespace RubiksCube.Controller
         /// <summary>
         /// Places the found edge to the desired place in the cross.
         /// </summary>
-        /// <param name="hashCode"></param>
+        /// <param name="hashCode">Unique code for a cubie defining its position</param>
         private void placeCrossEdge(int hashCode)
         {
             switch (hashCode)
@@ -175,7 +159,7 @@ namespace RubiksCube.Controller
         /// <summary>
         /// Places the found corner to the desired place in the top.
         /// </summary>
-        /// <param name="hashCode"></param>
+        /// <param name="hashCode">Unique code for a cubie defining its position</param>
         private void placeTopCorner(int hashCode)
         {
             switch (hashCode)
@@ -321,7 +305,7 @@ namespace RubiksCube.Controller
         /// <summary>
         /// Places the found edge to the desired place in the middle layer of the cube.
         /// </summary>
-        /// <param name="hashCode"></param>
+        /// <param name="hashCode">Unique code for a cubie defining its position</param>
         private void placeMiddleEdge(int hashCode)
         {
             switch (hashCode)

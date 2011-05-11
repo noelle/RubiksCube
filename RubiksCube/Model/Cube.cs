@@ -42,6 +42,12 @@ namespace RubiksCube.Model
             this.createCube();
         }
 
+        private int numberSteps = 0;
+        public int NumberSteps
+        {
+            get { return numberSteps; }
+        }
+
         /// <summary>
         /// Creates a test cube
         /// </summary>
@@ -138,12 +144,12 @@ namespace RubiksCube.Model
         /// <summary>
         /// 90 degree rotation of the cube in horizontal direction
         /// </summary>
-        /// <param name="direction"></param>
+        /// <param name="direction">The direction (left/right) of the cube</param>
         public void rotateHorizontal90(Model.Direction direction)
         {
-            rotateSurface(Model.CubeSurface.Top, direction);
-            rotateSurface(Model.CubeSurface.MiddleHorizontal, direction);
-            rotateSurface(Model.CubeSurface.Bottom, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right);
+            rotateSurface(Model.CubeSurface.Top, direction, false);
+            rotateSurface(Model.CubeSurface.MiddleHorizontal, direction, false);
+            rotateSurface(Model.CubeSurface.Bottom, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right, false);
         }
 
         /// <summary>
@@ -158,12 +164,12 @@ namespace RubiksCube.Model
         /// <summary>
         /// 90 degree rotation of the cube in vertical direction
         /// </summary>
-        /// <param name="direction"></param>
+        /// <param name="direction">The direction (left/right) of the cube</param>
         public void rotateVertical90(Model.Direction direction)
         {
-            rotateSurface(Model.CubeSurface.Right, direction);
-            rotateSurface(Model.CubeSurface.MiddleVertical, direction);
-            rotateSurface(Model.CubeSurface.Left, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right);
+            rotateSurface(Model.CubeSurface.Right, direction, false);
+            rotateSurface(Model.CubeSurface.MiddleVertical, direction, false);
+            rotateSurface(Model.CubeSurface.Left, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right, false);
         }
 
         /// <summary>
@@ -179,19 +185,19 @@ namespace RubiksCube.Model
         /// <summary>
         /// Rotates a cube surface around 180 degrees
         /// </summary>
-        /// <param name="surface"></param>
-        public void rotateSurface180(Model.CubeSurface surface)
+        /// <param name="surface">The direction (left/right) of the cube</param>
+        public void rotateSurface180(Model.CubeSurface surface, bool countIt = true)
         {
-            rotateSurface(surface, Model.Direction.Right);
-            rotateSurface(surface, Model.Direction.Right);
+            rotateSurface(surface, Model.Direction.Right, countIt);
+            rotateSurface(surface, Model.Direction.Right, countIt);
         }
 
         /// <summary>
         /// Rotates a cube surface to a wished direction
         /// </summary>
-        /// <param name="cubeSurface"></param>
-        /// <param name="direction"></param>
-        public void rotateSurface(CubeSurface cubeSurface, Direction direction)
+        /// <param name="cubeSurface">The surface of the cube to rotate</param>
+        /// <param name="direction">The direction (left/right) of the cube</param>
+        public void rotateSurface(CubeSurface cubeSurface, Direction direction, bool toCount = true)
         {
             // get the cubies of the wished cube surface
             List<Cubie> cubies = this.getCubeSurface(cubeSurface);
@@ -349,14 +355,17 @@ namespace RubiksCube.Model
 
             }
 
+            if (toCount)
+            {
+                // Step +1
+                this.numberSteps++;
+            }
+
         }
 
-
-        public void changeColor()
-        {
-            //implement, Parameter noch setzen
-        }
-
+        /// <summary>
+        /// 2D Output of the cube in console
+        /// </summary>
         public void drawInConsole()
         {
             System.Console.WriteLine();
@@ -458,6 +467,13 @@ namespace RubiksCube.Model
             return cubies;
         }
 
+        /// <summary>
+        /// Returns a cubie by colors
+        /// </summary>
+        /// <param name="col1">color 1</param>
+        /// <param name="col2">color 2</param>
+        /// <param name="col3">color 3</param>
+        /// <returns></returns>
         public Cubie getCubie(CubieColor col1, CubieColor col2, CubieColor col3)
         {
             Cubie cube = this.cubies.Where(q =>((q.ColX == col1 && q.ColY == col2 && q.ColZ == col3) ||
@@ -469,6 +485,13 @@ namespace RubiksCube.Model
             return cube;
         }
 
+        /// <summary>
+        /// Returns a Cubie by X-, Y- and Z-position
+        /// </summary>
+        /// <param name="posX">X-position</param>
+        /// <param name="posY">Y-position</param>
+        /// <param name="posZ">Z-position</param>
+        /// <returns></returns>
         public Cubie getCubie(int posX, int posY, int posZ)
         {
             return this.cubies.Where(q => q.PosX == posX && q.PosY == posY && q.PosZ == posZ).Select(q => q).FirstOrDefault();
