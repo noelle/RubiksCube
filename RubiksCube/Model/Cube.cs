@@ -34,6 +34,14 @@ namespace RubiksCube.Model
             set { cubies = value; }
         }
 
+        private List<HistoryItem> history = new List<HistoryItem>();
+
+        public List<HistoryItem> History
+        {
+            get { return history; }
+            set { history = value; }
+        }
+
         public Cube()
         {
             this.cubies = new List<Cubie>();
@@ -187,10 +195,10 @@ namespace RubiksCube.Model
         /// Rotates a cube surface around 180 degrees
         /// </summary>
         /// <param name="surface">The direction (left/right) of the cube</param>
-        public void rotateSurface180(Model.CubeSurface surface, bool countIt = true)
+        public void rotateSurface180(Model.CubeSurface surface, bool isRecorded = true)
         {
-            rotateSurface(surface, Model.Direction.Right, countIt);
-            rotateSurface(surface, Model.Direction.Right, countIt);
+            rotateSurface(surface, Model.Direction.Right, isRecorded);
+            rotateSurface(surface, Model.Direction.Right, isRecorded);
         }
 
         /// <summary>
@@ -198,7 +206,7 @@ namespace RubiksCube.Model
         /// </summary>
         /// <param name="cubeSurface">The surface of the cube to rotate</param>
         /// <param name="direction">The direction (left/right) of the cube</param>
-        public void rotateSurface(CubeSurface cubeSurface, Direction direction, bool countIt = true)
+        public void rotateSurface(CubeSurface cubeSurface, Direction direction, bool isRecorded = true)
         {
             // get the cubies of the wished cube surface
             List<Cubie> cubies = this.getCubeSurface(cubeSurface);
@@ -356,10 +364,11 @@ namespace RubiksCube.Model
 
             }
 
-            if (countIt)
+            if (isRecorded)
             {
                 // Step +1
                 this.numberSteps++;
+                this.history.Add(new HistoryItem(numberSteps, "Test Eintrag"));
             }
 
         }

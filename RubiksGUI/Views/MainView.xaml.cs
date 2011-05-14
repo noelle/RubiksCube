@@ -10,15 +10,15 @@ using System.Windows.Shapes;
 
 namespace RubiksGUI
 {
-	public partial class MainView : UserControl
-	{
+    public partial class MainView : UserControl
+    {
         private System.Windows.Shapes.Rectangle activeRectangle;
 
-		public MainView()
-		{
-			// Required to initialize variables
-			InitializeComponent();
-		}
+        public MainView()
+        {
+            // Required to initialize variables
+            InitializeComponent();
+        }
 
         private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -40,11 +40,14 @@ namespace RubiksGUI
             obj.StrokeThickness = 3;
 
             this.activeRectangle = obj;
-            
+
         }
 
         private void solveButton_Click(object sender, RoutedEventArgs e)
         {
+            // History leeren
+            this.HistoryGrid.Children.Clear();
+
             // Refactoring und schönerer Code nötig :)
             // Validierung nötig!!
             MainViewModel cube = this.LayoutRoot.DataContext as MainViewModel;
@@ -52,6 +55,13 @@ namespace RubiksGUI
             solver.solve();
             this.LayoutRoot.DataContext = null;
             this.LayoutRoot.DataContext = solver.Cube as MainViewModel;
+
+            // Test
+            foreach (RubiksCube.Model.HistoryItem item in solver.Cube.History)
+            {
+                Brush alternatingBrush = (item.Order % 2 == 0) ? Brushes.Silver : Brushes.Gainsboro;
+                this.HistoryGrid.Children.Add(new Grid() { Height = 80, ToolTip = item.Order, Background = alternatingBrush });
+            }
         }
-	}
+    }
 }

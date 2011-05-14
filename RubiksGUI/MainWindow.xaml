@@ -5,7 +5,7 @@
 	x:Name="Window"
 	xmlns:local="clr-namespace:RubiksGUI" 
 	Title="MainWindow"
-	Width="640" Height="480">
+	Width="700" Height="700">
 	<Grid x:Name="LayoutRoot">
 	<local:MainView />
     </Grid>

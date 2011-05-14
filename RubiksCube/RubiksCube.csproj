@@ -45,6 +45,7 @@
     <Compile Include="Controller\CubeSolver.cs" />
     <Compile Include="Model\Cube.cs" />
     <Compile Include="Model\Cubie.cs" />
+    <Compile Include="Model\HistoryItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
