@@ -156,9 +156,23 @@ namespace RubiksCube.Model
         /// <param name="direction">The direction (left/right) of the cube</param>
         public void rotateHorizontal90(Model.Direction direction)
         {
+            string directionText = String.Empty;
+
+            // REFACTOR! encapsulate
+            if (direction == Direction.Left)
+            {
+                directionText = "Left";
+            }
+
+            if (direction == Direction.Right)
+            {
+                directionText = "Right";
+            }
+
             rotateSurface(Model.CubeSurface.Top, direction, false);
             rotateSurface(Model.CubeSurface.MiddleHorizontal, direction, false);
             rotateSurface(Model.CubeSurface.Bottom, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right, false);
+            this.History.Add(new Model.HistoryItem(NumberSteps, String.Format("90 degree horizontal {0}", directionText)));
         }
 
         /// <summary>
@@ -176,9 +190,23 @@ namespace RubiksCube.Model
         /// <param name="direction">The direction (left/right) of the cube</param>
         public void rotateVertical90(Model.Direction direction)
         {
+            string directionText = String.Empty;
+
+            // REFACTOR! encapsulate
+            if (direction == Direction.Left)
+            {
+                directionText = "Left";
+            }
+
+            if (direction == Direction.Right)
+            {
+                directionText = "Right";
+            }
             rotateSurface(Model.CubeSurface.Right, direction, false);
             rotateSurface(Model.CubeSurface.MiddleVertical, direction, false);
             rotateSurface(Model.CubeSurface.Left, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right, false);
+            this.History.Add(new Model.HistoryItem(NumberSteps, String.Format("90 degree horizontal {0}", directionText)));
+
         }
 
         /// <summary>
@@ -216,6 +244,9 @@ namespace RubiksCube.Model
             int multY = 1;
             int multZ = 1;
 
+            string surfaceText = String.Empty;
+            string directionText = String.Empty;
+
             switch (cubeSurface)
             {
                 case CubeSurface.Front:
@@ -234,6 +265,7 @@ namespace RubiksCube.Model
                         cubie.ColY = cubie.ColZ;
                         cubie.ColZ = tempCol;
                     }
+                    surfaceText = "Front";
                     break;
 
                 case CubeSurface.Back:
@@ -252,6 +284,7 @@ namespace RubiksCube.Model
                         cubie.ColY = cubie.ColZ;
                         cubie.ColZ = tempCol;
                     }
+                    surfaceText = "Back";
                     break;
 
                 case CubeSurface.Top:
@@ -270,6 +303,7 @@ namespace RubiksCube.Model
                         cubie.ColY = cubie.ColX;
                         cubie.ColX = tempCol;
                     }
+                    this.History.Add(new HistoryItem(numberSteps, String.Format("Top {0}", directionText)));
                     break;
 
                 case CubeSurface.Bottom:
@@ -287,6 +321,7 @@ namespace RubiksCube.Model
                         cubie.ColY = cubie.ColX;
                         cubie.ColX = tempCol;
                     }
+                    surfaceText = "Bottom";
                     break;
 
                 case CubeSurface.Left:
@@ -305,6 +340,7 @@ namespace RubiksCube.Model
                         cubie.ColZ = cubie.ColX;
                         cubie.ColX = tempCol;
                     }
+                    surfaceText = "Left";
                     break;
 
                 case CubeSurface.Right:
@@ -366,9 +402,19 @@ namespace RubiksCube.Model
 
             if (isRecorded)
             {
+                if (direction == Direction.Left)
+                {
+                    directionText = "Left";
+                }
+
+                if (direction == Direction.Right)
+                {
+                    directionText = "Right";
+                }
+
                 // Step +1
                 this.numberSteps++;
-                this.history.Add(new HistoryItem(numberSteps, "Test Eintrag"));
+                this.history.Add(new HistoryItem(numberSteps, String.Format("{0} {1}", surfaceText, directionText)));
             }
 
         }
@@ -486,12 +532,12 @@ namespace RubiksCube.Model
         /// <returns></returns>
         public Cubie getCubie(CubieColor col1, CubieColor col2, CubieColor col3)
         {
-            Cubie cube = this.cubies.Where(q =>((q.ColX == col1 && q.ColY == col2 && q.ColZ == col3) ||
+            Cubie cube = this.cubies.Where(q => ((q.ColX == col1 && q.ColY == col2 && q.ColZ == col3) ||
                                                 (q.ColX == col1 && q.ColY == col3 && q.ColZ == col2) ||
                                                 (q.ColX == col2 && q.ColY == col1 && q.ColZ == col3) ||
                                                 (q.ColX == col2 && q.ColY == col3 && q.ColZ == col1) ||
                                                 (q.ColX == col3 && q.ColY == col1 && q.ColZ == col2) ||
-                                                (q.ColX == col3 && q.ColY == col2 && q.ColZ == col1))).Select(q=> q).FirstOrDefault();
+                                                (q.ColX == col3 && q.ColY == col2 && q.ColZ == col1))).Select(q => q).FirstOrDefault();
             return cube;
         }
 

@@ -60,7 +60,9 @@ namespace RubiksGUI
             foreach (RubiksCube.Model.HistoryItem item in solver.Cube.History)
             {
                 Brush alternatingBrush = (item.Order % 2 == 0) ? Brushes.Silver : Brushes.Gainsboro;
-                this.HistoryGrid.Children.Add(new Grid() { Height = 80, ToolTip = item.Order, Background = alternatingBrush });
+                Grid grid = new Grid() { Height = 80, ToolTip = item.Order, Background = alternatingBrush };
+                grid.Children.Add(new Label() {Content = item.MoveTextual});
+                this.HistoryGrid.Children.Add(grid);
             }
         }
     }
