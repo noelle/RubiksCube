@@ -57,6 +57,20 @@ namespace RubiksCube.Model
             set { numberSteps = value; }
         }
 
+        public bool isSolved
+        {
+            get
+            {
+                return (
+                !(this.getCubeSurface(CubeSurface.Front).Any(q => q.ColX != this.getCubie(1, 0, 0).ColX) ||
+                this.getCubeSurface(CubeSurface.Right).Any(q => q.ColY != this.getCubie(0, 1, 0).ColY) ||
+                this.getCubeSurface(CubeSurface.Bottom).Any(q => q.ColZ != this.getCubie(0, 0, -1).ColZ) ||
+                this.getCubeSurface(CubeSurface.Left).Any(q => q.ColY != this.getCubie(0, -1, 0).ColY) ||
+                this.getCubeSurface(CubeSurface.Top).Any(q => q.ColZ != this.getCubie(0, 0, 1).ColZ) ||
+                this.getCubeSurface(CubeSurface.Back).Any(q => q.ColX != this.getCubie(-1, 0, 0).ColX)));
+            }
+        }
+
         /// <summary>
         /// Creates a test cube
         /// </summary>

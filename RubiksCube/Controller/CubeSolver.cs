@@ -26,30 +26,34 @@ namespace RubiksCube.Controller
         public void solve()
         {
             this.cube.NumberSteps = 0;
-            // 1st step: the cross at the top
-            makeTopCross();
 
-            // 2nd step: the corners at the top
-            makeTopCorners();
+            if (!this.cube.isSolved)
+            {
+                // 1st step: the cross at the top
+                makeTopCross();
 
-            // rotate the cube 180 degree in vertical direction
-            this.cube.rotateVertical90(Model.Direction.Right);
-            this.cube.rotateVertical90(Model.Direction.Right);
+                // 2nd step: the corners at the top
+                makeTopCorners();
 
-            // 3rd step: the middle edges
-            makeMiddleEdges();
+                // rotate the cube 180 degree in vertical direction
+                this.cube.rotateVertical90(Model.Direction.Right);
+                this.cube.rotateVertical90(Model.Direction.Right);
 
-            // 4th step: the cross at the bottom
-            makeBottomCross();
+                // 3rd step: the middle edges
+                makeMiddleEdges();
 
-            // 5th step: the colors of the cross at the bottom
-            makeBottomCrossEdgeColors();
+                // 4th step: the cross at the bottom
+                makeBottomCross();
 
-            // 6th step: the corners at the bottom
-            makeBottomCorners();
+                // 5th step: the colors of the cross at the bottom
+                makeBottomCrossEdgeColors();
 
-            // 7th and last step: the colors of the corners at the bottom
-            finishCube();
+                // 6th step: the corners at the bottom
+                makeBottomCorners();
+
+                // 7th and last step: the colors of the corners at the bottom
+                finishCube();
+            }
         }
 
         /// <summary>
