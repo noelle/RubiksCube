@@ -303,7 +303,7 @@ namespace RubiksCube.Model
                         cubie.ColY = cubie.ColX;
                         cubie.ColX = tempCol;
                     }
-                    this.History.Add(new HistoryItem(numberSteps, String.Format("Top {0}", directionText)));
+                    surfaceText = "Top";
                     break;
 
                 case CubeSurface.Bottom:
@@ -359,6 +359,7 @@ namespace RubiksCube.Model
                         cubie.ColZ = cubie.ColX;
                         cubie.ColX = tempCol;
                     }
+                    surfaceText = "Right";
                     break;
                 case CubeSurface.MiddleHorizontal:
                     multX = direction == Direction.Left ? -1 : 1;
