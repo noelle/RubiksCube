@@ -431,7 +431,6 @@ namespace RubiksCube.Controller
             {
 
                 // Top drehen, bis er mit einer Seite stimmt
-                // Problematisch ?!
                 while (this.cube.getCubie(1, 0, 1).ColX != this.cube.getCubie(1, 0, 0).ColX)
                 {
                     this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
@@ -529,7 +528,7 @@ namespace RubiksCube.Controller
                         hasFoundCorner = true;
                     }
 
-                    this.cube.rotateHorizontal90(Model.Direction.Left);
+                    this.cube.rotateHorizontal90(Model.Direction.Left, false);
                 }
 
                 if (!hasFoundCorner)
@@ -564,7 +563,7 @@ namespace RubiksCube.Controller
                         correctCorners++;
                     }
 
-                    this.cube.rotateHorizontal90(Model.Direction.Left);
+                    this.cube.rotateHorizontal90(Model.Direction.Left, false);
                 }
 
                 if (correctCorners == 4)

@@ -57,6 +57,9 @@ namespace RubiksCube.Model
             set { numberSteps = value; }
         }
 
+        /// <summary>
+        /// Checks if the cube is solved
+        /// </summary>
         public bool isSolved
         {
             get
@@ -168,25 +171,20 @@ namespace RubiksCube.Model
         /// 90 degree rotation of the cube in horizontal direction
         /// </summary>
         /// <param name="direction">The direction (left/right) of the cube</param>
-        public void rotateHorizontal90(Model.Direction direction)
+        public void rotateHorizontal90(Model.Direction direction, bool isRecorded = true)
         {
-            string directionText = String.Empty;
-
-            // REFACTOR! encapsulate
-            if (direction == Direction.Left)
-            {
-                directionText = "Left";
-            }
-
-            if (direction == Direction.Right)
-            {
-                directionText = "Right";
-            }
+            string directionText = direction.ToString();
 
             rotateSurface(Model.CubeSurface.Top, direction, false);
             rotateSurface(Model.CubeSurface.MiddleHorizontal, direction, false);
             rotateSurface(Model.CubeSurface.Bottom, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right, false);
-            this.History.Add(new Model.HistoryItem(NumberSteps, String.Format("90 degree horizontal {0}", directionText)));
+
+            if (isRecorded)
+            {
+                // Step +1
+                this.numberSteps++;
+                this.History.Add(new Model.HistoryItem(NumberSteps, String.Format("90 degree horizontal {0}", directionText)));
+            }
         }
 
         /// <summary>
@@ -204,22 +202,15 @@ namespace RubiksCube.Model
         /// <param name="direction">The direction (left/right) of the cube</param>
         public void rotateVertical90(Model.Direction direction)
         {
-            string directionText = String.Empty;
+            string directionText = direction.ToString();
 
-            // REFACTOR! encapsulate
-            if (direction == Direction.Left)
-            {
-                directionText = "Left";
-            }
-
-            if (direction == Direction.Right)
-            {
-                directionText = "Right";
-            }
             rotateSurface(Model.CubeSurface.Right, direction, false);
             rotateSurface(Model.CubeSurface.MiddleVertical, direction, false);
             rotateSurface(Model.CubeSurface.Left, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right, false);
-            this.History.Add(new Model.HistoryItem(NumberSteps, String.Format("90 degree horizontal {0}", directionText)));
+
+            // Step +1
+            this.numberSteps++;
+            this.History.Add(new Model.HistoryItem(NumberSteps, String.Format("90 degree vertical {0}", directionText)));
 
         }
 
@@ -258,8 +249,8 @@ namespace RubiksCube.Model
             int multY = 1;
             int multZ = 1;
 
-            string surfaceText = String.Empty;
-            string directionText = String.Empty;
+            string surfaceText = cubeSurface.ToString();
+            string directionText = direction.ToString();
 
             switch (cubeSurface)
             {
@@ -279,7 +270,6 @@ namespace RubiksCube.Model
                         cubie.ColY = cubie.ColZ;
                         cubie.ColZ = tempCol;
                     }
-                    surfaceText = "Front";
                     break;
 
                 case CubeSurface.Back:
@@ -298,7 +288,6 @@ namespace RubiksCube.Model
                         cubie.ColY = cubie.ColZ;
                         cubie.ColZ = tempCol;
                     }
-                    surfaceText = "Back";
                     break;
 
                 case CubeSurface.Top:
@@ -317,7 +306,6 @@ namespace RubiksCube.Model
                         cubie.ColY = cubie.ColX;
                         cubie.ColX = tempCol;
                     }
-                    surfaceText = "Top";
                     break;
 
                 case CubeSurface.Bottom:
@@ -335,7 +323,6 @@ namespace RubiksCube.Model
                         cubie.ColY = cubie.ColX;
                         cubie.ColX = tempCol;
                     }
-                    surfaceText = "Bottom";
                     break;
 
                 case CubeSurface.Left:
@@ -354,7 +341,6 @@ namespace RubiksCube.Model
                         cubie.ColZ = cubie.ColX;
                         cubie.ColX = tempCol;
                     }
-                    surfaceText = "Left";
                     break;
 
                 case CubeSurface.Right:
@@ -373,7 +359,6 @@ namespace RubiksCube.Model
                         cubie.ColZ = cubie.ColX;
                         cubie.ColX = tempCol;
                     }
-                    surfaceText = "Right";
                     break;
                 case CubeSurface.MiddleHorizontal:
                     multX = direction == Direction.Left ? -1 : 1;
@@ -417,16 +402,6 @@ namespace RubiksCube.Model
 
             if (isRecorded)
             {
-                if (direction == Direction.Left)
-                {
-                    directionText = "Left";
-                }
-
-                if (direction == Direction.Right)
-                {
-                    directionText = "Right";
-                }
-
                 // Step +1
                 this.numberSteps++;
                 this.history.Add(new HistoryItem(numberSteps, String.Format("{0} {1}", surfaceText, directionText)));
