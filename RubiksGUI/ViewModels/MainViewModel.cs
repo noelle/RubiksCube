@@ -656,6 +656,13 @@ namespace RubiksGUI
             }
         }
 
+        public MainViewModel() { }
+
+        public MainViewModel(Cube cube)
+        {
+            this.Cubies = cube.Cubies;
+        }
+
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 

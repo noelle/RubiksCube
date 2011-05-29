@@ -138,5 +138,15 @@ namespace RubiksCube.Model
                    this.colX == cubie.colZ && this.colY == cubie.colY && this.colZ == cubie.colX );
             
         }
+
+        /// <summary>
+        /// Returns a clone of cubie
+        /// </summary>
+        /// <returns>cubie</returns>
+        public Cubie Clone()
+        {
+            return new Cubie() { posX = this.posX, posY = this.posY, posZ = this.posZ, 
+                                 colX = this.colX, colY = this.colY, colZ = this.colZ, type = this.type };
+        }
     }
 }

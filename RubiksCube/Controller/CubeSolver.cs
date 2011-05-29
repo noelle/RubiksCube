@@ -36,8 +36,7 @@ namespace RubiksCube.Controller
                 makeTopCorners();
 
                 // rotate the cube 180 degree in vertical direction
-                this.cube.rotateVertical90(Model.Direction.Right);
-                this.cube.rotateVertical90(Model.Direction.Right);
+                this.cube.rotateVertical180();
 
                 // 3rd step: the middle edges
                 makeMiddleEdges();
@@ -382,6 +381,7 @@ namespace RubiksCube.Controller
         /// </summary>
         private void makeBottomCross()
         {
+#warning: buggy?
             // viewing bottom as top
             Model.Cubie topCenter = this.cube.getCubie(0, 0, 1);
             int numberOfEdges = this.cube.Cubies.Where(q => q.Type == Model.CubieType.Edge && q.PosZ == 1 && q.ColZ == topCenter.ColZ).Count();

@@ -64,13 +64,34 @@ namespace RubiksCube.Model
         {
             get
             {
-                return (
-                !(this.getCubeSurface(CubeSurface.Front).Any(q => q.ColX != this.getCubie(1, 0, 0).ColX) ||
-                this.getCubeSurface(CubeSurface.Right).Any(q => q.ColY != this.getCubie(0, 1, 0).ColY) ||
+                return (isFrontSolved && isMiddleLayerSolved && isBackSolved);
+            }
+        }
+
+        public bool isFrontSolved
+        {
+            get
+            {
+                return !(this.getCubeSurface(CubeSurface.Front).Any(q => q.ColX != this.getCubie(1, 0, 0).ColX));
+            }
+        }
+
+        public bool isBackSolved
+        {
+            get
+            {
+                return !(this.getCubeSurface(CubeSurface.Back).Any(q => q.ColX != this.getCubie(-1, 0, 0).ColX));
+            }
+        }
+
+        public bool isMiddleLayerSolved
+        {
+            get
+            {
+                return !(this.getCubeSurface(CubeSurface.Right).Any(q => q.ColY != this.getCubie(0, 1, 0).ColY) ||
                 this.getCubeSurface(CubeSurface.Bottom).Any(q => q.ColZ != this.getCubie(0, 0, -1).ColZ) ||
                 this.getCubeSurface(CubeSurface.Left).Any(q => q.ColY != this.getCubie(0, -1, 0).ColY) ||
-                this.getCubeSurface(CubeSurface.Top).Any(q => q.ColZ != this.getCubie(0, 0, 1).ColZ) ||
-                this.getCubeSurface(CubeSurface.Back).Any(q => q.ColX != this.getCubie(-1, 0, 0).ColX)));
+                this.getCubeSurface(CubeSurface.Top).Any(q => q.ColZ != this.getCubie(0, 0, 1).ColZ));
             }
         }
 
@@ -183,7 +204,7 @@ namespace RubiksCube.Model
             {
                 // Step +1
                 this.numberSteps++;
-                this.History.Add(new Model.HistoryItem(NumberSteps, String.Format("90 degree horizontal {0}", directionText)));
+                this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("90 degree horizontal {0}", directionText)));
             }
         }
 
@@ -210,7 +231,7 @@ namespace RubiksCube.Model
 
             // Step +1
             this.numberSteps++;
-            this.History.Add(new Model.HistoryItem(NumberSteps, String.Format("90 degree vertical {0}", directionText)));
+            this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("90 degree vertical {0}", directionText)));
 
         }
 
@@ -404,7 +425,7 @@ namespace RubiksCube.Model
             {
                 // Step +1
                 this.numberSteps++;
-                this.history.Add(new HistoryItem(numberSteps, String.Format("{0} {1}", surfaceText, directionText)));
+                this.History.Add(new HistoryItem(this.Clone(), numberSteps, String.Format("{0} {1}", surfaceText, directionText)));
             }
 
         }
@@ -541,6 +562,18 @@ namespace RubiksCube.Model
         public Cubie getCubie(int posX, int posY, int posZ)
         {
             return this.cubies.Where(q => q.PosX == posX && q.PosY == posY && q.PosZ == posZ).Select(q => q).FirstOrDefault();
+        }
+
+        public Cube Clone()
+        {
+            Cube clone = new Cube();
+
+            foreach (Cubie cloneCubie in this.cubies)
+            {
+                clone.cubies.Add(cloneCubie.Clone());
+            }
+
+            return clone;
         }
     }
 }
