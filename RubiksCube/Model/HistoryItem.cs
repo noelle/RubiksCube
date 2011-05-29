@@ -7,6 +7,14 @@ namespace RubiksCube.Model
 {
     public class HistoryItem
     {
+        private Cube cube;
+
+        public Cube Cube
+        {
+            get { return cube; }
+            //set { order = value; }
+        }
+
         private int order;
 
         public int Order
@@ -23,8 +31,9 @@ namespace RubiksCube.Model
             //set { moveTextual = value; }
         }
 
-        public HistoryItem(int order, string moveTextual)
+        public HistoryItem(Cube cube, int order, string moveTextual)
         {
+            this.cube = cube;
             this.order = order;
             this.moveTextual = moveTextual;
         }
