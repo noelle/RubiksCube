@@ -55,8 +55,14 @@ namespace RubiksGUI
             solver.solve();
             this.LayoutRoot.DataContext = null;
             this.LayoutRoot.DataContext = solver.Cube as MainViewModel;
-            this.HistoryControl.DataContext = solver.Cube.History;
 
+            // Upcasting Cube
+            foreach (RubiksCube.Model.HistoryItem item in solver.Cube.History)
+            {
+                item.Cube = new MainViewModel(item.Cube);
+            }
+
+            this.HistoryControl.DataContext = solver.Cube.History;
 
             // Test
             //foreach (RubiksCube.Model.HistoryItem item in solver.Cube.History)

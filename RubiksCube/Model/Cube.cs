@@ -567,6 +567,7 @@ namespace RubiksCube.Model
         public Cube Clone()
         {
             Cube clone = new Cube();
+            clone.cubies.Clear();
 
             foreach (Cubie cloneCubie in this.cubies)
             {

@@ -12,7 +12,7 @@ namespace RubiksCube.Model
         public Cube Cube
         {
             get { return cube; }
-            //set { order = value; }
+            set { cube = value; }
         }
 
         private int order;
