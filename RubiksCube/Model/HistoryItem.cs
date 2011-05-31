@@ -27,7 +27,7 @@ namespace RubiksCube.Model
 
         public string MoveTextual
         {
-            get { return moveTextual; }
+            get { return String.Format("{0}. {1}", order.ToString(), moveTextual); }
             //set { moveTextual = value; }
         }
 
