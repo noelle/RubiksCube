@@ -459,10 +459,13 @@ namespace RubiksCube.Controller
                     this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
                 }
 
+         #warning: here is the problem
                 // korrekte Seite rechts
-                while (this.cube.getCubie(1, 0, 1).ColX == this.cube.getCubie(1, 0, 0).ColX)
+                int surfaceCounter = 0;
+                while ((this.cube.getCubie(1, 0, 1).ColX == this.cube.getCubie(1, 0, 0).ColX) && surfaceCounter < 4)
                 {
                     this.cube.rotateHorizontal90(Model.Direction.Left);
+                    surfaceCounter++;
                 }
 
                 changeBottomCrossEdgeColor();
@@ -470,7 +473,7 @@ namespace RubiksCube.Controller
         }
 
         /// <summary>
-        /// Makes a bottom cross without care for the right colors on X and Y axis
+        /// Makes a bottom cross without caring about the right colors on X and Y axis
         /// of the cubies.
         /// </summary>
         private void makeBottomCrossEdge()
