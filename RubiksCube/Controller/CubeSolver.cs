@@ -25,10 +25,33 @@ namespace RubiksCube.Controller
         /// </summary>
         public void solve()
         {
+
             this.cube.NumberSteps = 0;
 
             if (!this.cube.isSolved)
             {
+                // Find correct starting position
+                if (this.Cube.isRightCrossSolved)
+                {
+                    this.Cube.rotateCircular90(Model.Direction.Left, true);
+                }
+                else if (this.Cube.isLeftCrossSolved)
+                {
+                    this.Cube.rotateCircular90(Model.Direction.Right, true);
+                }
+                else if (this.Cube.isFrontCrossSolved)
+                {
+                    this.Cube.rotateVertical90(Model.Direction.Right, true);
+                }
+                else if (this.Cube.isBackCrossSolved)
+                {
+                    this.Cube.rotateVertical90(Model.Direction.Left, true);
+                }
+                else if (this.Cube.isBottomCrossSolved)
+                {
+                    this.Cube.rotateVertical180();
+                }
+
                 // 1st step: the cross at the top
                 makeTopCross();
 

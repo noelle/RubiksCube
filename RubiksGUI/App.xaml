@@ -4,6 +4,9 @@
 	x:Class="RubiksGUI.App"
 	StartupUri="MainWindow.xaml">
 	<Application.Resources>
+        <Style TargetType="ContentControl">
+            <Setter Property="FontFamily" Value="Verdana" />
+        </Style>
 		<!-- Resources scoped at the Application level should be defined here. -->
 	</Application.Resources>
 </Application>

@@ -21,7 +21,8 @@ namespace RubiksCube.Model
         Bottom,
         Back,
         MiddleHorizontal,
-        MiddleVertical
+        MiddleVertical,
+        MiddleCircular
     }
 
     public class Cube
@@ -95,6 +96,186 @@ namespace RubiksCube.Model
             }
         }
 
+        /// <summary>
+        /// Checks if the first step of the top is solved
+        /// </summary>
+        public bool isTopCrossSolved
+        {
+            get
+            {
+                // check top cross colors
+                int topCrossCubies = this.Cubies.Where(q => q.Type == CubieType.Edge && q.PosZ == 1 && q.ColZ == this.getCubie(0, 0, 1).ColZ).Count();
+
+                if (topCrossCubies != 4)
+                {
+                    return false;
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    int frontCrossCubies = this.Cubies.Where(q => q.PosX == 1 && q.PosY == 0 && q.PosZ == 1 && q.ColX == this.getCubie(1, 0, 0).ColX).Count();
+
+                    if (frontCrossCubies != 1)
+                    {
+                        return false;
+                    }
+
+                    this.rotateVertical90(Direction.Right, false);
+                }
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the first step of the bottom is solved
+        /// </summary>
+        public bool isBottomCrossSolved
+        {
+            get
+            {
+                // check bottom cross colors
+                int topCrossCubies = this.Cubies.Where(q => q.Type == CubieType.Edge && q.PosZ == -1 && q.ColZ == this.getCubie(0, 0, -1).ColZ).Count();
+
+                if (topCrossCubies != 4)
+                {
+                    return false;
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    int frontCrossCubies = this.Cubies.Where(q => q.PosX == 1 && q.PosY == 0 && q.PosZ == -1 && q.ColX == this.getCubie(1, 0, 0).ColX).Count();
+
+                    if (frontCrossCubies != 1)
+                    {
+                        return false;
+                    }
+
+                    this.rotateVertical90(Direction.Right, false);
+                }
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the first step of the front is solved
+        /// </summary>
+        public bool isFrontCrossSolved
+        {
+            get
+            {
+                // check bottom cross colors
+                int topCrossCubies = this.Cubies.Where(q => q.Type == CubieType.Edge && q.PosX == 1 && q.ColX == this.getCubie(1, 0, 0).ColX).Count();
+
+                if (topCrossCubies != 4)
+                {
+                    return false;
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    int frontCrossCubies = this.Cubies.Where(q => q.PosX == 1 && q.PosY == 0 && q.PosZ == 1 && q.ColZ == this.getCubie(0, 0, 1).ColZ).Count();
+
+                    if (frontCrossCubies != 1)
+                    {
+                        return false;
+                    }
+
+                    this.rotateCircular90(Direction.Right, false);
+                }
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the first step of the back is solved
+        /// </summary>
+        public bool isBackCrossSolved
+        {
+            get
+            {
+                // check bottom cross colors
+                int backCrossCubies = this.Cubies.Where(q => q.Type == CubieType.Edge && q.PosX == -1 && q.ColX == this.getCubie(-1, 0, 0).ColX).Count();
+
+                if (backCrossCubies != 4)
+                {
+                    return false;
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    int frontCrossCubies = this.Cubies.Where(q => q.PosX == -1 && q.PosY == 0 && q.PosZ == 1 && q.ColZ == this.getCubie(0, 0, 1).ColZ).Count();
+
+                    if (frontCrossCubies != 1)
+                    {
+                        return false;
+                    }
+
+                    this.rotateCircular90(Direction.Right, false);
+                }
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the first step of the left is solved
+        /// </summary>
+        public bool isLeftCrossSolved
+        {
+            get
+            {
+                // check bottom cross colors
+                int leftCrossCubies = this.Cubies.Where(q => q.Type == CubieType.Edge && q.PosY == -1 && q.ColY == this.getCubie(0, -1, 0).ColY).Count();
+
+                if (leftCrossCubies != 4)
+                {
+                    return false;
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    int frontCrossCubies = this.Cubies.Where(q => q.PosX == 0 && q.PosY == -1 && q.PosZ == 1 && q.ColZ == this.getCubie(0, 0, 1).ColZ).Count();
+
+                    if (frontCrossCubies != 1)
+                    {
+                        return false;
+                    }
+
+                    this.rotateVertical90(Direction.Right, false);
+                }
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the first step of the right is solved
+        /// </summary>
+        public bool isRightCrossSolved
+        {
+            get
+            {
+                // check bottom cross colors
+                int rightCrossCubies = this.Cubies.Where(q => q.Type == CubieType.Edge && q.PosY == 1 && q.ColY == this.getCubie(0, 1, 0).ColY).Count();
+
+                if (rightCrossCubies != 4)
+                {
+                    return false;
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    int frontCrossCubies = this.Cubies.Where(q => q.PosX == 0 && q.PosY == 1 && q.PosZ == 1 && q.ColZ == this.getCubie(0, 0, 1).ColZ).Count();
+
+                    if (frontCrossCubies != 1)
+                    {
+                        return false;
+                    }
+
+                    this.rotateVertical90(Direction.Right, false);
+                }
+                return true;
+            }
+        }
+        
         /// <summary>
         /// Creates a test cube
         /// </summary>
@@ -189,7 +370,7 @@ namespace RubiksCube.Model
         }
 
         /// <summary>
-        /// 90 degree rotation of the cube in horizontal direction
+        /// 90 degree rotation of the cube with rotation axis-y in horizontal direction
         /// </summary>
         /// <param name="direction">The direction (left/right) of the cube</param>
         public void rotateHorizontal90(Model.Direction direction, bool isRecorded = true)
@@ -213,15 +394,19 @@ namespace RubiksCube.Model
         /// </summary>
         public void rotateHorizontal180()
         {
-            rotateHorizontal90(Direction.Right);
-            rotateHorizontal90(Direction.Right);
+            rotateHorizontal90(Direction.Right, false);
+            rotateHorizontal90(Direction.Right, false);
+
+            // Step +1
+            this.numberSteps++;
+            this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("180 degree horizontal")));
         }
 
         /// <summary>
-        /// 90 degree rotation of the cube in vertical direction
+        /// 90 degree rotation of the cube with rotation axis-z in vertical direction
         /// </summary>
         /// <param name="direction">The direction (left/right) of the cube</param>
-        public void rotateVertical90(Model.Direction direction)
+        public void rotateVertical90(Model.Direction direction, bool isRecorded = true)
         {
             string directionText = direction.ToString();
 
@@ -229,9 +414,12 @@ namespace RubiksCube.Model
             rotateSurface(Model.CubeSurface.MiddleVertical, direction, false);
             rotateSurface(Model.CubeSurface.Left, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right, false);
 
-            // Step +1
-            this.numberSteps++;
-            this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("90 degree vertical {0}", directionText)));
+            if (isRecorded)
+            {
+                // Step +1
+                this.numberSteps++;
+                this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("90 degree vertical {0}", directionText)));
+            }
 
         }
 
@@ -240,10 +428,46 @@ namespace RubiksCube.Model
         /// </summary>
         public void rotateVertical180()
         {
-            rotateVertical90(Direction.Right);
-            rotateVertical90(Direction.Right);
+            rotateVertical90(Direction.Right, false);
+            rotateVertical90(Direction.Right, false);
+
+            // Step +1
+            this.numberSteps++;
+            this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("180 degree vertical")));
         }
 
+        /// <summary>
+        /// 90 degree rotation of the cube in circular with rotation axis-x direction
+        /// </summary>
+        /// <param name="direction">The direction (left/right) of the cube</param>
+        public void rotateCircular90(Model.Direction direction, bool isRecorded = true)
+        {
+            string directionText = direction.ToString();
+
+            rotateSurface(Model.CubeSurface.Front, direction, false);
+            rotateSurface(Model.CubeSurface.MiddleCircular, direction, false);
+            rotateSurface(Model.CubeSurface.Back, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right, false);
+
+            if (isRecorded)
+            {
+                // Step +1
+                this.numberSteps++;
+                this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("90 degree circular {0}", directionText)));
+            }
+        }
+
+        /// <summary>
+        /// Rotates the cube about 180 degrees in circular direction
+        /// </summary>
+        public void rotateCircular180()
+        {
+            rotateCircular90(Direction.Right, false);
+            rotateCircular90(Direction.Right, false);
+
+            // Step +1
+            this.numberSteps++;
+            this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("180 degree circular")));
+        }
 
         /// <summary>
         /// Rotates a cube surface around 180 degrees
@@ -415,6 +639,23 @@ namespace RubiksCube.Model
                         cubie.ColX = tempCol;
                     }
                     break;
+                case CubeSurface.MiddleCircular:
+                    multY = direction == Direction.Left ? -1 : 1;
+                    multZ = direction == Direction.Right ? -1 : 1;
+
+                    foreach (Cubie cubie in cubies)
+                    {
+                        // change cubie coordinates
+                        tempPos = cubie.PosY;
+                        cubie.PosY = cubie.PosZ * multY;
+                        cubie.PosZ = tempPos * multZ;
+
+                        // change cubie colors
+                        tempCol = cubie.ColY;
+                        cubie.ColY = cubie.ColZ;
+                        cubie.ColZ = tempCol;
+                    }
+                    break;
 
                 default:
                     break;
@@ -525,7 +766,9 @@ namespace RubiksCube.Model
                 case CubeSurface.MiddleVertical:
                     cubies = this.cubies.Where(q => q.PosY == 0).ToList();
                     break;
-
+                case CubeSurface.MiddleCircular:
+                    cubies = this.cubies.Where(q => q.PosX == 0).ToList();
+                    break;
                 default:
                     cubies = null;
                     break;

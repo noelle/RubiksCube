@@ -59,15 +59,15 @@
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
 
-        <Rectangle Name="TopBottomLeftCorner" Fill="{Binding TopBottomLeftCorner, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="4" Grid.Row="3" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopBottomLeftCorner" Fill="{Binding TopBottomLeftCorner, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="4" Grid.Row="1" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
         <Rectangle Name="TopLeftEdge" Fill="{Binding TopLeftEdge, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="4" Grid.Row="2" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
-        <Rectangle Name="TopTopLeftCorner" Fill="{Binding TopTopLeftCorner, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="4" Grid.Row="1" Stroke="Black" VerticalAlignment="Center" Width="20"  MouseDown="Rectangle_MouseDown" />
-        <Rectangle Name="TopBottomEdge" Fill="{Binding TopBottomEdge, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="5" Grid.Row="3" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopTopLeftCorner" Fill="{Binding TopTopLeftCorner, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="4" Grid.Row="3" Stroke="Black" VerticalAlignment="Center" Width="20"  MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopBottomEdge" Fill="{Binding TopBottomEdge, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="5" Grid.Row="1" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
         <Rectangle Name="TopCenter" Fill="{Binding TopCenter, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="5" Grid.Row="2" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
-        <Rectangle Name="TopTopEdge" Fill="{Binding TopTopEdge, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="5" Grid.Row="1" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
-        <Rectangle Name="TopBottomRightCorner" Fill="{Binding TopBottomRightCorner, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="6" Grid.Row="3" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopTopEdge" Fill="{Binding TopTopEdge, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="5" Grid.Row="3" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopBottomRightCorner" Fill="{Binding TopBottomRightCorner, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="6" Grid.Row="1" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
         <Rectangle Name="TopRightEdge" Fill="{Binding TopRightEdge, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="6" Grid.Row="2" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
-        <Rectangle Name="TopTopRightCorner" Fill="{Binding TopTopRightCorner, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="6" Grid.Row="1" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
+        <Rectangle Name="TopTopRightCorner" Fill="{Binding TopTopRightCorner, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="6" Grid.Row="3" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
         <Rectangle Name="LeftTopLeftCorner" Fill="{Binding LeftTopLeftCorner, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="4" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
         <Rectangle Name="LeftLeftEdge" Fill="{Binding LeftLeftEdge, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="5" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
         <Rectangle Name="LeftBottomLeftCorner" Fill="{Binding LeftBottomLeftCorner, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="6" Stroke="Black" VerticalAlignment="Center" Width="20"   MouseDown="Rectangle_MouseDown" />
@@ -204,17 +204,17 @@
                                             <RowDefinition Style="{StaticResource HistoryRowDefStyle}" />
                                             <RowDefinition Style="{StaticResource HistoryRowDefStyle}" />
                                         </Grid.RowDefinitions>
-                                        <Label FontSize="11" FontFamily="Verdana" Content="{Binding Path=MoveTextual}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="14" Background="Gainsboro" Width="350" />
+                                        <Label FontSize="11" Content="{Binding Path=MoveTextual}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="14" Background="Gainsboro" Width="350" />
 
-                                        <Rectangle Fill="{Binding Path=Cube.TopBottomLeftCorner, Mode=OneWay}" Grid.Column="4" Grid.Row="3" Style="{StaticResource HistoryRectangleStyle}" />
+                                        <Rectangle Fill="{Binding Path=Cube.TopBottomLeftCorner, Mode=OneWay}" Grid.Column="4" Grid.Row="1" Style="{StaticResource HistoryRectangleStyle}" />
                                         <Rectangle Fill="{Binding Path=Cube.TopLeftEdge, Mode=OneWay}" Grid.Column="4" Grid.Row="2" Style="{StaticResource HistoryRectangleStyle}"     />
-                                        <Rectangle Fill="{Binding Path=Cube.TopTopLeftCorner, Mode=OneWay}" Grid.Column="4" Grid.Row="1" Style="{StaticResource HistoryRectangleStyle}"     />
-                                        <Rectangle Fill="{Binding Path=Cube.TopBottomEdge, Mode=OneWay}" Grid.Column="5" Grid.Row="3" Style="{StaticResource HistoryRectangleStyle}"     />
+                                        <Rectangle Fill="{Binding Path=Cube.TopTopLeftCorner, Mode=OneWay}" Grid.Column="4" Grid.Row="3" Style="{StaticResource HistoryRectangleStyle}"     />
+                                        <Rectangle Fill="{Binding Path=Cube.TopBottomEdge, Mode=OneWay}" Grid.Column="5" Grid.Row="1" Style="{StaticResource HistoryRectangleStyle}"     />
                                         <Rectangle Fill="{Binding Path=Cube.TopCenter, Mode=OneWay}" Grid.Column="5" Grid.Row="2" Style="{StaticResource HistoryRectangleStyle}"     />
-                                        <Rectangle Fill="{Binding Path=Cube.TopTopEdge, Mode=OneWay}" Grid.Column="5" Grid.Row="1" Style="{StaticResource HistoryRectangleStyle}"     />
-                                        <Rectangle Fill="{Binding Path=Cube.TopBottomRightCorner, Mode=OneWay}" Grid.Column="6" Grid.Row="3" Style="{StaticResource HistoryRectangleStyle}"     />
+                                        <Rectangle Fill="{Binding Path=Cube.TopTopEdge, Mode=OneWay}" Grid.Column="5" Grid.Row="3" Style="{StaticResource HistoryRectangleStyle}"     />
+                                        <Rectangle Fill="{Binding Path=Cube.TopBottomRightCorner, Mode=OneWay}" Grid.Column="6" Grid.Row="1" Style="{StaticResource HistoryRectangleStyle}"     />
                                         <Rectangle Fill="{Binding Path=Cube.TopRightEdge, Mode=OneWay}" Grid.Column="6" Grid.Row="2" Style="{StaticResource HistoryRectangleStyle}"     />
-                                        <Rectangle Fill="{Binding Path=Cube.TopTopRightCorner, Mode=OneWay}" Grid.Column="6" Grid.Row="1" Style="{StaticResource HistoryRectangleStyle}"     />
+                                        <Rectangle Fill="{Binding Path=Cube.TopTopRightCorner, Mode=OneWay}" Grid.Column="6" Grid.Row="3" Style="{StaticResource HistoryRectangleStyle}"     />
                                         <Rectangle Fill="{Binding Path=Cube.LeftTopLeftCorner, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Style="{StaticResource HistoryRectangleStyle}"     />
                                         <Rectangle Fill="{Binding Path=Cube.LeftLeftEdge, Mode=OneWay}" Grid.Column="1" Grid.Row="5" Style="{StaticResource HistoryRectangleStyle}"     />
                                         <Rectangle Fill="{Binding Path=Cube.LeftBottomLeftCorner, Mode=OneWay}" Grid.Column="1" Grid.Row="6" Style="{StaticResource HistoryRectangleStyle}"     />
