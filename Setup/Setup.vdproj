@@ -76,13 +76,13 @@
         "Entry"
         {
         "MsmKey" = "8:_D1646F271958B898D071096AA324A0FD"
-        "OwnerKey" = "8:_699ABF89B1CD4AD08682CB6EFA49C0D1"
+        "OwnerKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_D1646F271958B898D071096AA324A0FD"
-        "OwnerKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
+        "OwnerKey" = "8:_699ABF89B1CD4AD08682CB6EFA49C0D1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -94,25 +94,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C1F72D29032748F19DC3B80240068A2F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_980E76D78DFD460C8F2BCC87F7595FD1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C8A977526D46469DB16BEF62E18E6D53"
+        "OwnerKey" = "8:_D1646F271958B898D071096AA324A0FD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -124,7 +106,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D1646F271958B898D071096AA324A0FD"
+        "OwnerKey" = "8:_C8A977526D46469DB16BEF62E18E6D53"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_980E76D78DFD460C8F2BCC87F7595FD1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C1F72D29032748F19DC3B80240068A2F"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -152,6 +152,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
         "Release"
@@ -159,7 +172,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\Setup.msi"
+        "OutputFilename" = "8:Release\\RubiksSetup.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -176,6 +189,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -233,11 +259,6 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_5D612984C4CC27C457EB17D7F94BE232"
-                    {
-                    "Name" = "8:Microsoft.Expression.Interactions.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Microsoft.Expression.Interactions.dll"
             "TargetName" = "8:"
@@ -264,11 +285,6 @@
             "AssemblyAsmDisplayName" = "8:RubiksCube, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_C8A977526D46469DB16BEF62E18E6D53"
-                    {
-                    "Name" = "8:RubiksCube.exe"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:RubiksCube.exe"
             "TargetName" = "8:"
@@ -295,11 +311,6 @@
             "AssemblyAsmDisplayName" = "8:System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D1646F271958B898D071096AA324A0FD"
-                    {
-                    "Name" = "8:System.Windows.Interactivity.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Windows.Interactivity.dll"
             "TargetName" = "8:"
@@ -428,14 +439,14 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Noëlle Rosenberg & Selim Öksüz"
+        "Manufacturer" = "8:Noelle Rosenberg & Selim Oeksuez"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Setup"
+        "Title" = "8:Rubiks Cube Installer"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Informatik Projekt 2 - Noëlle Rosenber & Selim Öksüz"
+        "ARPCONTACT" = "8:Noelle Rosenberg & Selim Oeksuez"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:Rubiks Cube Solver"
+        "ARPCOMMENTS" = "8:Informatik Projekt 2 - Rubiks Cube Solver"
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:_106FA3DFD23E42B5926AD520FCC90407"
         "ARPIconIndex" = "3:0"
@@ -969,7 +980,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_11F0913C41C64EEAB086BDC4BD6B75B4"
             {
-            "SourcePath" = "8:..\\RubiksGUI\\obj\\Debug\\RubiksGUI.exe"
+            "SourcePath" = "8:..\\RubiksGUI\\obj\\Release\\RubiksGUI.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_724B36DD144A420A93AAAEA76D48744C"
@@ -997,7 +1008,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_699ABF89B1CD4AD08682CB6EFA49C0D1"
             {
-            "SourcePath" = "8:..\\RubiksGUI\\obj\\Debug\\RubiksGUI.exe"
+            "SourcePath" = "8:..\\RubiksGUI\\obj\\Release\\RubiksGUI.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_18E3E795089348A09DD909E55A2E8E37"
@@ -1025,7 +1036,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_980E76D78DFD460C8F2BCC87F7595FD1"
             {
-            "SourcePath" = "8:..\\RubiksCube\\obj\\x86\\Debug\\RubiksCube.exe"
+            "SourcePath" = "8:..\\RubiksCube\\obj\\Release\\RubiksCube.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_18E3E795089348A09DD909E55A2E8E37"
@@ -1053,7 +1064,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C1F72D29032748F19DC3B80240068A2F"
             {
-            "SourcePath" = "8:..\\RubiksCube\\obj\\x86\\Debug\\RubiksCube.exe"
+            "SourcePath" = "8:..\\RubiksCube\\obj\\Release\\RubiksCube.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_724B36DD144A420A93AAAEA76D48744C"
