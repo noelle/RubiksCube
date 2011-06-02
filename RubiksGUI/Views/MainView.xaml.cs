@@ -7,6 +7,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Xml;
 
 namespace RubiksGUI
 {
@@ -46,8 +49,8 @@ namespace RubiksGUI
         private void solveButton_Click(object sender, RoutedEventArgs e)
         {
             // History leeren
-            //this.HistoryGrid.Children.Clear();
-
+            
+           
             // Refactoring und schönerer Code nötig :)
             // Validierung nötig!!
             MainViewModel cube = this.LayoutRoot.DataContext as MainViewModel;
@@ -62,7 +65,6 @@ namespace RubiksGUI
                 item.Cube = new MainViewModel(item.Cube);
             }
 
-            this.HistoryControl.ItemsSource = null;
             this.HistoryControl.ItemsSource = solver.Cube.History;
         }
     }

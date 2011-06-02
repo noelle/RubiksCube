@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksGUI", "RubiksGUI\Rubi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCube", "RubiksCube\RubiksCube.csproj", "{0FD6F9EA-D5AD-4740-8462-8FAE83627F9C}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{D6C637AD-9D3E-4D93-9E13-145D2C6163EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -27,6 +29,10 @@ Global
 		{0FD6F9EA-D5AD-4740-8462-8FAE83627F9C}.Release|Mixed Platforms.Build.0 = Release|x86
 		{0FD6F9EA-D5AD-4740-8462-8FAE83627F9C}.Release|x86.ActiveCfg = Release|x86
 		{0FD6F9EA-D5AD-4740-8462-8FAE83627F9C}.Release|x86.Build.0 = Release|x86
+		{D6C637AD-9D3E-4D93-9E13-145D2C6163EC}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{D6C637AD-9D3E-4D93-9E13-145D2C6163EC}.Debug|x86.ActiveCfg = Debug
+		{D6C637AD-9D3E-4D93-9E13-145D2C6163EC}.Release|Mixed Platforms.ActiveCfg = Release
+		{D6C637AD-9D3E-4D93-9E13-145D2C6163EC}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
