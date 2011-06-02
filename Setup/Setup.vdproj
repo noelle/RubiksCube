@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:Setup"
+"ProjectName" = "8:RubiksSetup"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -15,20 +15,26 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_106FA3DFD23E42B5926AD520FCC90407"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_439645A57DB6CF50622338E81CD4F62E"
-        "OwnerKey" = "8:_699ABF89B1CD4AD08682CB6EFA49C0D1"
+        "MsmKey" = "8:_5D612984C4CC27C457EB17D7F94BE232"
+        "OwnerKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_439645A57DB6CF50622338E81CD4F62E"
-        "OwnerKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
+        "MsmKey" = "8:_5D612984C4CC27C457EB17D7F94BE232"
+        "OwnerKey" = "8:_699ABF89B1CD4AD08682CB6EFA49C0D1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,44 +57,38 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E909B7A6B5D8BAB5EBC851E1434C599E"
-        "OwnerKey" = "8:_699ABF89B1CD4AD08682CB6EFA49C0D1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E909B7A6B5D8BAB5EBC851E1434C599E"
+        "MsmKey" = "8:_C8A977526D46469DB16BEF62E18E6D53"
         "OwnerKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E909B7A6B5D8BAB5EBC851E1434C599E"
-        "OwnerKey" = "8:_439645A57DB6CF50622338E81CD4F62E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FE4F35020A26A11C70DC068AD9DF06E0"
+        "MsmKey" = "8:_C8A977526D46469DB16BEF62E18E6D53"
         "OwnerKey" = "8:_699ABF89B1CD4AD08682CB6EFA49C0D1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_FE4F35020A26A11C70DC068AD9DF06E0"
+        "MsmKey" = "8:_D1646F271958B898D071096AA324A0FD"
+        "OwnerKey" = "8:_5D612984C4CC27C457EB17D7F94BE232"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D1646F271958B898D071096AA324A0FD"
+        "OwnerKey" = "8:_699ABF89B1CD4AD08682CB6EFA49C0D1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D1646F271958B898D071096AA324A0FD"
         "OwnerKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_439645A57DB6CF50622338E81CD4F62E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
+        "OwnerKey" = "8:_699ABF89B1CD4AD08682CB6EFA49C0D1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -106,19 +106,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_699ABF89B1CD4AD08682CB6EFA49C0D1"
+        "OwnerKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FE4F35020A26A11C70DC068AD9DF06E0"
+        "OwnerKey" = "8:_C8A977526D46469DB16BEF62E18E6D53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E909B7A6B5D8BAB5EBC851E1434C599E"
+        "OwnerKey" = "8:_5D612984C4CC27C457EB17D7F94BE232"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D1646F271958B898D071096AA324A0FD"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -139,6 +145,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -155,6 +169,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -184,14 +206,34 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_439645A57DB6CF50622338E81CD4F62E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_106FA3DFD23E42B5926AD520FCC90407"
+            {
+            "SourcePath" = "8:Icon\\RubiksCubeIcon.ico"
+            "TargetName" = "8:RubiksCubeIcon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_FAE1AE1B92604D9E8B320FE913174809"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5D612984C4CC27C457EB17D7F94BE232"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_439645A57DB6CF50622338E81CD4F62E"
+                    "_5D612984C4CC27C457EB17D7F94BE232"
                     {
                     "Name" = "8:Microsoft.Expression.Interactions.dll"
                     "Attributes" = "3:512"
@@ -215,20 +257,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E909B7A6B5D8BAB5EBC851E1434C599E"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C8A977526D46469DB16BEF62E18E6D53"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:RubiksCube, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_E909B7A6B5D8BAB5EBC851E1434C599E"
+                    "_C8A977526D46469DB16BEF62E18E6D53"
                     {
-                    "Name" = "8:System.Windows.Interactivity.dll"
+                    "Name" = "8:RubiksCube.exe"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:System.Windows.Interactivity.dll"
+            "SourcePath" = "8:RubiksCube.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_18E3E795089348A09DD909E55A2E8E37"
@@ -246,20 +288,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FE4F35020A26A11C70DC068AD9DF06E0"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D1646F271958B898D071096AA324A0FD"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:RubiksCube, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_FE4F35020A26A11C70DC068AD9DF06E0"
+                    "_D1646F271958B898D071096AA324A0FD"
                     {
-                    "Name" = "8:RubiksCube.exe"
+                    "Name" = "8:System.Windows.Interactivity.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:RubiksCube.exe"
+            "SourcePath" = "8:System.Windows.Interactivity.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_18E3E795089348A09DD909E55A2E8E37"
@@ -301,6 +343,17 @@
                     "Property" = "8:_1DDF16BCC3D940138B8C55C14CB7E788"
                         "Folders"
                         {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_FAE1AE1B92604D9E8B320FE913174809"
+                            {
+                            "Name" = "8:Icon"
+                            "AlwaysCreate" = "11:TRUE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_3C298524A24848038C8754A2C2800B15"
+                                "Folders"
+                                {
+                                }
+                            }
                         }
                     }
                 }
@@ -365,7 +418,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup"
+        "ProductName" = "8:Rubiks Cube Solver"
         "ProductCode" = "8:{C4297881-75E3-4755-84D0-037659DFDF29}"
         "PackageCode" = "8:{63654B42-3E46-4F67-BCAD-26E8DD6AB10F}"
         "UpgradeCode" = "8:{6DD86A65-4957-4D54-A894-51FFF95C2A77}"
@@ -375,16 +428,16 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:Noëlle Rosenberg & Selim Öksüz"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Setup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:Informatik Projekt 2 - Noëlle Rosenber & Selim Öksüz"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:"
+        "ARPCOMMENTS" = "8:Rubiks Cube Solver"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_106FA3DFD23E42B5926AD520FCC90407"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -498,7 +551,7 @@
             "Target" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
             "Folder" = "8:_7A47BB6EE4044B5182D9A41BB4FA980A"
             "WorkingFolder" = "8:_724B36DD144A420A93AAAEA76D48744C"
-            "Icon" = "8:"
+            "Icon" = "8:_106FA3DFD23E42B5926AD520FCC90407"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D860A0B0D22A4EBF99B6B48BA3B36FAB"
@@ -512,7 +565,7 @@
             "Target" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
             "Folder" = "8:_1A6B6C5EC0394E8A833D619D450D8C6C"
             "WorkingFolder" = "8:_724B36DD144A420A93AAAEA76D48744C"
-            "Icon" = "8:"
+            "Icon" = "8:_106FA3DFD23E42B5926AD520FCC90407"
             "Feature" = "8:"
             }
         }
