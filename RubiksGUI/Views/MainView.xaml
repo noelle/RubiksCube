@@ -358,7 +358,7 @@
                 </TabItem>
             </TabControl>
         </Canvas>
-        <Label Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="8" Content="HSZ-T Informatik Projekt FS 10" />
+        <Label Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="8" Content="HSZ-T Informatik Projekt FS 11" />
         <Label Grid.Row="12" Grid.Column="9" Grid.ColumnSpan="8" HorizontalContentAlignment="Right" Content="Copyright by Noëlle Rosenberg and Selim Öksüz" />
     </Grid>
 </UserControl>
