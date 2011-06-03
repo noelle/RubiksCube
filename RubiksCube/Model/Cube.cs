@@ -465,12 +465,13 @@ namespace RubiksCube.Model
             rotateSurface(Model.CubeSurface.Top, direction, false);
             rotateSurface(Model.CubeSurface.MiddleHorizontal, direction, false);
             rotateSurface(Model.CubeSurface.Bottom, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right, false);
+            string imgLocation = direction == Model.Direction.Right ? ImageLocation.HorizontalRight90 : ImageLocation.HorizontalLeft90;
 
             if (isRecorded)
             {
                 // Step +1
                 this.numberSteps++;
-                this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("90 degree horizontal {0}", directionText)));
+                this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("90 degree horizontal {0}", directionText), imgLocation));
             }
         }
 
@@ -484,7 +485,7 @@ namespace RubiksCube.Model
 
             // Step +1
             this.numberSteps++;
-            this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("180 degree horizontal")));
+            this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("180 degree horizontal"), ImageLocation.Horizontal180));
         }
 
         /// <summary>
@@ -498,12 +499,13 @@ namespace RubiksCube.Model
             rotateSurface(Model.CubeSurface.Right, direction, false);
             rotateSurface(Model.CubeSurface.MiddleVertical, direction, false);
             rotateSurface(Model.CubeSurface.Left, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right, false);
+            string imgLocation = direction == Model.Direction.Right ? ImageLocation.VerticalRight90 : ImageLocation.VerticalLeft90;
 
             if (isRecorded)
             {
                 // Step +1
                 this.numberSteps++;
-                this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("90 degree vertical {0}", directionText)));
+                this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("90 degree vertical {0}", directionText), imgLocation));
             }
 
         }
@@ -518,7 +520,7 @@ namespace RubiksCube.Model
 
             // Step +1
             this.numberSteps++;
-            this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("180 degree vertical")));
+            this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("180 degree vertical"), ImageLocation.Vertical180));
         }
 
         /// <summary>
@@ -532,12 +534,13 @@ namespace RubiksCube.Model
             rotateSurface(Model.CubeSurface.Front, direction, false);
             rotateSurface(Model.CubeSurface.MiddleCircular, direction, false);
             rotateSurface(Model.CubeSurface.Back, direction == Model.Direction.Right ? Model.Direction.Left : Model.Direction.Right, false);
+            string imgLocation = direction == Model.Direction.Right ? ImageLocation.CircularRight90 : ImageLocation.CircularLeft90;
 
             if (isRecorded)
             {
                 // Step +1
                 this.numberSteps++;
-                this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("90 degree circular {0}", directionText)));
+                this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("90 degree circular {0}", directionText), imgLocation));
             }
         }
 
@@ -551,7 +554,7 @@ namespace RubiksCube.Model
 
             // Step +1
             this.numberSteps++;
-            this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("180 degree circular")));
+            this.History.Add(new Model.HistoryItem(this.Clone(), NumberSteps, String.Format("180 degree circular"), ImageLocation.Circular180));
         }
 
         /// <summary>
@@ -581,6 +584,7 @@ namespace RubiksCube.Model
 
             string surfaceText = cubeSurface.ToString();
             string directionText = direction.ToString();
+            string imgLocation = String.Format("/RubiksGUI;component/Images/{0}{1}.png", surfaceText, directionText);
 
             switch (cubeSurface)
             {
@@ -751,7 +755,7 @@ namespace RubiksCube.Model
             {
                 // Step +1
                 this.numberSteps++;
-                this.History.Add(new HistoryItem(this.Clone(), numberSteps, String.Format("{0} {1}", surfaceText, directionText)));
+                this.History.Add(new HistoryItem(this.Clone(), numberSteps, String.Format("{0} {1}", surfaceText, directionText), imgLocation));
             }
 
         }

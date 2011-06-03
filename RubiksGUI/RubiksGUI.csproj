@@ -105,6 +105,31 @@
   <ItemGroup>
     <Resource Include="Images\RubiksCubeIcon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BackLeft.png" />
+    <Resource Include="Images\BackRight.png" />
+    <Resource Include="Images\BottomLeft.png" />
+    <Resource Include="Images\BottomRight.png" />
+    <Resource Include="Images\Circular180.png" />
+    <Resource Include="Images\CircularLeft90.png" />
+    <Resource Include="Images\CircularRight90.png" />
+    <Resource Include="Images\FrontLeft.png" />
+    <Resource Include="Images\FrontRight.png" />
+    <Resource Include="Images\Horizontal180.png" />
+    <Resource Include="Images\HorizontalLeft90.png" />
+    <Resource Include="Images\HorizontalRight90.png" />
+    <Resource Include="Images\LeftLeft.png" />
+    <Resource Include="Images\LeftRight.png" />
+    <Resource Include="Images\RightLeft.png" />
+    <Resource Include="Images\RightRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TopLeft.png" />
+    <Resource Include="Images\TopRight.png" />
+    <Resource Include="Images\Vertical180.png" />
+    <Resource Include="Images\VerticalLeft90.png" />
+    <Resource Include="Images\VerticalRight90.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 	     Other similar extension points exist, see Microsoft.Common.targets.
