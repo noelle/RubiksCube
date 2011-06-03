@@ -76,43 +76,25 @@
         "Entry"
         {
         "MsmKey" = "8:_D1646F271958B898D071096AA324A0FD"
-        "OwnerKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
+        "OwnerKey" = "8:_699ABF89B1CD4AD08682CB6EFA49C0D1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_D1646F271958B898D071096AA324A0FD"
-        "OwnerKey" = "8:_699ABF89B1CD4AD08682CB6EFA49C0D1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_699ABF89B1CD4AD08682CB6EFA49C0D1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D1646F271958B898D071096AA324A0FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5D612984C4CC27C457EB17D7F94BE232"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C8A977526D46469DB16BEF62E18E6D53"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_699ABF89B1CD4AD08682CB6EFA49C0D1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C1F72D29032748F19DC3B80240068A2F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -124,7 +106,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C1F72D29032748F19DC3B80240068A2F"
+        "OwnerKey" = "8:_11F0913C41C64EEAB086BDC4BD6B75B4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C8A977526D46469DB16BEF62E18E6D53"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5D612984C4CC27C457EB17D7F94BE232"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D1646F271958B898D071096AA324A0FD"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -439,14 +439,14 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Noelle Rosenberg & Selim Oeksuez"
+        "Manufacturer" = "8:HSZ-T Informatik-Projekt FS11"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Rubiks Cube Installer"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Noelle Rosenberg & Selim Oeksuez"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:Informatik Projekt 2 - Rubiks Cube Solver"
+        "ARPCOMMENTS" = "8:Rubiks Cube Solver"
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:_106FA3DFD23E42B5926AD520FCC90407"
         "ARPIconIndex" = "3:0"

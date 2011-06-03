@@ -55,6 +55,7 @@
             <ColumnDefinition Width="24" />
             <ColumnDefinition Width="30" />
             <ColumnDefinition Width="220" />
+            <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -70,6 +71,7 @@
             <RowDefinition Height="30" />
             <RowDefinition Height="350" />
             <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
         <Rectangle Name="TopBottomLeftCorner" Fill="{Binding TopBottomLeftCorner, Mode=TwoWay}" HorizontalAlignment="Center" Height="20" Grid.Column="4" Grid.Row="1" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Rectangle_MouseDown" />
@@ -356,5 +358,7 @@
                 </TabItem>
             </TabControl>
         </Canvas>
+        <Label Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="8" Content="HSZ-T Informatik Projekt FS 10" />
+        <Label Grid.Row="12" Grid.Column="9" Grid.ColumnSpan="8" HorizontalContentAlignment="Right" Content="Copyright by Noëlle Rosenberg and Selim Öksüz" />
     </Grid>
 </UserControl>
