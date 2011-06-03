@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -35,9 +36,9 @@ namespace RubiksCube.Model
             set { cubies = value; }
         }
 
-        private List<HistoryItem> history = new List<HistoryItem>();
+        private ObservableCollection<HistoryItem> history = new ObservableCollection<HistoryItem>();
 
-        public List<HistoryItem> History
+        public ObservableCollection<HistoryItem> History
         {
             get { return history; }
             set { history = value; }

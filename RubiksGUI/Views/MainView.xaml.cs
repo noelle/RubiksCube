@@ -18,7 +18,7 @@ namespace RubiksGUI
     {
         private System.Windows.Shapes.Rectangle activeRectangle;
         private int actualHistoryItem;
-        private List<RubiksCube.Model.HistoryItem> listHistoryItems = new List<RubiksCube.Model.HistoryItem>();
+        private ObservableCollection<RubiksCube.Model.HistoryItem> listHistoryItems = new ObservableCollection<RubiksCube.Model.HistoryItem>();
 
         public MainView()
         {
@@ -52,7 +52,7 @@ namespace RubiksGUI
         private void solveButton_Click(object sender, RoutedEventArgs e)
         {
             // History leeren
-            
+            this.listHistoryItems.Clear();
            
             // Refactoring und schönerer Code nötig :)
             // Validierung nötig!!
@@ -75,7 +75,10 @@ namespace RubiksGUI
             setButtons();
 
             this.HistoryControl.ItemsSource = this.listHistoryItems;
-            this.GridOneByOne.DataContext = this.listHistoryItems[actualHistoryItem];
+            if (this.listHistoryItems.Count > 0)
+            {
+                this.GridOneByOne.DataContext = this.listHistoryItems[actualHistoryItem];
+            }
         }
 
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
