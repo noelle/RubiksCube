@@ -5,6 +5,8 @@ using System.Text;
 
 namespace RubiksCube.Controller
 {
+    public class NotSolvableException : Exception { }
+
     public class CubeSolver
     {
         private Model.Cube cube;
@@ -95,7 +97,14 @@ namespace RubiksCube.Controller
                 Model.Cubie currentCubie = this.cube.getCubie(frontCenter.ColX, topCenter.ColZ, Model.CubieColor.None);
 
                 // place edges to the right place in the cross
-                this.placeCrossEdge(currentCubie.GetHashCode());
+                if (currentCubie != null)
+                {
+                    this.placeCrossEdge(currentCubie.GetHashCode());
+                }
+                else
+                {
+                    throw new NotSolvableException();
+                }
 
                 // check colors
                 if (!(currentCubie.ColX == frontCenter.ColX &&
@@ -180,6 +189,8 @@ namespace RubiksCube.Controller
                     // 1;-1;0 => FR
                     this.cube.rotateSurface(Model.CubeSurface.Front, Model.Direction.Right);
                     break;
+                default:
+                    throw new  NotSolvableException();
             }
         }
 
@@ -228,6 +239,8 @@ namespace RubiksCube.Controller
                 case -176:
                     // 1;1;-1 => nothing to do
                     break;
+                default:
+                    throw new NotSolvableException();
             }
         }
 
@@ -265,7 +278,14 @@ namespace RubiksCube.Controller
                 Model.Cubie currentCubie = this.cube.getCubie(frontCenter.ColX, rightCenter.ColY, topCenter.ColZ);
 
                 // place corners to the right place in top
-                this.placeTopCorner(currentCubie.GetHashCode());
+                if (currentCubie != null)
+                {
+                    this.placeTopCorner(currentCubie.GetHashCode());
+                }
+                else
+                {
+                    throw new NotSolvableException();
+                }
 
                 // check for colors
                 while (!(currentCubie.ColX == frontCenter.ColX &&
@@ -273,6 +293,11 @@ namespace RubiksCube.Controller
                     currentCubie.ColZ == topCenter.ColZ))
                 {
                     this.changeTopCornerColor();
+
+                    if (this.Cube.NumberSteps > 500)
+                    {
+                        throw new NotSolvableException();
+                    }
                 }
 
                 // go to next cube side
@@ -316,10 +341,22 @@ namespace RubiksCube.Controller
                     currentCubie.PosY == 1 &&
                     currentCubie.PosZ == 0))
                 {
-                    placeMiddleEdge(currentCubie.GetHashCode());
+                    if (currentCubie != null)
+                    {
+                        placeMiddleEdge(currentCubie.GetHashCode());
+                    }
+                    else
+                    {
+                        throw new NotSolvableException();
+                    }
 
                     // get current cubie
                     currentCubie = this.cube.getCubie(frontCenter.ColX, rightCenter.ColY, Model.CubieColor.None);
+
+                    if (this.Cube.NumberSteps > 500)
+                    {
+                        throw new NotSolvableException();
+                    }
                 }
 
 
@@ -379,7 +416,7 @@ namespace RubiksCube.Controller
                     this.moveTopEdgeToMiddleLayer();
                     break;
                 default:
-                    break;
+                    throw new NotSolvableException();
             }
         }
 
@@ -404,7 +441,6 @@ namespace RubiksCube.Controller
         /// </summary>
         private void makeBottomCross()
         {
-#warning: buggy?
             // viewing bottom as top
             Model.Cubie topCenter = this.cube.getCubie(0, 0, 1);
             int numberOfEdges = this.cube.Cubies.Where(q => q.Type == Model.CubieType.Edge && q.PosZ == 1 && q.ColZ == topCenter.ColZ).Count();
@@ -428,6 +464,11 @@ namespace RubiksCube.Controller
                             this.Cube.getCubie(-1, 0, 1).ColZ == topCenter.ColZ))
                     {
                         this.Cube.rotateHorizontal90(Model.Direction.Right);
+
+                        if (this.Cube.NumberSteps > 500)
+                        {
+                            throw new NotSolvableException();
+                        }
                     }
                 }
 
@@ -436,6 +477,11 @@ namespace RubiksCube.Controller
 
                 // get the cubie with the right color
                 numberOfEdges = this.cube.Cubies.Where(q => q.Type == Model.CubieType.Edge && q.PosZ == 1 && q.ColZ == topCenter.ColZ).Count();
+
+                if (this.Cube.NumberSteps > 500)
+                {
+                    throw new NotSolvableException();
+                }
             }
 
         }
@@ -457,9 +503,13 @@ namespace RubiksCube.Controller
                 while (this.cube.getCubie(1, 0, 1).ColX != this.cube.getCubie(1, 0, 0).ColX)
                 {
                     this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
+
+                    if (this.Cube.NumberSteps > 500)
+                    {
+                        throw new NotSolvableException();
+                    }
                 }
 
-         #warning: here is the problem
                 // korrekte Seite rechts
                 int surfaceCounter = 0;
                 while ((this.cube.getCubie(1, 0, 1).ColX == this.cube.getCubie(1, 0, 0).ColX) && surfaceCounter < 4)
@@ -469,6 +519,11 @@ namespace RubiksCube.Controller
                 }
 
                 changeBottomCrossEdgeColor();
+
+                if (this.Cube.NumberSteps > 500)
+                {
+                    throw new NotSolvableException();
+                }
             }
         }
 
@@ -561,6 +616,11 @@ namespace RubiksCube.Controller
                 {
                     placeBottomCorner();
                 }
+
+                if (this.Cube.NumberSteps > 500)
+                {
+                    throw new NotSolvableException();
+                }
             }
 
             // get start position
@@ -600,6 +660,11 @@ namespace RubiksCube.Controller
                 {
                     placeBottomCorner();
                 }
+
+                if (this.Cube.NumberSteps > 500)
+                {
+                    throw new NotSolvableException();
+                }
             }
 
         }
@@ -635,6 +700,11 @@ namespace RubiksCube.Controller
                 {
                     changeTopCornerColor();
                     currentCubie = this.cube.getCubie(1, 1, 1);
+
+                    if (this.Cube.NumberSteps > 500)
+                    {
+                        throw new NotSolvableException();
+                    }
                 }
 
                 // go to next side => TL
@@ -651,6 +721,11 @@ namespace RubiksCube.Controller
                 // TL
                 this.cube.rotateSurface(Model.CubeSurface.Top, Model.Direction.Left);
                 frontEdge = this.cube.getCubie(0, 1, 0);
+
+                if (this.Cube.NumberSteps > 500)
+                {
+                    throw new NotSolvableException();
+                }
             }
         }
     }

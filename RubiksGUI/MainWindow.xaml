@@ -4,8 +4,8 @@
 	x:Class="RubiksGUI.MainWindow"
 	x:Name="Window"
 	xmlns:local="clr-namespace:RubiksGUI" 
-	Title="MainWindow"
-	Width="700" Height="700">
+	Title="Rubik's Cube Solver"
+	Width="715" Height="700" Icon="/RubiksGUI;component/Images/RubiksCubeIcon.ico" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 	<Grid x:Name="LayoutRoot">
 	<local:MainView />
     </Grid>

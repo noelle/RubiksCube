@@ -154,6 +154,7 @@
             <Label Content="{Binding NumberSteps}" HorizontalAlignment="Center" FontWeight="Bold" />
         </GroupBox>
         <Button Content="solve!" Height="24" HorizontalAlignment="Left" Grid.Row="9" Grid.Column="14" Name="solveButton" VerticalAlignment="Center" Width="75" Click="solveButton_Click" />
+        <Label Name="lblError" Grid.Row="10" Grid.Column="14" Foreground="Red" />
         <Canvas Grid.Row="11" Grid.Column="1" Grid.RowSpan="15">
             <TabControl Height="350" HorizontalAlignment="Left" Name="tabControl1" VerticalAlignment="Top" Width="650">
                 <TabItem Header="all moves" Name="tabItem1" HorizontalAlignment="Left">
