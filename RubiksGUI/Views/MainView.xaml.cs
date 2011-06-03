@@ -10,12 +10,15 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Xml;
+using System.Collections.Generic;
 
 namespace RubiksGUI
 {
     public partial class MainView : UserControl
     {
         private System.Windows.Shapes.Rectangle activeRectangle;
+        private int actualHistoryItem;
+        private List<RubiksCube.Model.HistoryItem> listHistoryItems = new List<RubiksCube.Model.HistoryItem>();
 
         public MainView()
         {
@@ -56,6 +59,7 @@ namespace RubiksGUI
             MainViewModel cube = this.LayoutRoot.DataContext as MainViewModel;
             RubiksCube.Controller.CubeSolver solver = new RubiksCube.Controller.CubeSolver(cube);
             solver.solve();
+
             this.LayoutRoot.DataContext = null;
             this.LayoutRoot.DataContext = solver.Cube as MainViewModel;
 
@@ -65,7 +69,48 @@ namespace RubiksGUI
                 item.Cube = new MainViewModel(item.Cube);
             }
 
-            this.HistoryControl.ItemsSource = solver.Cube.History;
+            this.actualHistoryItem = 0;
+            this.listHistoryItems = solver.Cube.History;
+
+            setButtons();
+
+            this.HistoryControl.ItemsSource = this.listHistoryItems;
+            this.GridOneByOne.DataContext = this.listHistoryItems[actualHistoryItem];
+        }
+
+        private void btnPrevious_Click(object sender, RoutedEventArgs e)
+        {
+            actualHistoryItem--;
+            this.GridOneByOne.DataContext = this.listHistoryItems[actualHistoryItem];
+            setButtons();
+        }
+
+        private void btnNext_Click(object sender, RoutedEventArgs e)
+        {
+            actualHistoryItem++;
+            this.GridOneByOne.DataContext = this.listHistoryItems[actualHistoryItem];
+            setButtons();
+        }
+
+        protected void setButtons()
+        {
+            if (this.actualHistoryItem == (this.listHistoryItems.Count-1))
+            {
+                this.btnNext.IsEnabled = false;
+            }
+            else
+            {
+                this.btnNext.IsEnabled = true;
+            }
+
+            if (this.actualHistoryItem == 0)
+            {
+                this.btnPrevious.IsEnabled = false;
+            }
+            else
+            {
+                this.btnPrevious.IsEnabled = true;
+            }
         }
     }
 }

@@ -24,6 +24,19 @@
         <Style x:Key="HistoryRowDefStyle" TargetType="RowDefinition">
             <Setter Property="Height" Value="12" />
         </Style>
+        <Style x:Key="OneByOneRectangleStyle" TargetType="Rectangle">
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Stroke" Value="Black" />
+        </Style>
+        <Style x:Key="OneByOneColumnDefStyle" TargetType="ColumnDefinition">
+            <Setter Property="Width" Value="24" />
+        </Style>
+        <Style x:Key="OneByOneRowDefStyle" TargetType="RowDefinition">
+            <Setter Property="Height" Value="24" />
+        </Style>
     </UserControl.Resources>
     <Grid x:Name="LayoutRoot" Background="White" DataContext="{Binding Source={StaticResource MainViewModelDataSource}}">
         <Grid.ColumnDefinitions>
@@ -267,6 +280,96 @@
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="one by one" Name="tabItem2">
+                    <Grid Width="650" Name="GridOneByOne" DataContext="{Binding}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7" />
+                            <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}" />
+                            <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}" />
+                            <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}" />
+                            <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}" />
+                            <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}" />
+                            <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}" />
+                            <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}" />
+                            <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}" />
+                            <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}" />
+                            <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}" />
+                            <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}" />
+                            <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}"  />
+                            <ColumnDefinition Width="80" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35" />
+                            <RowDefinition Style="{StaticResource OneByOneRowDefStyle}" />
+                            <RowDefinition Style="{StaticResource OneByOneRowDefStyle}" />
+                            <RowDefinition Style="{StaticResource OneByOneRowDefStyle}" />
+                            <RowDefinition Style="{StaticResource OneByOneRowDefStyle}" />
+                            <RowDefinition Style="{StaticResource OneByOneRowDefStyle}" />
+                            <RowDefinition Style="{StaticResource OneByOneRowDefStyle}" />
+                            <RowDefinition Style="{StaticResource OneByOneRowDefStyle}" />
+                            <RowDefinition Style="{StaticResource OneByOneRowDefStyle}" />
+                            <RowDefinition Style="{StaticResource OneByOneRowDefStyle}" />
+                            <RowDefinition Style="{StaticResource OneByOneRowDefStyle}" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Label FontSize="16" Content="{Binding Path=MoveTextual}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="14" Background="Gainsboro" Width="650" />
+
+                        <Rectangle Fill="{Binding Path=Cube.TopBottomLeftCorner, Mode=OneWay}" Grid.Column="4" Grid.Row="1" Style="{StaticResource OneByOneRectangleStyle}" />
+                        <Rectangle Fill="{Binding Path=Cube.TopLeftEdge, Mode=OneWay}" Grid.Column="4" Grid.Row="2" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.TopTopLeftCorner, Mode=OneWay}" Grid.Column="4" Grid.Row="3" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.TopBottomEdge, Mode=OneWay}" Grid.Column="5" Grid.Row="1" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.TopCenter, Mode=OneWay}" Grid.Column="5" Grid.Row="2" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.TopTopEdge, Mode=OneWay}" Grid.Column="5" Grid.Row="3" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.TopBottomRightCorner, Mode=OneWay}" Grid.Column="6" Grid.Row="1" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.TopRightEdge, Mode=OneWay}" Grid.Column="6" Grid.Row="2" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.TopTopRightCorner, Mode=OneWay}" Grid.Column="6" Grid.Row="3" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.LeftTopLeftCorner, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.LeftLeftEdge, Mode=OneWay}" Grid.Column="1" Grid.Row="5" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.LeftBottomLeftCorner, Mode=OneWay}" Grid.Column="1" Grid.Row="6" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.LeftTopEdge, Mode=OneWay}" Grid.Column="2" Grid.Row="4" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.LeftCenter, Mode=OneWay}" Grid.Column="2" Grid.Row="5" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.LeftBottomEdge, Mode=OneWay}" Grid.Column="2" Grid.Row="6" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.LeftTopRightCorner, Mode=OneWay}" Grid.Column="3" Grid.Row="4" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.LeftRightEdge, Mode=OneWay}" Grid.Column="3" Grid.Row="5" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.LeftBottomRightCorner, Mode=OneWay}" Grid.Column="3" Grid.Row="6" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.FrontTopLeftCorner, Mode=OneWay}" Grid.Column="4" Grid.Row="4" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.FrontLeftEdge, Mode=OneWay}" Grid.Column="4" Grid.Row="5" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.FrontBottomLeftCorner, Mode=OneWay}" Grid.Column="4" Grid.Row="6" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.FrontTopEdge, Mode=OneWay}" Grid.Column="5" Grid.Row="4" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.FrontCenter, Mode=OneWay}" Grid.Column="5" Grid.Row="5" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.FrontBottomEdge, Mode=OneWay}" Grid.Column="5" Grid.Row="6" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.FrontTopRightCorner, Mode=OneWay}" Grid.Column="6" Grid.Row="4" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.FrontRightEdge, Mode=OneWay}" Grid.Column="6" Grid.Row="5" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.FrontBottomRightCorner, Mode=OneWay}" Grid.Column="6" Grid.Row="6" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.BottomTopLeftCorner, Mode=OneWay}" Grid.Column="4" Grid.Row="7" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.BottomLeftEdge, Mode=OneWay}" Grid.Row="8" Grid.Column="4" Style="{StaticResource OneByOneRectangleStyle}"       />
+                        <Rectangle Fill="{Binding Path=Cube.BottomBottomLeftCorner, Mode=OneWay}"   Grid.Column="4" Grid.Row="9" Style="{StaticResource OneByOneRectangleStyle}"    />
+                        <Rectangle Fill="{Binding Path=Cube.BottomTopEdge, Mode=OneWay}"    Grid.Column="5" Grid.Row="7" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.BottomCenter, Mode=OneWay}"   Grid.Column="5" Grid.Row="8" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.BottomBottomEdge, Mode=OneWay}"   Grid.Column="5" Grid.Row="9" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.BottomTopRightCorner, Mode=OneWay}"    Grid.Column="6" Grid.Row="7" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.BottomRightEdge, Mode=OneWay}"   Grid.Column="6" Grid.Row="8" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.BottomBottomRightCorner, Mode=OneWay}"   Grid.Column="6" Grid.Row="9" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.RightTopLeftCorner, Mode=OneWay}"    Grid.Column="7" Grid.Row="4" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.RightLeftEdge, Mode=OneWay}"   Grid.Column="7" Grid.Row="5" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.RightBottomLeftCorner, Mode=OneWay}"   Grid.Column="7" Grid.Row="6" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.RightTopEdge, Mode=OneWay}"    Grid.Column="8" Grid.Row="4" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.RightCenter, Mode=OneWay}"   Grid.Column="8" Grid.Row="5" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.RightBottomEdge, Mode=OneWay}"   Grid.Column="8" Grid.Row="6" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.RightTopRightCorner, Mode=OneWay}" Grid.Column="9" Grid.Row="4" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.RightRightEdge, Mode=OneWay}"   Grid.Column="9" Grid.Row="5" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.RightBottomRightCorner, Mode=OneWay}"   Grid.Column="9" Grid.Row="6" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.BackTopLeftCorner, Mode=OneWay}"    Grid.Column="10" Grid.Row="4" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.BackLeftEdge, Mode=OneWay}"   Grid.Column="10" Grid.Row="5" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.BackBottomLeftCorner, Mode=OneWay}"   Grid.Column="10" Grid.Row="6" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.BackTopEdge, Mode=OneWay}"    Grid.Column="11" Grid.Row="4" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Rectangle Fill="{Binding Path=Cube.BackCenter, Mode=OneWay}"   Grid.Column="11" Grid.Row="5" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.BackBottomEdge, Mode=OneWay}"   Grid.Column="11" Grid.Row="6" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.BackTopRightCorner, Mode=OneWay}"    Grid.Column="12" Grid.Row="4" Style="{StaticResource OneByOneRectangleStyle}"   />
+                        <Rectangle Fill="{Binding Path=Cube.BackRightEdge, Mode=OneWay}" Grid.Column="12" Grid.Row="5" Style="{StaticResource OneByOneRectangleStyle}"      />
+                        <Rectangle Fill="{Binding Path=Cube.BackBottomRightCorner, Mode=OneWay}" Grid.Column="12" Grid.Row="6" Style="{StaticResource OneByOneRectangleStyle}"     />
+                        <Button Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="2" Content="previous" Name="btnPrevious" Click="btnPrevious_Click" IsEnabled="False" />
+                        <Button Grid.Column="11" Grid.Row="9" Grid.ColumnSpan="2" Content="next" Name="btnNext" Click="btnNext_Click" IsEnabled="False" />
+                    </Grid>
                 </TabItem>
             </TabControl>
         </Canvas>
