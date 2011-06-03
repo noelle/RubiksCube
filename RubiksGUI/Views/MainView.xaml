@@ -150,7 +150,7 @@
                 <Rectangle Name="blueColor" Fill="Blue" Height="20" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="6" Stroke="Black" VerticalAlignment="Center" Width="20" MouseDown="Color_MouseDown" />
             </Grid>
         </GroupBox>
-        <GroupBox Header="number of moves" Height="50" HorizontalAlignment="Left" Grid.Column="14" Grid.Row="5" Grid.RowSpan="3" Name="groupBox2" VerticalAlignment="Center" Width="115">
+        <GroupBox Header="number of steps" Height="50" HorizontalAlignment="Left" Grid.Column="14" Grid.Row="5" Grid.RowSpan="3" Name="groupBox2" VerticalAlignment="Center" Width="115">
             <Label Content="{Binding NumberSteps}" HorizontalAlignment="Center" FontWeight="Bold" />
         </GroupBox>
         <Button Content="solve!" Height="24" HorizontalAlignment="Left" Grid.Row="9" Grid.Column="14" Name="solveButton" VerticalAlignment="Center" Width="75" Click="solveButton_Click" />
