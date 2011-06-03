@@ -29,6 +29,7 @@ namespace RubiksCube.Model
     public class Cube
     {
         List<Cubie> cubies;
+        List<Cubie> solvableCube = new List<Cubie>();
 
         public List<Cubie> Cubies
         {
@@ -48,6 +49,7 @@ namespace RubiksCube.Model
         {
             this.cubies = new List<Cubie>();
 
+            this.createSolvableCube();
             // build the cube
             this.createCube();
         }
@@ -57,6 +59,24 @@ namespace RubiksCube.Model
         {
             get { return numberSteps; }
             set { numberSteps = value; }
+        }
+
+        public bool isSolvable
+        {
+            get
+            {
+                foreach (Cubie cubie in this.solvableCube)
+                {
+                    int existing = this.cubies.Where(q => q.hasSameColors(cubie)).Count();
+
+
+                    if (existing != 1)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
 
         /// <summary>
@@ -276,7 +296,7 @@ namespace RubiksCube.Model
                 return true;
             }
         }
-        
+
         /// <summary>
         /// Creates a test cube
         /// </summary>
@@ -368,6 +388,70 @@ namespace RubiksCube.Model
             this.cubies.Add(middleCubie6);
             this.cubies.Add(middleCubie7);
             this.cubies.Add(middleCubie8);
+        }
+
+        /// <summary>
+        /// Creates a solvable Cube
+        /// </summary>
+        private void createSolvableCube()
+        {
+            Cubie frontCubie1 = new Cubie(CubieType.Corner, 1, -1, 1, CubieColor.Y, CubieColor.B, CubieColor.O);
+            Cubie frontCubie2 = new Cubie(CubieType.Edge, 1, 0, 1, CubieColor.R, CubieColor.None, CubieColor.W);
+            Cubie frontCubie3 = new Cubie(CubieType.Corner, 1, 1, 1, CubieColor.O, CubieColor.W, CubieColor.B);
+            Cubie frontCubie4 = new Cubie(CubieType.Edge, 1, -1, 0, CubieColor.G, CubieColor.Y, CubieColor.None);
+            Cubie frontCubie5 = new Cubie(CubieType.Center, 1, 0, 0, CubieColor.G, CubieColor.None, CubieColor.None);
+            Cubie frontCubie6 = new Cubie(CubieType.Edge, 1, 1, 0, CubieColor.R, CubieColor.B, CubieColor.None);
+            Cubie frontCubie7 = new Cubie(CubieType.Corner, 1, -1, -1, CubieColor.R, CubieColor.Y, CubieColor.B);
+            Cubie frontCubie8 = new Cubie(CubieType.Edge, 1, 0, -1, CubieColor.W, CubieColor.None, CubieColor.G);
+            Cubie frontCubie9 = new Cubie(CubieType.Corner, 1, 1, -1, CubieColor.R, CubieColor.W, CubieColor.B);
+
+            Cubie backCubie1 = new Cubie(CubieType.Corner, -1, -1, -1, CubieColor.Y, CubieColor.O, CubieColor.G);
+            Cubie backCubie2 = new Cubie(CubieType.Edge, -1, 0, -1, CubieColor.B, CubieColor.None, CubieColor.O);
+            Cubie backCubie3 = new Cubie(CubieType.Corner, -1, 1, -1, CubieColor.O, CubieColor.G, CubieColor.W);
+            Cubie backCubie4 = new Cubie(CubieType.Edge, -1, -1, 0, CubieColor.W, CubieColor.O, CubieColor.None);
+            Cubie backCubie5 = new Cubie(CubieType.Center, -1, 0, 0, CubieColor.B, CubieColor.None, CubieColor.None);
+            Cubie backCubie6 = new Cubie(CubieType.Edge, -1, 1, 0, CubieColor.Y, CubieColor.R, CubieColor.None);
+            Cubie backCubie7 = new Cubie(CubieType.Corner, -1, -1, 1, CubieColor.G, CubieColor.Y, CubieColor.R);
+            Cubie backCubie8 = new Cubie(CubieType.Edge, -1, 0, 1, CubieColor.O, CubieColor.None, CubieColor.Y);
+            Cubie backCubie9 = new Cubie(CubieType.Corner, -1, 1, 1, CubieColor.G, CubieColor.W, CubieColor.R);
+
+            Cubie middleCubie1 = new Cubie(CubieType.Edge, 0, -1, 1, CubieColor.None, CubieColor.B, CubieColor.W);
+            Cubie middleCubie2 = new Cubie(CubieType.Center, 0, 0, 1, CubieColor.None, CubieColor.None, CubieColor.W);
+            Cubie middleCubie3 = new Cubie(CubieType.Edge, 0, 1, 1, CubieColor.None, CubieColor.O, CubieColor.G);
+            Cubie middleCubie4 = new Cubie(CubieType.Center, 0, 1, 0, CubieColor.None, CubieColor.R, CubieColor.None);
+            Cubie middleCubie5 = new Cubie(CubieType.Edge, 0, 1, -1, CubieColor.None, CubieColor.B, CubieColor.Y);
+            Cubie middleCubie6 = new Cubie(CubieType.Center, 0, 0, -1, CubieColor.None, CubieColor.None, CubieColor.Y);
+            Cubie middleCubie7 = new Cubie(CubieType.Edge, 0, -1, -1, CubieColor.None, CubieColor.R, CubieColor.G);
+            Cubie middleCubie8 = new Cubie(CubieType.Center, 0, -1, 0, CubieColor.None, CubieColor.O, CubieColor.None);
+
+            solvableCube.Add(frontCubie1);
+            solvableCube.Add(frontCubie2);
+            solvableCube.Add(frontCubie3);
+            solvableCube.Add(frontCubie4);
+            solvableCube.Add(frontCubie5);
+            solvableCube.Add(frontCubie6);
+            solvableCube.Add(frontCubie7);
+            solvableCube.Add(frontCubie8);
+            solvableCube.Add(frontCubie9);
+
+            solvableCube.Add(backCubie1);
+            solvableCube.Add(backCubie2);
+            solvableCube.Add(backCubie3);
+            solvableCube.Add(backCubie4);
+            solvableCube.Add(backCubie5);
+            solvableCube.Add(backCubie6);
+            solvableCube.Add(backCubie7);
+            solvableCube.Add(backCubie8);
+            solvableCube.Add(backCubie9);
+
+            solvableCube.Add(middleCubie1);
+            solvableCube.Add(middleCubie2);
+            solvableCube.Add(middleCubie3);
+            solvableCube.Add(middleCubie4);
+            solvableCube.Add(middleCubie5);
+            solvableCube.Add(middleCubie6);
+            solvableCube.Add(middleCubie7);
+            solvableCube.Add(middleCubie8);
         }
 
         /// <summary>
