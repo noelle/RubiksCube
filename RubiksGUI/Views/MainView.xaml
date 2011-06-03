@@ -295,7 +295,7 @@
                             <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}" />
                             <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}" />
                             <ColumnDefinition Style="{StaticResource OneByOneColumnDefStyle}"  />
-                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="35" />
@@ -310,6 +310,7 @@
                             <RowDefinition Style="{StaticResource OneByOneRowDefStyle}" />
                             <RowDefinition Style="{StaticResource OneByOneRowDefStyle}" />
                             <RowDefinition Height="30" />
+                            <RowDefinition />
                         </Grid.RowDefinitions>
                         <Label FontSize="16" Content="{Binding Path=MoveTextual}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="14" Background="Gainsboro" Width="650" />
 
@@ -367,8 +368,8 @@
                         <Rectangle Fill="{Binding Path=Cube.BackTopRightCorner, Mode=OneWay}"    Grid.Column="12" Grid.Row="4" Style="{StaticResource OneByOneRectangleStyle}"   />
                         <Rectangle Fill="{Binding Path=Cube.BackRightEdge, Mode=OneWay}" Grid.Column="12" Grid.Row="5" Style="{StaticResource OneByOneRectangleStyle}"      />
                         <Rectangle Fill="{Binding Path=Cube.BackBottomRightCorner, Mode=OneWay}" Grid.Column="12" Grid.Row="6" Style="{StaticResource OneByOneRectangleStyle}"     />
-                        <Button Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="2" Content="previous" Name="btnPrevious" Click="btnPrevious_Click" IsEnabled="False" />
-                        <Button Grid.Column="11" Grid.Row="9" Grid.ColumnSpan="2" Content="next" Name="btnNext" Click="btnNext_Click" IsEnabled="False" />
+                        <Button Grid.Column="1" Grid.Row="11" Grid.ColumnSpan="3" Content="previous" Name="btnPrevious" Click="btnPrevious_Click" IsEnabled="False" />
+                        <Button Grid.Column="10" Grid.Row="11" Grid.ColumnSpan="3" Content="next" Name="btnNext" Click="btnNext_Click" IsEnabled="False" />
                     </Grid>
                 </TabItem>
             </TabControl>
