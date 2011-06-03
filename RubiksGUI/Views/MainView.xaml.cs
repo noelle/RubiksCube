@@ -56,7 +56,7 @@ namespace RubiksGUI
 
             MainViewModel cube = this.LayoutRoot.DataContext as MainViewModel;
             RubiksCube.Controller.CubeSolver solver = new RubiksCube.Controller.CubeSolver(cube);
-            
+
             // trying to solve the cube
             try
             {
@@ -87,6 +87,7 @@ namespace RubiksGUI
             catch (RubiksCube.Controller.NotSolvableException)
             {
                 // current cube is not solvable
+                this.listHistoryItems.Clear();
                 this.lblError.Content = "This cube is not solvable!";
             }
         }
@@ -107,7 +108,7 @@ namespace RubiksGUI
 
         protected void setButtons()
         {
-            if (this.actualHistoryItem == (this.listHistoryItems.Count-1))
+            if (this.actualHistoryItem == (this.listHistoryItems.Count - 1))
             {
                 this.btnNext.IsEnabled = false;
             }
