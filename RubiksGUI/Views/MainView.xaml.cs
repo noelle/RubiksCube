@@ -90,6 +90,9 @@ namespace RubiksGUI
                 {
                     // current cube is not solvable
                     this.listHistoryItems.Clear();
+                    this.GridOneByOne.DataContext = null;
+                    this.btnNext.IsEnabled = false;
+                    this.btnPrevious.IsEnabled = false;
                     this.lblError.Content = "This cube is not solvable!";
                 } 
             }
@@ -97,6 +100,9 @@ namespace RubiksGUI
             {
                 // current cube is not solvable
                 this.listHistoryItems.Clear();
+                this.GridOneByOne.DataContext = null;
+                this.btnNext.IsEnabled = false;
+                this.btnPrevious.IsEnabled = false;
                 this.lblError.Content = "This cube is not solvable!";
             }
         }
@@ -117,7 +123,7 @@ namespace RubiksGUI
 
         protected void setButtons()
         {
-            if (this.actualHistoryItem == (this.listHistoryItems.Count - 1))
+            if (this.actualHistoryItem == (this.listHistoryItems.Count - 1) || this.listHistoryItems.Count == 0)
             {
                 this.btnNext.IsEnabled = false;
             }
@@ -126,7 +132,7 @@ namespace RubiksGUI
                 this.btnNext.IsEnabled = true;
             }
 
-            if (this.actualHistoryItem == 0)
+            if (this.actualHistoryItem == 0 || this.listHistoryItems.Count == 0)
             {
                 this.btnPrevious.IsEnabled = false;
             }
