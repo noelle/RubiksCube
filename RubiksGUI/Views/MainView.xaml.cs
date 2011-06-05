@@ -57,46 +57,36 @@ namespace RubiksGUI
             MainViewModel cube = this.LayoutRoot.DataContext as MainViewModel;
             RubiksCube.Controller.CubeSolver solver = new RubiksCube.Controller.CubeSolver(cube);
 
-            // solve the cube if solvable
-            if(solver.Cube.isSolvable)
+            //// solve the cube if solvable
+            //if(solver.Cube.isSolvable)
+            //{
+            try
             {
-                try
+                this.lblError.Content = String.Empty;
+                solver.solve();
+
+
+                this.LayoutRoot.DataContext = null;
+                this.LayoutRoot.DataContext = solver.Cube as MainViewModel;
+
+                // Upcasting Cube
+                foreach (RubiksCube.Model.HistoryItem item in solver.Cube.History)
                 {
-                    this.lblError.Content = String.Empty;
-                    solver.solve();
-
-
-                    this.LayoutRoot.DataContext = null;
-                    this.LayoutRoot.DataContext = solver.Cube as MainViewModel;
-
-                    // Upcasting Cube
-                    foreach (RubiksCube.Model.HistoryItem item in solver.Cube.History)
-                    {
-                        item.Cube = new MainViewModel(item.Cube);
-                    }
-
-                    this.actualHistoryItem = 0;
-                    this.listHistoryItems = solver.Cube.History;
-
-                    setButtons();
-
-                    this.HistoryControl.ItemsSource = this.listHistoryItems;
-                    if (this.listHistoryItems.Count > 0)
-                    {
-                        this.GridOneByOne.DataContext = this.listHistoryItems[actualHistoryItem];
-                    }
+                    item.Cube = new MainViewModel(item.Cube);
                 }
-                catch (RubiksCube.Controller.NotSolvableException)
+
+                this.actualHistoryItem = 0;
+                this.listHistoryItems = solver.Cube.History;
+
+                setButtons();
+
+                this.HistoryControl.ItemsSource = this.listHistoryItems;
+                if (this.listHistoryItems.Count > 0)
                 {
-                    // current cube is not solvable
-                    this.listHistoryItems.Clear();
-                    this.GridOneByOne.DataContext = null;
-                    this.btnNext.IsEnabled = false;
-                    this.btnPrevious.IsEnabled = false;
-                    this.lblError.Content = "This cube is not solvable!";
-                } 
+                    this.GridOneByOne.DataContext = this.listHistoryItems[actualHistoryItem];
+                }
             }
-            else
+            catch (RubiksCube.Controller.NotSolvableException)
             {
                 // current cube is not solvable
                 this.listHistoryItems.Clear();
@@ -105,6 +95,16 @@ namespace RubiksGUI
                 this.btnPrevious.IsEnabled = false;
                 this.lblError.Content = "This cube is not solvable!";
             }
+            //}
+            //else
+            //{
+            //    // current cube is not solvable
+            //    this.listHistoryItems.Clear();
+            //    this.GridOneByOne.DataContext = null;
+            //    this.btnNext.IsEnabled = false;
+            //    this.btnPrevious.IsEnabled = false;
+            //    this.lblError.Content = "This cube is not solvable!";
+            //}
         }
 
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
